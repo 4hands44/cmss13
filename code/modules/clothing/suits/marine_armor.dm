@@ -1719,6 +1719,54 @@
 	contained_sprite = TRUE
 
 
+//=Royal Blackwatch=\\
+
+/obj/item/clothing/suit/storage/marine/veteran/blackwatch
+	name = "tactical webbing harness"
+	desc = "Specialized webbing with attached venlar padding, designed by the blackwatch armory to provide high mobility and moderate protection."
+	icon_state = "C_webbing"
+	item_state = "C_webbing"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	allowed = list(
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine/,
+		/obj/item/weapon/baton,
+		/obj/item/handcuffs,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/explosive/grenade,
+		/obj/item/storage/bible,
+		/obj/item/weapon/claymore/mercsword/machete,
+		/obj/item/attachable/bayonet,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman,
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/crew_monitor,
+		/obj/item/tool/pen,
+		/obj/item/storage/large_holster/machete,
+		)
+
+/obj/item/clothing/suit/storage/marine/veteran/blackwatch_standard //Rifleman Armor
+	icon_state = "C_webbing"
+	item_state = "C_webbing"
+	storage_slots = 6
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+
+
+
+
 //=ROYAL MARINES=\\
 
 /obj/item/clothing/suit/storage/marine/veteran/royal_marine

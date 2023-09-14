@@ -955,11 +955,25 @@
 	icon_state = "rmc_uniform_lt"
 	worn_state = "rmc_uniform_lt"
 
-//=ROYAL Blackwatch\\
+//=ROYAL Blackwatch=\\
 
-/obj/item/clothing/under/marine/veteran/royal_marine/blackwatch
-	name = "royal blackwatch uniform"
+/obj/item/clothing/under/marine/veteran/TWE/royal_blackwatch
+	name = "\improper royal blackwatch uniform"
 	desc = "The field uniform of the royal blackwatch. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment"
+	item_state = "bw_uniform"
 	icon_state = "bw_uniform"
 	worn_state = "bw_uniform"
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	has_sensor = UNIFORM_HAS_SENSORS
+	sensor_faction = FACTION_TWE
 
+
+/obj/item/clothing/under/marine/veteran/TWE/royal_blackwatch/leader
+	name = "\improper royal blackwatch squad lead uniform"
+	desc = "The field uniform of the royal blackwatch. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment"
+	item_state = "bw_uniform_tml"
+	icon_state = "bw_uniform_tml"
+	worn_state = "bw_uniform_tml"
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	has_sensor = UNIFORM_HAS_SENSORS
+	sensor_faction = FACTION_TWE
