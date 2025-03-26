@@ -101,6 +101,12 @@
 	has_buttons = TRUE
 	icon_state = "coat_officer"
 
+/obj/item/clothing/suit/storage/jacket/marine/trench
+	name = "marine trenchcoat"
+	desc = "A staple item for units deploying to wet or cold enviroments."
+	has_buttons = TRUE
+	icon_state = "marine_trenchcoat"
+
 /obj/item/clothing/suit/storage/jacket/marine/pilot
 	name = "\improper M70B1 light flak jacket"
 	desc = "A light flak jacket used by dropship pilots to protect themselves while flying in the cockpit. This specific flak jacket has been designed for style and comfort over protection, and it shows. Don't get hit by any stray bullets!"
