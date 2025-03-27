@@ -113,7 +113,7 @@
 /datum/equipment_preset/ms/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
 
-/datum/equipment_preset/uscm/load_preset(mob/living/carbon/human/new_human, randomise, count_participant)
+/datum/equipment_preset/ms/load_preset(mob/living/carbon/human/new_human, randomise, count_participant)
 	. = ..()
 	if(!auto_squad_name || (should_block_game_interaction(new_human) && !ert_squad))
 		return
@@ -160,7 +160,7 @@
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
-/datum/equipment_preset/uscm/pfc/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/ms/pfc/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
