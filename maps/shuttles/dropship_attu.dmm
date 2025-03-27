@@ -14,7 +14,7 @@
 "gV" = (/turf/closed/shuttle/attu{icon_state = "83"},/area/shuttle/attu)
 "hc" = (/turf/closed/shuttle/attu{icon_state = "72"},/area/shuttle/attu)
 "hx" = (/obj/structure/shuttle/part/attu/nose_front_right,/turf/template_noop,/area/shuttle/attu)
-"hG" = (/turf/open/shuttle/dropship{icon_state = "rasputin6"},/area/shuttle/attu)
+"hG" = (/obj/structure/machinery/camera/autoname/almayer/attu{pixel_y = 30},/turf/open/shuttle/dropship{icon_state = "rasputin6"},/area/shuttle/attu)
 "hH" = (/turf/open/shuttle/dropship{icon_state = "floor8"},/area/shuttle/attu)
 "hS" = (/turf/open/shuttle/dropship{icon_state = "rasputin7"},/area/shuttle/attu)
 "it" = (/turf/closed/shuttle/attu{icon_state = "67"},/area/shuttle/attu)
@@ -50,6 +50,7 @@
 "Bx" = (/obj/structure/shuttle/part/attu/transparent/right_outer_bottom_wing,/turf/template_noop,/area/shuttle/attu)
 "CD" = (/obj/structure/shuttle/part/attu/nose_front_left,/turf/template_noop,/area/shuttle/attu)
 "CU" = (/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2{id = "aft_door"; name = "\improper Attu cargo door"},/obj/effect/decal/warning_stripes{icon_state = "E"; pixel_x = 1},/turf/open/shuttle/dropship{icon_state = "rasputin15"},/area/shuttle/attu)
+"DP" = (/obj/effect/decal/warning_stripes{icon_state = "W"},/obj/structure/platform{dir = 4},/obj/structure/machinery/camera/autoname/almayer/attu{dir = 8; pixel_x = 23},/turf/open/shuttle/dropship{icon_state = "rasputin3"},/area/shuttle/attu)
 "Eo" = (/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep{req_access = null; req_one_access = null},/turf/open/shuttle/dropship{icon_state = "rasputin15"},/area/shuttle/attu)
 "Ez" = (/obj/structure/shuttle/part/attu/transparent/upper_left_wing,/obj/effect/attach_point/electronics/attu,/turf/template_noop,/area/shuttle/attu)
 "FF" = (/obj/effect/decal/warning_stripes{icon_state = "W"},/obj/structure/platform{dir = 4},/turf/open/shuttle/dropship{icon_state = "rasputin3"},/area/shuttle/attu)
@@ -116,7 +117,7 @@ xpxpVmwSxfxXycGlMxxpxp
 xpxpVmGzJCMJwwjMMxxpxp
 xpxpVmujOCcsRaEoMxxpxp
 xpxpFWmLXNUfcFfLYDxpxp
-xpymVfVmAZJVFFMxwaOUxp
+xpymVfVmAZJVDPMxwaOUxp
 xpYSVnUkAZJVFFUXVKXDxp
 xpbktrSiAZJVFFcoZjSOxp
 xpQFUVVmAZJVFFMxQFUVxp

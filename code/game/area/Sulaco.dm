@@ -178,7 +178,7 @@
 	flags_area = AREA_NOTUNNEL
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL
-	base_lighting_alpha = 0
+	base_lighting_alpha = 255
 
 /area/shuttle/attu/Enter(atom/movable/O, atom/oldloc)
 	if(istype(O, /obj/structure/barricade))
@@ -233,7 +233,7 @@
 	flags_area = AREA_NOTUNNEL
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL
-	base_lighting_alpha = 0
+	base_lighting_alpha = 255
 
 /area/shuttle/saigon/Enter(atom/movable/O, atom/oldloc)
 	if(istype(O, /obj/structure/barricade))

@@ -42,7 +42,8 @@
 "wb" = (/obj/structure/machinery/door/airlock/dropship_hatch/two{dir = 8; id = "starboard_door"},/obj/structure/stairs{dir = 4},/obj/structure/blocker/forcefield/multitile_vehicles,/turf/open/shuttle/dropship{icon_state = "rasputin15"},/area/shuttle/saigon)
 "ww" = (/obj/effect/decal/warning_stripes{icon_state = "E"; pixel_x = 1},/turf/open/shuttle/dropship{icon_state = "rasputin3"},/area/shuttle/saigon)
 "wD" = (/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{req_access = null; req_one_access = null},/turf/open/shuttle/dropship{icon_state = "rasputin15"},/area/shuttle/saigon)
-"xx" = (/turf/open/shuttle/dropship{icon_state = "rasputin6"},/area/shuttle/saigon)
+"xx" = (/obj/structure/machinery/camera/autoname/almayer/saigon{pixel_y = 30},/turf/open/shuttle/dropship{icon_state = "rasputin6"; pixel_y = 30},/area/shuttle/saigon{pixel_y = 30})
+"xL" = (/obj/effect/decal/warning_stripes{icon_state = "W"},/obj/structure/platform{dir = 4},/obj/structure/machinery/camera/autoname/almayer/saigon{dir = 8; pixel_x = 30},/turf/open/shuttle/dropship{icon_state = "rasputin3"},/area/shuttle/saigon)
 "zC" = (/turf/open/shuttle/dropship{icon_state = "rasputin7"},/area/shuttle/saigon)
 "zF" = (/obj/structure/platform{dir = 1; layer = 2.8},/turf/open/shuttle/dropship{icon_state = "rasputin15"},/area/shuttle/saigon)
 "Af" = (/obj/structure/blocker/invisible_wall,/obj/structure/machinery/computer/shuttle/dropship/flight,/turf/open/shuttle/dropship{icon_state = "rasputin15"},/area/shuttle/saigon)
@@ -112,7 +113,7 @@ XPXPZrPTmNtjXAelIcXPXP
 XPXPZrQFmNQtwwwDIcXPXP
 XPXPZrbRmbSFqPjjIcXPXP
 XPXPTTXWfwzFqcstKnXPXP
-XPmSjsZrgAYaNxIcvvCwXP
+XPmSjsZrgAYaxLIcvvCwXP
 XPfzAPjBgAYaNxViTVXdXP
 XPfDLWYmgAYaNxfTWDTDXP
 XPeemqZrgAYaNxIceemqXP
