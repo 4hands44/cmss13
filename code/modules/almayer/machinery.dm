@@ -118,7 +118,34 @@
 	minimap_type = MINIMAP_FLAG_WY
 	faction = FACTION_PMC
 
+/obj/structure/machinery/prop/almayer/CICmap/glass
+	icon_state = "tac_map"
+	density = 0
+	layer = 4.1
+
+/obj/structure/machinery/prop/almayer/CICmap/glass/trajectory
+	icon_state = "tac_map_trajectory"
+
+/obj/structure/machinery/prop/almayer/CICmap/glass/target
+	icon_state = "tac_map_target"
+
+/obj/structure/machinery/prop/almayer/CICmap/glass/upp
+	minimap_type = MINIMAP_FLAG_UPP
+	faction = FACTION_UPP
+
+/obj/structure/machinery/prop/almayer/CICmap/glass/clf
+	minimap_type = MINIMAP_FLAG_CLF
+	faction = FACTION_CLF
+
+/obj/structure/machinery/prop/almayer/CICmap/glass/pmc
+	minimap_type = MINIMAP_FLAG_WY
+	faction = FACTION_PMC
 //big map
+/obj/structure/machinery/prop/almayer/CICmap/big
+	name = "map table"
+	desc = "A terminal that displays a map of the current operation location."
+	icon = 'icons/obj/structures/props/96x96.dmi'
+	icon_state = "maptable_big"
 
 /obj/structure/machinery/prop/almayer/CICmap/big/uscm
 	name = "map table"
