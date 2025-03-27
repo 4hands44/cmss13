@@ -111,20 +111,61 @@
 #define MOBILE_SHUTTLE_LIFEBOAT_STARBOARD "lifeboat-starboard"
 #define MOBILE_SHUTTLE_VEHICLE_ELEVATOR "vehicle_elevator"
 
+//USS Almayer(classic)
 #define DROPSHIP_ALAMO "dropship_alamo"
 #define DROPSHIP_NORMANDY "dropship_normandy"
 #define DROPSHIP_SAIPAN "dropship_saipan"
+//USS Solano
+#define DROPSHIP_ARGONNE "dropship_argonne"
+#define DROPSHIP_MIDWAY "dropship_midway"
+//USS Heaven Sent
+#define DROPSHIP_TARAWA "dropship_tarawa"
+#define DROPSHIP_CONCORD "dropship_concord"
+//USS Black Gold
+#define DROPSHIP_ATTU "dropship_attu"
+#define DROPSHIP_SAIGON "dropship_saigon"
+//USS Hanyut
+#define DROPSHIP_TYPHOON "dropship_typhoon"
+#define DROPSHIP_TORNADO "dropship_tornado"
+#define DROPSHIP_DERECHO "dropship_derecho"
+
+//misc
+#define DROPSHIP_TRIPOLI "dropship_tripoli"
+#define DROPSHIP_OKINAWA "dropship_okinawa"
+//USCM gunship
+#define DROPSHIP_WACO "dropship_waco"
+#define DROPSHIP_SQUALL "dropship_squall"
+
+//UPP Dropships
 #define DROPSHIP_MORANA "dropship_morana"
 #define DROPSHIP_DEVANA "dropship_devana"
+
+//---LZ---\\
 
 #define ALMAYER_DROPSHIP_LZ1 "almayer-hangar-lz1"
 #define ALMAYER_DROPSHIP_LZ2 "almayer-hangar-lz2"
 
 #define UPP_DROPSHIP_LZ2 "upp-hangar-lz1"
 
+#define BLACKGOLD_DROPSHIP_LZ1 "blackgold-hangar-lz1"
+#define BLACKGOLD_DROPSHIP_LZ2 "blackgold-hangar-lz2"
+
+#define SOLANO_DROPSHIP_LZ1 "solano-hangar-lz1"
+#define SOLANO_DROPSHIP_LZ2 "solano-hangar-lz2"
+
+#define HVNSENT_DROPSHIP_LZ1 "hvnsent-hangar-lz1"
+#define HVNSENT_DROPSHIP_LZ2 "hvnsent-hangar-lz2"
+
+#define HANYUT_DROPSHIP_LZ1 "hanyut-hangar-lz1"
+#define HANYUT_DROPSHIP_LZ2 "hanyut-hangar-lz2"
+
+
 #define DROPSHIP_FLYBY_ID "special_flight"
 #define DROPSHIP_LZ1 "dropship-lz1"
 #define DROPSHIP_LZ2 "dropship-lz2"
+
+#define ATTU_LZ "dropship-lz4"
+#define SAIGON_LZ "dropship-lz5"
 
 #define ESCAPE_SHUTTLE "escape-shuttle"
 #define ESCAPE_SHUTTLE_EAST "escape_shuttle_e"
