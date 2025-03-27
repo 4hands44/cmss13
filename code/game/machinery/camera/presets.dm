@@ -86,6 +86,12 @@
 /obj/structure/machinery/camera/autoname/almayer/dropship_two
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_NORMANDY)
 
+	/obj/structure/machinery/camera/autoname/almayer/attu
+	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_ATTU)
+
+	/obj/structure/machinery/camera/autoname/almayer/Saigon
+	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_SAIGON)
+
 /obj/structure/machinery/camera/autoname/almayer/dropship_three
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_RESEARCH)
 

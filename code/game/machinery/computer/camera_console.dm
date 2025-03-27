@@ -372,6 +372,12 @@
 	density = FALSE
 	network = list(CAMERA_NET_ALAMO, CAMERA_NET_NORMANDY)
 
+/obj/structure/machinery/computer/cameras/blackgold_hangar
+	name = "Dropship Security Cameras Console"
+	icon_state = "security_cam"
+	density = FALSE
+	network = list(CAMERA_NET_ATTU, CAMERA_NET_SAIGON)
+
 /obj/structure/machinery/computer/cameras/containment
 	name = "Containment Cameras"
 	network = list(CAMERA_NET_CONTAINMENT, CAMERA_NET_RESEARCH)
@@ -428,5 +434,13 @@
 /obj/structure/machinery/computer/cameras/dropship/three
 	name = "\improper 'Saipan' camera controls"
 	network = list(CAMERA_NET_RESEARCH, CAMERA_NET_LASER_TARGETS)
+
+/obj/structure/machinery/computer/cameras/dropship/attu
+	name = "\improper 'Attu' camera controls"
+	network = list(CAMERA_NET_ATTU, CAMERA_NET_LASER_TARGETS)
+
+/obj/structure/machinery/computer/cameras/dropship/saigon
+	name = "\improper 'Saigon' camera controls"
+	network = list(CAMERA_NET_ATTU, CAMERA_NET_LASER_TARGETS)
 
 #undef DEFAULT_MAP_SIZE

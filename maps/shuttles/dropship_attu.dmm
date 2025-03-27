@@ -74,7 +74,7 @@
 "Pg" = (/obj/structure/shuttle/part/attu/transparent/middle_right_wing,/obj/structure/machinery/light/dropship/green{dir = 4},/turf/template_noop,/area/shuttle/attu)
 "Qe" = (/obj/structure/shuttle/part/attu/left_inner_wing_connector,/turf/open/space/basic,/area/shuttle/attu)
 "Qf" = (/turf/closed/shuttle/attu/transparent{icon_state = "96"},/area/shuttle/attu)
-"Qt" = (/obj/structure/blocker/invisible_wall,/turf/open/shuttle/dropship{icon_state = "rasputin15"},/area/shuttle/attu)
+"Qt" = (/obj/structure/blocker/invisible_wall,/obj/structure/machinery/computer/cameras/dropship/attu,/turf/open/shuttle/dropship{icon_state = "rasputin15"},/area/shuttle/attu)
 "QF" = (/obj/structure/shuttle/part/attu/transparent/engine_left_exhaust,/turf/template_noop,/area/shuttle/attu)
 "QV" = (/obj/structure/bed/chair/vehicle{pixel_x = 8},/obj/structure/bed/chair/vehicle{pixel_x = -8},/turf/open/shuttle/dropship{icon_state = "rasputin15"},/area/shuttle/attu)
 "Ra" = (/obj/effect/decal/warning_stripes{icon_state = "E"; pixel_x = 1},/obj/structure/blocker/forcefield/multitile_vehicles,/turf/open/shuttle/dropship{icon_state = "rasputin8"},/area/shuttle/attu)
