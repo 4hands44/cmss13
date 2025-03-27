@@ -673,10 +673,6 @@
 	slot = ACCESSORY_SLOT_PONCHO
 	flags_atom = MAP_COLOR_INDEX
 
-/obj/item/clothing/accessory/poncho
-	name = "USCM Poncho"
-	desc = "The standard USCM poncho has variations for every climate. Custom fitted to be attached to standard USCM armor variants it is comfortable, warming or cooling as needed, and well-fit. A marine couldn't ask for more. Affectionately referred to as a \"woobie\"."
-	icon_state = "poncho"
 	var/buttoned = FALSE
 	var/initial_icon_state
 	slot = ACCESSORY_SLOT_PONCHO
@@ -695,7 +691,7 @@
 	set category = "Object"
 	set src in usr
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
+	if(usr.stat || usr.is_mob_restrained())
 		return 0
 
 	if(src.buttoned == FALSE)
@@ -711,7 +707,7 @@
 /obj/item/clothing/accessory/poncho/attack_self(mob/user)
 	..()
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
+	if(usr.stat || usr.is_mob_restrained())
 		return 0
 
 	toggle()
