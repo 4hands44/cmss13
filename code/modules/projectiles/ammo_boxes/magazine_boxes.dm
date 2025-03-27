@@ -622,6 +622,16 @@
 /obj/item/ammo_box/magazine/mk1/ap/empty
 	empty = TRUE
 
+/obj/item/ammo_box/magazine/mk1/heap
+	name = "magazine box (M41A MK1 HEAP x 8)"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = "_heap_mk1"
+	overlay_content = "_heap"
+	magazine_type = /obj/item/ammo_magazine/rifle/m41aMK1/heap
+
+/obj/item/ammo_box/magazine/mk1/ap/empty
+	empty = TRUE
+
 //-----------------------NSG 23 Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/nsg23
