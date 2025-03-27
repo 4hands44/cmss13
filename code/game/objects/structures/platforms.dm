@@ -195,6 +195,16 @@
 	creaking_sound = 'sound/effects/metal_creaking.ogg'
 	breaking_sound = 'sound/effects/metalhit.ogg'
 
+/obj/structure/platform/metal/ship
+	icon_state = "ship_platform"
+	creaking_sound = 'sound/effects/metal_creaking.ogg'
+	breaking_sound = 'sound/effects/metalhit.ogg'
+
+/obj/structure/platform/metal/ship/corner
+	icon_state = "ship_platform"
+	creaking_sound = 'sound/effects/metal_creaking.ogg'
+	breaking_sound = 'sound/effects/metalhit.ogg'
+
 /obj/structure/platform/stone
 	icon_state = "kutjevo_rock"
 	creaking_sound = 'sound/effects/rock_creaking.ogg'
@@ -285,6 +295,25 @@
 /obj/structure/platform/metal/almayer/west
 	dir = WEST
 
+//ship pattern
+
+/obj/structure/platform/metal/ship/north
+	dir = NORTH
+
+/obj/structure/platform/metal/ship/east
+	dir = EAST
+
+/obj/structure/platform/metal/ship/west
+	dir = WEST
+
+/obj/structure/platform/metal/ship/corner/north
+	dir = NORTH
+
+/obj/structure/platform/metal/ship/corner/east
+	dir = EAST
+
+/obj/structure/platform/metal/ship/corner/west
+	dir = WEST
 
 /obj/structure/platform/metal/kutjevo
 	icon_state = "kutjevo_platform"
