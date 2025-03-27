@@ -201,7 +201,7 @@
 	breaking_sound = 'sound/effects/metalhit.ogg'
 
 /obj/structure/platform/metal/ship/corner
-	icon_state = "ship_platform"
+	icon_state = "ship_platform_deco"
 	creaking_sound = 'sound/effects/metal_creaking.ogg'
 	breaking_sound = 'sound/effects/metalhit.ogg'
 
