@@ -110,7 +110,7 @@
 
 
 
-/datum/equipment_preset/uscm/load_status(mob/living/carbon/human/new_human)
+/datum/equipment_preset/ms/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
 
 /datum/equipment_preset/uscm/load_preset(mob/living/carbon/human/new_human, randomise, count_participant)
@@ -145,7 +145,7 @@
 
 
 //*****************************************************************************************************/
-/datum/equipment_preset/uscm/pfc
+/datum/equipment_preset/ms/pfc
 	name = "USCM Squad Rifleman"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
@@ -167,10 +167,10 @@
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
-/datum/equipment_preset/uscm/pfc/cryo
+/datum/equipment_preset/ms/pfc/cryo
 	name = "USCM Cryo Squad Rifleman"
 	auto_squad_name = SQUAD_MARINE_CRYO
 
-/datum/equipment_preset/uscm/pfc/cryo/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/ms/pfc/cryo/load_gear(mob/living/carbon/human/new_human)
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo(new_human), WEAR_L_EAR)
