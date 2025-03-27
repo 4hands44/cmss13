@@ -421,27 +421,27 @@
 
 /datum/map_template/shuttle/attu
 	name = "Attu"
-	id = DROPSHIP_ATTU
+	shuttle_id = DROPSHIP_ATTU
 
 /datum/map_template/shuttle/saigon
 	name = "Saigon"
-	id = DROPSHIP_SAIGON
+	shuttle_id = DROPSHIP_SAIGON
 
 /datum/map_template/shuttle/argonne
 	name = "Argonne"
-	id = DROPSHIP_ARGONNE
+	shuttle_id = DROPSHIP_ARGONNE
 
 /datum/map_template/shuttle/midway
 	name = "Midway"
-	id = DROPSHIP_MIDWAY
+	shuttle_id = DROPSHIP_MIDWAY
 
 /datum/map_template/shuttle/tarawa
 	name = "Tarawa"
-	id = DROPSHIP_TARAWA
+	shuttle_id = DROPSHIP_TARAWA
 
 /datum/map_template/shuttle/concord
 	name = "Concord"
-	id = DROPSHIP_CONCORD
+	shuttle_id = DROPSHIP_CONCORD
 
 /datum/map_template/shuttle/morana
 	name = "Morana"

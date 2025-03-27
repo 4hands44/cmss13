@@ -339,7 +339,7 @@
 
 /turf/closed/shuttle/attu
 	name = "\improper Attu"
-	icon = 'icons/turf/dropship.dmi'
+	icon = 'icons/turf/dropship3.dmi'
 	icon_state = "1"
 
 /turf/closed/shuttle/attu/transparent
@@ -347,7 +347,7 @@
 
 /turf/closed/shuttle/saigon
 	name = "\improper Saigon"
-	icon = 'icons/turf/dropship.dmi'
+	icon = 'icons/turf/dropship2.dmi'
 	icon_state = "1"
 
 /turf/closed/shuttle/saigon/transparent
@@ -356,7 +356,7 @@
 //solano
 /turf/closed/shuttle/argonne
 	name = "\improper Argonne"
-	icon = 'icons/turf/dropship.dmi'
+	icon = 'icons/turf/dropship3.dmi'
 	icon_state = "1"
 
 /turf/closed/shuttle/argonne/transparent
@@ -364,7 +364,7 @@
 
 /turf/closed/shuttle/midway
 	name = "\improper Midway"
-	icon = 'icons/turf/dropship.dmi'
+	icon = 'icons/turf/dropship2.dmi'
 	icon_state = "1"
 
 /turf/closed/shuttle/midway/transparent
@@ -372,16 +372,16 @@
 
 //heavensent
 /turf/closed/shuttle/tarawa
-	name = "\improper tarawa"
-	icon = 'icons/turf/dropship.dmi'
+	name = "\improper Tarawa"
+	icon = 'icons/turf/dropship3.dmi'
 	icon_state = "1"
 
 /turf/closed/shuttle/tarawa/transparent
 	opacity = FALSE
 
 /turf/closed/shuttle/concord
-	name = "\improper Alamo"
-	icon = 'icons/turf/dropship.dmi'
+	name = "\improper Concord"
+	icon = 'icons/turf/dropship2.dmi'
 	icon_state = "1"
 
 /turf/closed/shuttle/concord/transparent

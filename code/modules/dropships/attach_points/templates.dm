@@ -471,6 +471,24 @@
 /obj/effect/attach_point/crew_weapon/dropship3/floor
 	plane = FLOOR_PLANE
 
+/obj/effect/attach_point/crew_weapon/attu
+	ship_tag = DROPSHIP_ATTU
+
+/obj/effect/attach_point/crew_weapon/saigon
+	ship_tag = DROPSHIP_SAIGON
+
+/obj/effect/attach_point/crew_weapon/midway
+	ship_tag = DROPSHIP_MIDWAY
+
+/obj/effect/attach_point/crew_weapon/concord
+	ship_tag = DROPSHIP_CONCORD
+
+/obj/effect/attach_point/crew_weapon/argonne
+	ship_tag = DROPSHIP_ARGONNE
+
+/obj/effect/attach_point/crew_weapon/tarawa
+	ship_tag = DROPSHIP_TARAWA
+
 /obj/effect/attach_point/crew_weapon/dropship_upp
 	ship_tag = DROPSHIP_MORANA
 

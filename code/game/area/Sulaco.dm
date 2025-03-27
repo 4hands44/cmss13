@@ -168,6 +168,118 @@
 	name = "\improper Saipan Landing Zone"
 	icon_state = "away2"
 
+//---USS BLACK GOLD
+
+//Attu
+
+/area/shuttle/attu
+	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
+	soundscape_interval = 30 //seconds
+	flags_area = AREA_NOTUNNEL
+	is_landing_zone = TRUE
+	ceiling = CEILING_REINFORCED_METAL
+	base_lighting_alpha = 0
+
+/area/shuttle/attu/Enter(atom/movable/O, atom/oldloc)
+	if(istype(O, /obj/structure/barricade))
+		return FALSE
+	return TRUE
+
+/area/shuttle/attu/sulaco
+	name = "\improper Dropship Attu"
+	icon_state = "shuttle"
+	base_muffle = MUFFLE_HIGH
+	base_lighting_alpha = 255
+	is_resin_allowed = FALSE
+
+/area/shuttle/attu/LV624
+	name = "\improper Dropship Attu"
+	ambience_exterior = AMBIENCE_LV624
+	icon_state = "shuttle2"
+
+/area/shuttle/attu/prison
+	name = "\improper Dropship Attu"
+	ambience_exterior = AMBIENCE_PRISON
+	icon_state = "shuttle2"
+
+/area/shuttle/attu/BigRed
+	name = "\improper Dropship Attu"
+	ambience_exterior = AMBIENCE_BIGRED
+	icon_state = "shuttle2"
+
+/area/shuttle/attu/ice_colony
+	name = "\improper Dropship Attu"
+	icon_state = "shuttle2"
+
+/area/shuttle/attu/DesertDam
+	name = "\improper Dropship Attu"
+	ambience_exterior = AMBIENCE_TRIJENT
+	icon_state = "shuttle2"
+
+/area/shuttle/attu/transit
+	ambience_exterior = 'sound/ambience/dropship_ambience_loop.ogg'
+	name = "\improper Dropship Attu Transit"
+	icon_state = "shuttlered"
+
+/area/shuttle/drop2/lz2
+	name = "\improper Attu Landing Zone"
+	icon_state = "away2"
+
+//saigon
+
+/area/shuttle/saigon
+	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
+	soundscape_interval = 30 //seconds
+	flags_area = AREA_NOTUNNEL
+	is_landing_zone = TRUE
+	ceiling = CEILING_REINFORCED_METAL
+	base_lighting_alpha = 0
+
+/area/shuttle/saigon/Enter(atom/movable/O, atom/oldloc)
+	if(istype(O, /obj/structure/barricade))
+		return FALSE
+	return TRUE
+
+/area/shuttle/saigon/sulaco
+	name = "\improper Dropship saigon"
+	icon_state = "shuttle"
+	base_muffle = MUFFLE_HIGH
+	base_lighting_alpha = 255
+	is_resin_allowed = FALSE
+
+/area/shuttle/saigon/LV624
+	name = "\improper Dropship saigon"
+	ambience_exterior = AMBIENCE_LV624
+	icon_state = "shuttle2"
+
+/area/shuttle/saigon/prison
+	name = "\improper Dropship saigon"
+	ambience_exterior = AMBIENCE_PRISON
+	icon_state = "shuttle2"
+
+/area/shuttle/saigon/BigRed
+	name = "\improper Dropship saigon"
+	ambience_exterior = AMBIENCE_BIGRED
+	icon_state = "shuttle2"
+
+/area/shuttle/saigon/ice_colony
+	name = "\improper Dropship saigon"
+	icon_state = "shuttle2"
+
+/area/shuttle/saigon/DesertDam
+	name = "\improper Dropship saigon"
+	ambience_exterior = AMBIENCE_TRIJENT
+	icon_state = "shuttle2"
+
+/area/shuttle/saigon/transit
+	ambience_exterior = 'sound/ambience/dropship_ambience_loop.ogg'
+	name = "\improper Dropship saigon Transit"
+	icon_state = "shuttlered"
+
+/area/shuttle/drop2/lz2
+	name = "\improper saigon Landing Zone"
+	icon_state = "away2"
+
 //UPP DROPSHIP
 
 /area/shuttle/drop_upp/Enter(atom/movable/O, atom/oldloc)
