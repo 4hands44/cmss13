@@ -93,6 +93,13 @@
 	item_state = "fancy_cane"
 	force = 30
 
+/obj/item/weapon/pole/crutches
+	name = "folding crutches"
+	desc = "A pair of folding aluminum crutches"
+	icon_state = "fancy_cane"
+	item_state = "fancy_cane"
+	force = 30
+
 /obj/item/weapon/pole/fancy_cane/this_is_a_knife
 	name = "fancy cane"
 	desc = "An ebony cane with a fancy, seemingly-golden tip. Feels hollow to the touch."
