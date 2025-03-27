@@ -335,6 +335,62 @@
 /turf/closed/shuttle/dropship3/tornado/typhoon
 	name = "\improper Typhoon"
 
+//blackgold
+
+/turf/closed/shuttle/attu
+	name = "\improper Attu"
+	icon = 'icons/turf/dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/attu/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/saigon
+	name = "\improper Saigon"
+	icon = 'icons/turf/dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/saigon/transparent
+	opacity = FALSE
+
+//solano
+/turf/closed/shuttle/argonne
+	name = "\improper Argonne"
+	icon = 'icons/turf/dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/argonne/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/midway
+	name = "\improper Midway"
+	icon = 'icons/turf/dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/midway/transparent
+	opacity = FALSE
+
+//heavensent
+/turf/closed/shuttle/tarawa
+	name = "\improper tarawa"
+	icon = 'icons/turf/dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/tarawa/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/concord
+	name = "\improper Alamo"
+	icon = 'icons/turf/dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/concord/transparent
+	opacity = FALSE
+
+//hanyut
+
+//misc
+
 /turf/closed/shuttle/upp_dropship
 	name = "\improper Morana"
 	icon = 'icons/turf/upp_dropship.dmi'

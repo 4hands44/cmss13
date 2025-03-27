@@ -360,6 +360,18 @@
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/normandy
 
+/obj/docking_port/stationary/marine_dropship/bg_hangar_1
+	name = "Black Gold Hangar bay 1"
+	id = BLACKGOLD_DROPSHIP_LZ1
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/attu
+
+/obj/docking_port/stationary/marine_dropship/bg_hangar_2
+	name = "Black Gold Hangar bay 2"
+	id = BLACKGOLD_DROPSHIP_LZ2
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/saigon
+
 /obj/docking_port/stationary/marine_dropship/upp_hangar_1
 	name = "UPP Hangar bay 1"
 	id = UPP_DROPSHIP_LZ2
@@ -407,6 +419,30 @@
 	name = "Saipan"
 	shuttle_id = DROPSHIP_SAIPAN
 
+/datum/map_template/shuttle/attu
+	name = "Attu"
+	id = DROPSHIP_ATTU
+
+/datum/map_template/shuttle/saigon
+	name = "Saigon"
+	id = DROPSHIP_SAIGON
+
+/datum/map_template/shuttle/argonne
+	name = "Argonne"
+	id = DROPSHIP_ARGONNE
+
+/datum/map_template/shuttle/midway
+	name = "Midway"
+	id = DROPSHIP_MIDWAY
+
+/datum/map_template/shuttle/tarawa
+	name = "Tarawa"
+	id = DROPSHIP_TARAWA
+
+/datum/map_template/shuttle/concord
+	name = "Concord"
+	id = DROPSHIP_CONCORD
+
 /datum/map_template/shuttle/morana
 	name = "Morana"
 	shuttle_id = DROPSHIP_MORANA
@@ -414,5 +450,4 @@
 /datum/map_template/shuttle/devana
 	name = "Devana"
 	shuttle_id = DROPSHIP_DEVANA
-
 
