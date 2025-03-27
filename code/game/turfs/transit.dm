@@ -268,6 +268,30 @@
 	shuttle_tag = DROPSHIP_SAIPAN
 	dir = SOUTH
 
+/turf/open/space/transit/dropship/attu
+	shuttle_tag = DROPSHIP_ATTU
+	dir = SOUTH
+
+/turf/open/space/transit/dropship/saigon
+	shuttle_tag = DROPSHIP_SAIGON
+	dir = SOUTH
+
+/turf/open/space/transit/dropship/argonne
+	shuttle_tag = DROPSHIP_ARGONNE
+	dir = SOUTH
+
+/turf/open/space/transit/dropship/midway
+	shuttle_tag = DROPSHIP_MIDWAY
+	dir = SOUTH
+
+/turf/open/space/transit/dropship/tarawa
+	shuttle_tag = DROPSHIP_TARAWA
+	dir = SOUTH
+
+/turf/open/space/transit/dropship/concord
+	shuttle_tag = DROPSHIP_CONCORD
+	dir = SOUTH
+
 /turf/open/space/transit/dropship/morana
 	shuttle_tag = DROPSHIP_MORANA
 	dir = SOUTH

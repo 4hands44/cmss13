@@ -137,6 +137,54 @@
 /obj/docking_port/mobile/marine_dropship/saipan/get_transit_path_type()
 	return /turf/open/space/transit/dropship/saipan
 
+/obj/docking_port/mobile/marine_dropship/attu
+	name = "Attu"
+	id = DROPSHIP_ATTU
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/attu/get_transit_path_type()
+	return /turf/open/space/transit/dropship/attu
+
+/obj/docking_port/mobile/marine_dropship/saigon
+	name = "Saigon"
+	id = DROPSHIP_SAIGON
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/saigon/get_transit_path_type()
+	return /turf/open/space/transit/dropship/saigon
+
+/obj/docking_port/mobile/marine_dropship/argonne
+	name = "Argonne"
+	id = DROPSHIP_ARGONNE
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/argonne/get_transit_path_type()
+	return /turf/open/space/transit/dropship/argonne
+
+/obj/docking_port/mobile/marine_dropship/midway
+	name = "Midway"
+	id = DROPSHIP_MIDWAY
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/midway/get_transit_path_type()
+	return /turf/open/space/transit/dropship/midway
+
+/obj/docking_port/mobile/marine_dropship/tarawa
+	name = "Tarawa"
+	id = DROPSHIP_TARAWA
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/tarawa/get_transit_path_type()
+	return /turf/open/space/transit/dropship/tarawa
+
+/obj/docking_port/mobile/marine_dropship/concord
+	name = "Concord"
+	id = DROPSHIP_CONCORD
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/concord/get_transit_path_type()
+	return /turf/open/space/transit/dropship/concord
+
 /obj/docking_port/mobile/marine_dropship/morana
 	name = "Morana"
 	id = DROPSHIP_MORANA
