@@ -108,11 +108,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(new_human), WEAR_L_STORE)
 
-
-
-/datum/equipment_preset/ms/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
-
 /datum/equipment_preset/ms/load_preset(mob/living/carbon/human/new_human, randomise, count_participant)
 	. = ..()
 	if(!auto_squad_name || (should_block_game_interaction(new_human) && !ert_squad))

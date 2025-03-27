@@ -118,6 +118,38 @@
 	minimap_type = MINIMAP_FLAG_WY
 	faction = FACTION_PMC
 
+//big map
+
+/obj/structure/machinery/prop/almayer/CICmap/big/uscm
+	name = "map table"
+	desc = "A terminal that displays a map of the current operation location."
+	icon = 'icons/obj/structures/props/96x96.dmi'
+	icon_state = "maptable_big"
+
+/obj/structure/machinery/prop/almayer/CICmap/big/upp
+	name = "map table"
+	desc = "A terminal that displays a map of the current operation location."
+	icon = 'icons/obj/structures/props/96x96.dmi'
+	icon_state = "maptable_big"
+	minimap_type = MINIMAP_FLAG_UPP
+	faction = FACTION_UPP
+
+/obj/structure/machinery/prop/almayer/CICmap/big/clf
+	name = "map table"
+	desc = "A terminal that displays a map of the current operation location."
+	icon = 'icons/obj/structures/props/96x96.dmi'
+	icon_state = "maptable_big"
+	minimap_type = MINIMAP_FLAG_CLF
+	faction = FACTION_CLF
+
+/obj/structure/machinery/prop/almayer/CICmap/big/pmc
+	name = "map table"
+	desc = "A terminal that displays a map of the current operation location."
+	icon = 'icons/obj/structures/props/96x96.dmi'
+	icon_state = "maptable_big"
+	minimap_type = MINIMAP_FLAG_WY
+	faction = FACTION_PMC
+
 //Nonpower using props
 
 /obj/structure/prop/almayer
