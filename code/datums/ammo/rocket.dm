@@ -179,6 +179,18 @@
 		if(istype(object, /obj/vehicle/multitile/civvan))
 			drop_flame(get_turf(object), projectile.weapon_cause_data)
 			return
+		if(istype(object, /obj/vehicle/multitile/pizza_van))
+			drop_flame(get_turf(object), projectile.weapon_cause_data)
+			return
+		if(istype(object, /obj/vehicle/multitile/box_van))
+			drop_flame(get_turf(object), projectile.weapon_cause_data)
+			return
+		if(istype(object, /obj/vehicle/multitile/clf_van))
+			drop_flame(get_turf(object), projectile.weapon_cause_data)
+			return
+		if(istype(object, /obj/vehicle/multitile/crane))
+			drop_flame(get_turf(object), projectile.weapon_cause_data)
+			return
 
 /datum/ammo/rocket/ap/tank_towlauncher
 	max_range = 30
