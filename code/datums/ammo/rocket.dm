@@ -12,11 +12,12 @@
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET|AMMO_STRIKES_SURFACE
 	var/datum/effect_system/smoke_spread/smoke
+	var/vehicle_slowdown_time = 5 SECONDS
 
 	accuracy = HIT_ACCURACY_TIER_2
 	accurate_range = 7
-	max_range = 7
-	damage = 15
+	max_range = 14
+	damage = 150
 	shell_speed = AMMO_SPEED_TIER_2
 
 /datum/ammo/rocket/New()
@@ -29,24 +30,28 @@
 	. = ..()
 
 /datum/ammo/rocket/on_hit_mob(mob/mob, obj/projectile/projectile)
-	cell_explosion(get_turf(mob), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	cell_explosion(get_turf(mob), 350, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, get_turf(mob))
 	if(ishuman_strict(mob)) // No yautya or synths. Makes humans gib on direct hit.
 		mob.ex_act(350, null, projectile.weapon_cause_data, 100)
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_obj(obj/object, obj/projectile/projectile)
-	cell_explosion(get_turf(object), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	cell_explosion(get_turf(object), 350, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	smoke.set_up(1, get_turf(object))
+	smoke.start()
+
+	cell_explosion(get_turf(object), 350, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, get_turf(object))
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_turf(turf/turf, obj/projectile/projectile)
-	cell_explosion(turf, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	cell_explosion(turf, 350, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, turf)
 	smoke.start()
 
 /datum/ammo/rocket/do_at_max_range(obj/projectile/projectile)
-	cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	cell_explosion(get_turf(projectile), 350, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, get_turf(projectile))
 	smoke.start()
 
@@ -57,9 +62,9 @@
 
 	accuracy = HIT_ACCURACY_TIER_8
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_9
-	accurate_range = 6
-	max_range = 6
-	damage = 10
+	accurate_range = 7
+	max_range = 14
+	damage = 150
 	penetration= ARMOR_PENETRATION_TIER_10
 
 
@@ -70,16 +75,35 @@
 	mob.apply_effect(3, PARALYZE)
 	if(ishuman_strict(mob)) // No yautya or synths. Makes humans gib on direct hit.
 		mob.ex_act(300, null, projectile.weapon_cause_data, 100)
-	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	cell_explosion(turf, 500, 250, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, turf)
 	smoke.start()
 
 /datum/ammo/rocket/ap/on_hit_obj(obj/object, obj/projectile/projectile)
 	var/turf/turf = get_turf(object)
 	object.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
-	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	cell_explosion(turf, 500, 250, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, turf)
 	smoke.start()
+	if(istype(object, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/mob = object
+		mob.next_move = world.time + vehicle_slowdown_time
+		playsound(mob, 'sound/effects/meteorimpact.ogg', 35)
+		mob.at_munition_interior_explosion_effect(cause_data = create_cause_data("Anti-Tank Rocket"))
+		mob.interior_crash_effect()
+		if(istype(object, /obj/vehicle/multitile/tank))
+			mob.at_munition_interior_explosion_effect_tank(cause_data = create_cause_data("Anti-Tank Rocket"))
+			mob.interior_crash_effect()
+		var/turf/smoketurf = get_turf(mob.loc)
+		mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
+		smoke.set_up(1, smoketurf)
+		smoke.start()
+		if(istype(object, /obj/vehicle/multitile/civtruck))
+			drop_flame(get_turf(object), projectile.weapon_cause_data)
+			return
+		if(istype(object, /obj/vehicle/multitile/civvan))
+			drop_flame(get_turf(object), projectile.weapon_cause_data)
+			return
 
 /datum/ammo/rocket/ap/on_hit_turf(turf/turf, obj/projectile/projectile)
 	var/hit_something = 0
@@ -98,7 +122,7 @@
 	if(!hit_something)
 		turf.ex_act(150, projectile.dir, projectile.weapon_cause_data, 200)
 
-	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	cell_explosion(turf, 500, 250, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, turf)
 	smoke.start()
 
@@ -106,7 +130,7 @@
 	var/turf/turf = get_turf(projectile)
 	var/hit_something = 0
 	for(var/mob/mob in turf)
-		mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
+		mob.ex_act(250, projectile.dir, projectile.weapon_cause_data, 100)
 		mob.apply_effect(3, WEAKEN)
 		mob.apply_effect(3, PARALYZE)
 		hit_something = 1
@@ -114,38 +138,50 @@
 	if(!hit_something)
 		for(var/obj/object in turf)
 			if(object.density)
-				object.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
+				object.ex_act(250, projectile.dir, projectile.weapon_cause_data, 100)
 				hit_something = 1
 				break
 	if(!hit_something)
-		turf.ex_act(150, projectile.dir, projectile.weapon_cause_data)
-	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+		turf.ex_act(250, projectile.dir, projectile.weapon_cause_data)
+	cell_explosion(turf, 500, 250, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, turf)
 	smoke.start()
 
 /datum/ammo/rocket/ap/anti_tank
 	name = "anti-tank rocket"
 	damage = 100
-	var/vehicle_slowdown_time = 5 SECONDS
+	vehicle_slowdown_time = 5 SECONDS
 	shrapnel_chance = 5
 	shrapnel_type = /obj/item/large_shrapnel/at_rocket_dud
 
 /datum/ammo/rocket/ap/anti_tank/on_hit_obj(obj/object, obj/projectile/projectile)
+	var/turf/turf = get_turf(object)
+	object.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
+	cell_explosion(turf, 500, 250, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
+	smoke.set_up(1, turf)
+	smoke.start()
 	if(istype(object, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/mob = object
 		mob.next_move = world.time + vehicle_slowdown_time
 		playsound(mob, 'sound/effects/meteorimpact.ogg', 35)
 		mob.at_munition_interior_explosion_effect(cause_data = create_cause_data("Anti-Tank Rocket"))
 		mob.interior_crash_effect()
-		var/turf/turf = get_turf(mob.loc)
+		if(istype(object, /obj/vehicle/multitile/tank))
+			mob.at_munition_interior_explosion_effect_tank(cause_data = create_cause_data("Anti-Tank Rocket"))
+			mob.interior_crash_effect()
+		var/turf/smoketurf = get_turf(mob.loc)
 		mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
-		smoke.set_up(1, turf)
+		smoke.set_up(1, smoketurf)
 		smoke.start()
-		return
-	return ..()
+		if(istype(object, /obj/vehicle/multitile/civtruck))
+			drop_flame(get_turf(object), projectile.weapon_cause_data)
+			return
+		if(istype(object, /obj/vehicle/multitile/civvan))
+			drop_flame(get_turf(object), projectile.weapon_cause_data)
+			return
 
 /datum/ammo/rocket/ap/tank_towlauncher
-	max_range = 8
+	max_range = 30
 
 /datum/ammo/rocket/ltb
 	name = "cannon round"
