@@ -7,16 +7,16 @@
 	tag = "back"
 	},
 /turf/open/shuttle/vehicle,
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "c" = (
 /turf/open/shuttle/vehicle,
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "e" = (
 /obj/structure/closet/crate/construction,
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "f" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "wall_1";
@@ -57,7 +57,7 @@
 	layer = 3
 	},
 /turf/open/shuttle/vehicle,
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "r" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "front_1"
@@ -85,7 +85,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "v" = (
 /obj/structure/interior_wall/tank{
 	layer = 2
@@ -109,7 +109,7 @@
 	pixel_y = 32
 	},
 /turf/open/shuttle/vehicle,
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "C" = (
 /obj/structure/prop/tank{
 	icon_state = "prop_aev2";
@@ -118,7 +118,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_1_1"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "D" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "back_1"
@@ -142,7 +142,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "H" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "exterior_3";
@@ -172,14 +172,14 @@
 	pixel_x = 7
 	},
 /turf/open/shuttle/vehicle,
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "L" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
 /obj/structure/prop/almayer/cannon_cables,
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "N" = (
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	dir = 1;
@@ -190,7 +190,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "T" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "front_2"
@@ -233,7 +233,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 
 (1,1,1) = {"
 j

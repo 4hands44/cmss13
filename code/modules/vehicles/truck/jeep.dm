@@ -53,6 +53,10 @@
 /obj/vehicle/multitile/van/miljeep/pass
 	interior_map = /datum/map_template/interior/jeep_pass
 
+/obj/vehicle/multitile/van/miljeep/jungle
+	interior_map = /datum/map_template/interior/jeep_pass
+	icon_state = "j_jeep"
+
 /*
 ** PRESETS SPAWNERS
 */

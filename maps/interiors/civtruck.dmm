@@ -10,7 +10,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_10"
 	},
-/area/vehicle/van)
+/area/interior/vehicle/van)
 "e" = (
 /obj/structure/interior_wall/van{
 	icon_state = "background_1"
@@ -29,7 +29,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_1"
 	},
-/area/vehicle/van)
+/area/interior/vehicle/van)
 "j" = (
 /obj/structure/interior_wall/van{
 	icon_state = "background_2"
@@ -68,7 +68,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_11"
 	},
-/area/vehicle/van)
+/area/interior/vehicle/van)
 "r" = (
 /obj/structure/interior_wall/van{
 	icon_state = "interior_door"
@@ -91,7 +91,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_7"
 	},
-/area/vehicle/van)
+/area/interior/vehicle/van)
 "t" = (
 /obj/structure/interior_wall/van{
 	icon_state = "front_2"
@@ -151,7 +151,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_12"
 	},
-/area/vehicle/van)
+/area/interior/vehicle/van)
 "J" = (
 /obj/structure/interior_wall/van{
 	alpha = 50;
@@ -174,7 +174,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_2"
 	},
-/area/vehicle/van)
+/area/interior/vehicle/van)
 "O" = (
 /turf/open/void/vehicle,
 /area/space)
