@@ -1,6 +1,6 @@
 "a" = (/turf/open/void/vehicle,/area/space)
 "b" = (/obj/effect/landmark/interior/spawn/entrance{dir = 8; exit_type = /obj/structure/interior_exit/vehicle/van/backright; name = "back right entrance marker"; pixel_x = -32; tag = "back_right"},/turf/open/shuttle/vehicle{icon_state = "floor_1_10"},/area/interior/vehicle/van)
-"d" = (/obj/structure/bed/portable_surgery,/turf/open/shuttle/vehicle{icon_state = "floor_1_2"},/area/interior/vehicle/van)
+"d" = (/obj/structure/bed/portable_surgery,/obj/structure/machinery/body_scanconsole/wall{pixel_y = 20; pixel_x = -5},/turf/open/shuttle/vehicle{icon_state = "floor_1_2"},/area/interior/vehicle/van)
 "e" = (/obj/structure/interior_wall/tank,/obj/structure/vehicle_locker/med,/turf/open/void/vehicle,/area/space)
 "g" = (/obj/structure/interior_wall/van{icon_state = "front_1"},/turf/open/void/vehicle,/area/space)
 "k" = (/obj/structure/interior_wall/van{icon_state = "back_3"},/turf/open/void/vehicle,/area/space)

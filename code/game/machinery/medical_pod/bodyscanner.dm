@@ -396,3 +396,6 @@
 /obj/structure/machinery/body_scanconsole/yautja
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "sleeperconsole"
+
+/obj/structure/machinery/body_scanconsole/wall
+	icon_state = "body_scannerconsole_wall"
