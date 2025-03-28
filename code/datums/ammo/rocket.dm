@@ -179,9 +179,6 @@
 		if(istype(object, /obj/vehicle/multitile/civvan))
 			drop_flame(get_turf(object), projectile.weapon_cause_data)
 			return
-		if(istype(object, /obj/vehicle/multitile/pizza_van))
-			drop_flame(get_turf(object), projectile.weapon_cause_data)
-			return
 		if(istype(object, /obj/vehicle/multitile/box_van))
 			drop_flame(get_turf(object), projectile.weapon_cause_data)
 			return
