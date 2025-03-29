@@ -10,14 +10,9 @@
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
-	damage = 40
-	penetration= ARMOR_PENETRATION_TIER_2
+	damage = 20
+	penetration= 0
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
-
-/datum/ammo/bullet/pistol/setup_faction_clash_values()
-	. = ..()
-	accuracy += 20
-	accurate_range -= 2 //we want pistols to be more accurate but only at short range
 
 
 /datum/ammo/bullet/pistol/tiny
@@ -26,8 +21,9 @@
 /datum/ammo/bullet/pistol/tranq
 	name = "tranquilizer bullet"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
-	stamina_damage = 60
-	damage = 15
+	stamina_damage = 80
+	damage = 5
+
 
 //2020 rebalance: is supposed to counter runners and lurkers, dealing high damage to the only castes with no armor.
 //Limited by its lack of versatility and lower supply, so marines finally have an answer for flanker castes that isn't just buckshot.
@@ -35,7 +31,7 @@
 /datum/ammo/bullet/pistol/hollow
 	name = "hollowpoint pistol bullet"
 
-	damage = 55 //hollowpoint is strong
+	damage = 25 //hollowpoint is strong
 	penetration = 0 //hollowpoint can't pierce armor!
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_3 //hollowpoint causes shrapnel
 
@@ -43,7 +39,7 @@
 /datum/ammo/bullet/pistol/ap
 	name = "armor-piercing pistol bullet"
 
-	damage = 25
+	damage = 15
 	accuracy = HIT_ACCURACY_TIER_2
 	penetration= ARMOR_PENETRATION_TIER_8
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
@@ -52,7 +48,7 @@
 	name = "wall-penetrating pistol bullet"
 	shrapnel_chance = 0
 
-	damage = 30
+	damage = 15
 	penetration = ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/bullet/pistol/ap/penetrating/set_bullet_traits()
@@ -84,7 +80,7 @@
 	name = "armor-shredding pistol bullet"
 
 	damage = 15
-	penetration = ARMOR_PENETRATION_TIER_4
+	penetration = ARMOR_PENETRATION_TIER_2
 	pen_armor_punch = 3
 
 /datum/ammo/bullet/pistol/rubber
@@ -92,7 +88,7 @@
 	sound_override = 'sound/weapons/gun_c99.ogg'
 
 	damage = 0
-	stamina_damage = 25
+	stamina_damage = 10
 	shrapnel_chance = 0
 
 // Reskinned rubber bullet used for the ES-4 CL pistol.
@@ -109,7 +105,7 @@
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	damage = 55
-	penetration = ARMOR_PENETRATION_TIER_3
+	penetration = ARMOR_PENETRATION_TIER_1
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pistol/heavy/super //Commander's variant
@@ -178,8 +174,8 @@
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = HIT_ACCURACY_TIER_3
-	damage = 36
-	penetration = ARMOR_PENETRATION_TIER_5
+	damage = 35
+	penetration = ARMOR_PENETRATION_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 
 // Used by VP78 and Auto 9
@@ -192,7 +188,7 @@
 	accuracy = HIT_ACCURACY_TIER_4
 	damage = 45
 	penetration= ARMOR_PENETRATION_TIER_6
-	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_8
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 
 /datum/ammo/bullet/pistol/squash/toxin
@@ -216,7 +212,7 @@
 
 /datum/ammo/bullet/pistol/squash/penetrating
 	name = "wall-penetrating squash-head pistol bullet"
-	shrapnel_chance = 0
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/bullet/pistol/squash/penetrating/set_bullet_traits()

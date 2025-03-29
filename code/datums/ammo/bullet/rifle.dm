@@ -8,8 +8,8 @@
 	name = "rifle bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
-	damage = 40
-	penetration = ARMOR_PENETRATION_TIER_1
+	damage = 30
+	penetration = 0
 	accurate_range = 16
 	accuracy = HIT_ACCURACY_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_10
@@ -59,7 +59,7 @@
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"
 
-	damage = 30
+	damage = 25
 	penetration = ARMOR_PENETRATION_TIER_8
 
 // Basically AP but better. Focused at taking out armour temporarily
@@ -87,7 +87,7 @@
 	name = "wall-penetrating rifle bullet"
 	shrapnel_chance = 0
 
-	damage = 35
+	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/bullet/rifle/ap/penetrating/set_bullet_traits()
@@ -107,15 +107,34 @@
 	name = "high-explosive armor-piercing rifle bullet"
 
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
-	damage = 55//big damage, doesn't actually blow up because thats stupid.
+	damage = 35//big damage, doesn't actually blow up because thats stupid.
 	penetration = ARMOR_PENETRATION_TIER_8
+
+/datum/ammo/bullet/rifle/heap/on_hit_mob(mob/M, obj/projectile/P)
+	create_shrapnel(get_turf(M), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+	s.set_up(3, 1, src)
+	s.start()
+
+/datum/ammo/bullet/rifle/heap/on_hit_obj(obj/O, obj/projectile/P)
+	create_shrapnel(get_turf(O), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+	s.set_up(3, 1, src)
+	s.start()
+
+/datum/ammo/bullet/rifle/heap/on_hit_turf(turf/T, obj/projectile/P)
+	if(T.density)
+		create_shrapnel(get_turf(T), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(3, 1, src)
+		s.start()
 
 /datum/ammo/bullet/rifle/rubber
 	name = "rubber rifle bullet"
 	sound_override = 'sound/weapons/gun_c99.ogg'
 
 	damage = 0
-	stamina_damage = 15
+	stamina_damage = 20
 	shrapnel_chance = 0
 
 /datum/ammo/bullet/rifle/incendiary
@@ -142,7 +161,7 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 	accurate_range_min = 4
 
-	damage = 55
+	damage = 30
 	scatter = -SCATTER_AMOUNT_TIER_8
 	penetration= ARMOR_PENETRATION_TIER_7
 	shell_speed = AMMO_SPEED_TIER_6
@@ -151,7 +170,7 @@
 	name = "A19 high velocity incendiary bullet"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-	damage = 40
+	damage = 30
 	accuracy = HIT_ACCURACY_TIER_4
 	scatter = -SCATTER_AMOUNT_TIER_8
 	penetration= ARMOR_PENETRATION_TIER_5
@@ -194,12 +213,12 @@
 /datum/ammo/bullet/rifle/mar40
 	name = "heavy rifle bullet"
 
-	damage = 55
+	damage = 35
 
 /datum/ammo/bullet/rifle/type71
 	name = "heavy rifle bullet"
 
-	damage = 55
+	damage = 25
 	penetration = ARMOR_PENETRATION_TIER_3
 
 /datum/ammo/bullet/rifle/type71/setup_faction_clash_values()
@@ -210,7 +229,7 @@
 /datum/ammo/bullet/rifle/type71/ap
 	name = "heavy armor-piercing rifle bullet"
 
-	damage = 40
+	damage = 25
 	penetration = ARMOR_PENETRATION_TIER_10
 
 
@@ -218,29 +237,93 @@
 	name = "heavy high-explosive armor-piercing rifle bullet"
 
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
-	damage = 65
+	damage = 45
 	penetration = ARMOR_PENETRATION_TIER_10
 
+/datum/ammo/bullet/rifle/kramer
+	name = "heavy rifle bullet"
+
+	damage = 25
+	penetration = 0
+
+/datum/ammo/bullet/rifle/kramer/ap
+	name = "heavy armor-piercing rifle bullet"
+
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_8
+
+/datum/ammo/bullet/rifle/kramer/heap
+	name = "heavy high-explosive armor-piercing rifle bullet"
+
+	headshot_state = HEADSHOT_OVERLAY_HEAVY
+	damage = 70
+	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/rifle/am35/plasma
+	name = "plasma bolt"
+	icon_state = "bluespace"
+	flags_ammo_behavior = AMMO_ENERGY
+	damage_type = BURN
+	damage = 75
+	penetration = ARMOR_PENETRATION_TIER_10
+	accurate_range = 21
+	effective_range_max = 21
+	max_range = 30
+	shell_speed = AMMO_SPEED_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_9
+	accuracy = HIT_ACCURACY_TIER_9
+	damage_falloff = 99
+
+/datum/ammo/bullet/rifle/am35/plasma/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
+
+/datum/ammo/bullet/rifle/am35/plasma/on_hit_mob(mob/living/M, obj/projectile/P)
+	..()
+	if(prob(50)) //small chance for one to ignite on hit
+		M.fire_act()
+
+/datum/ammo/bullet/rifle/am36/plasma
+	name = "plasma bolt"
+	icon_state = "bluespace"
+	flags_ammo_behavior = AMMO_ENERGY
+	damage_type = BURN
+	damage = 35
+	penetration = ARMOR_PENETRATION_TIER_10
+	accurate_range = 5
+	effective_range_max = 11
+	max_range = 10
+	shell_speed = AMMO_SPEED_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_9
+	accuracy = HIT_ACCURACY_TIER_9
+	damage_falloff = 2
+
+/datum/ammo/bullet/rifle/am36/plasma/on_hit_mob(mob/living/M, obj/projectile/P)
+	..()
+	if(prob(75)) //small chance for one to ignite on hit
+		M.fire_act()
 
 //TWE Calibers\\
 
 /datum/ammo/bullet/rifle/l23
 	name = "8.88mm rifle bullet"
 
-	damage = 55
+	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_2
 
 /datum/ammo/bullet/rifle/l23/ap
 	name = "8.88mm armor-piercing rifle bullet"
 
-	damage = 40
+	damage = 25
 	penetration = ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/bullet/rifle/l23/heap
 	name = "8.88mm high-explosive armor-piercing rifle bullet"
 
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
-	damage = 65
+	damage = 40
 	penetration = ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/bullet/rifle/l23/incendiary
@@ -249,7 +332,7 @@
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-	damage = 40
+	damage = 30
 	shell_speed = AMMO_SPEED_TIER_4
 	accuracy = -HIT_ACCURACY_TIER_2
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
