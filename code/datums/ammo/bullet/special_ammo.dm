@@ -5,14 +5,14 @@
 */
 
 /datum/ammo/bullet/smartgun
-	name = "smartgun tracer bullet"
+	name = "High Explosive Armor-piercing smartgun bullet"
 	icon_state = "bullet_iff"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_9
-	max_range = 12
-	accuracy = HIT_ACCURACY_TIER_4
-	damage = 30
+	max_range = 22
+	accuracy = HIT_ACCURACY_TIER_MAX
+	damage = 25
 	penetration = 0
 	effective_range_max = 1
 
@@ -20,14 +20,9 @@
 	name = "smartgun bullet"
 	icon_state = "redbullet"
 
-	damage_falloff = DAMAGE_FALLOFF_TIER_6
-	effective_range_max = 7
-
-/datum/ammo/bullet/smartgun/setup_faction_clash_values()
-	. = ..()
-	max_range = 17
-	accurate_range = 12
-	effective_range_max = 12
+	damage_falloff = DAMAGE_FALLOFF_TIER_8
+	damage = 30
+	effective_range_max = 22
 
 /datum/ammo/bullet/smartgun/armor_piercing
 	name = "\improper AP smartgun tracer bullet"
@@ -136,7 +131,7 @@
 	max_range = 7
 	accuracy = HIT_ACCURACY_TIER_7
 	damage = 35
-	penetration = ARMOR_PENETRATION_TIER_1
+	penetration = ARMOR_PENETRATION_TIER_5
 
 /datum/ammo/bullet/turret
 	name = "autocannon bullet"

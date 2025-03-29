@@ -131,5 +131,28 @@
 	return ..()
 
 /datum/ammo/bullet/on_hit_mob(mob/M, obj/projectile/P, mob/user)
-    shake_camera(M, 3, 1)
-    return ..()
+	shake_camera(M, 3, 1)
+	var/mob/living/carbon/human/target_human = M
+	if(target_human)
+		if(target_human.wear_suit)
+			if(prob(5))
+				if(istype(target_human.wear_suit, /obj/item/clothing/suit/storage/marine))
+					user.visible_message(SPAN_BOLDWARNING("Fragments of shrapnel from [src] spray off of [M]'s armor!"))
+					create_shrapnel(get_turf(M), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+
+/datum/ammo/bullet/on_hit_obj(obj/O, obj/projectile/P, mob/user)
+	if(prob(5))
+		user.visible_message(SPAN_BOLDWARNING("[src] bounces off of the [O]!"))
+		create_shrapnel(get_turf(O), 1, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(3, 1, src)
+		s.start()
+
+/datum/ammo/bullet/on_hit_turf(turf/T, obj/projectile/P, mob/user)
+	if(prob(5))
+		if(T.density)
+			user.visible_message(SPAN_BOLDWARNING("[src] bounces off of the [T]!"))
+			create_shrapnel(get_turf(T), 1, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+			s.set_up(3, 1, src)
+			s.start()

@@ -40,6 +40,36 @@
 	penetration = ARMOR_PENETRATION_TIER_8
 	shell_speed = AMMO_SPEED_TIER_4
 
+/datum/ammo/bullet/smg/on_hit_mob(mob/M, obj/projectile/P)
+	var/mob/living/carbon/human/target_human = M
+	if(target_human)
+		if(target_human.wear_suit)
+			if(prob(25))
+				if(istype(target_human.wear_suit, /obj/item/clothing/suit/storage/marine))
+					create_shrapnel(get_turf(M), 5, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+					s.set_up(10, 1, src)
+					s.start()
+	else
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(3, 1, src)
+		s.start()
+
+/datum/ammo/bullet/smg/on_hit_obj(obj/O, obj/projectile/P)
+	if(prob(25))
+		create_shrapnel(get_turf(O), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(3, 1, src)
+		s.start()
+
+/datum/ammo/bullet/smg/on_hit_turf(turf/T, obj/projectile/P)
+	if(prob(25))
+		if(T.density)
+			create_shrapnel(get_turf(T), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+			s.set_up(3, 1, src)
+			s.start()
+
 /datum/ammo/bullet/smg/ap/toxin
 	name = "toxic submachinegun bullet"
 	var/acid_per_hit = 5
@@ -173,3 +203,33 @@
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	penetration = ARMOR_PENETRATION_TIER_8
 	shell_speed = AMMO_SPEED_TIER_4
+
+/datum/ammo/bullet/smg/p90/twe_heap/on_hit_mob(mob/M, obj/projectile/P)
+	var/mob/living/carbon/human/target_human = M
+	if(target_human)
+		if(target_human.wear_suit)
+			if(prob(25))
+				if(istype(target_human.wear_suit, /obj/item/clothing/suit/storage/marine))
+					create_shrapnel(get_turf(M), 5, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+					s.set_up(10, 1, src)
+					s.start()
+	else
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(3, 1, src)
+		s.start()
+
+/datum/ammo/bullet/smg/p90/twe_heap/on_hit_obj(obj/O, obj/projectile/P)
+	if(prob(25))
+		create_shrapnel(get_turf(O), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(3, 1, src)
+		s.start()
+
+/datum/ammo/bullet/smg/p90/twe_heap/on_hit_turf(turf/T, obj/projectile/P)
+	if(prob(25))
+		if(T.density)
+			create_shrapnel(get_turf(T), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+			s.set_up(3, 1, src)
+			s.start()

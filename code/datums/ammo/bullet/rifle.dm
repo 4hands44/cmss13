@@ -105,29 +105,41 @@
 
 /datum/ammo/bullet/rifle/heap
 	name = "high-explosive armor-piercing rifle bullet"
+	sound_hit = 'sound/effects/thud1.ogg'
 
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage = 35//big damage, doesn't actually blow up because thats stupid.
-	penetration = ARMOR_PENETRATION_TIER_8
+	penetration = ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/bullet/rifle/heap/on_hit_mob(mob/M, obj/projectile/P)
-	create_shrapnel(get_turf(M), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(3, 1, src)
-	s.start()
-
-/datum/ammo/bullet/rifle/heap/on_hit_obj(obj/O, obj/projectile/P)
-	create_shrapnel(get_turf(O), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(3, 1, src)
-	s.start()
-
-/datum/ammo/bullet/rifle/heap/on_hit_turf(turf/T, obj/projectile/P)
-	if(T.density)
-		create_shrapnel(get_turf(T), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+	var/mob/living/carbon/human/target_human = M
+	if(target_human)
+		if(target_human.wear_suit)
+			if(prob(25))
+				if(istype(target_human.wear_suit, /obj/item/clothing/suit/storage/marine))
+					create_shrapnel(get_turf(M), 5, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+					s.set_up(10, 1, src)
+					s.start()
+	else
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
+
+/datum/ammo/bullet/rifle/heap/on_hit_obj(obj/O, obj/projectile/P)
+	if(prob(25))
+		create_shrapnel(get_turf(O), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(3, 1, src)
+		s.start()
+
+/datum/ammo/bullet/rifle/heap/on_hit_turf(turf/T, obj/projectile/P)
+	if(prob(25))
+		if(T.density)
+			create_shrapnel(get_turf(T), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+			s.set_up(3, 1, src)
+			s.start()
 
 /datum/ammo/bullet/rifle/rubber
 	name = "rubber rifle bullet"
@@ -240,6 +252,36 @@
 	damage = 45
 	penetration = ARMOR_PENETRATION_TIER_10
 
+/datum/ammo/bullet/rifle/type71/heap/on_hit_mob(mob/M, obj/projectile/P)
+	var/mob/living/carbon/human/target_human = M
+	if(target_human)
+		if(target_human.wear_suit)
+			if(prob(25))
+				if(istype(target_human.wear_suit, /obj/item/clothing/suit/storage/marine))
+					create_shrapnel(get_turf(M), 5, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+					s.set_up(10, 1, src)
+					s.start()
+	else
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(10, 1, src)
+		s.start()
+
+/datum/ammo/bullet/rifle/type71/heap/on_hit_obj(obj/O, obj/projectile/P)
+	if(prob(25))
+		create_shrapnel(get_turf(O), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(10, 1, src)
+		s.start()
+
+/datum/ammo/bullet/rifle/type71/heap/on_hit_turf(turf/T, obj/projectile/P)
+	if(prob(25))
+		if(T.density)
+			create_shrapnel(get_turf(T), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+			s.set_up(10, 1, src)
+			s.start()
+
 /datum/ammo/bullet/rifle/kramer
 	name = "heavy rifle bullet"
 
@@ -258,6 +300,36 @@
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage = 70
 	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/rifle/kramer/heap/on_hit_mob(mob/M, obj/projectile/P)
+	var/mob/living/carbon/human/target_human = M
+	if(target_human)
+		if(target_human.wear_suit)
+			if(prob(25))
+				if(istype(target_human.wear_suit, /obj/item/clothing/suit/storage/marine))
+					create_shrapnel(get_turf(M), 5, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+					s.set_up(10, 1, src)
+					s.start()
+	else
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(10, 1, src)
+		s.start()
+
+/datum/ammo/bullet/rifle/kramer/heap/on_hit_obj(obj/O, obj/projectile/P)
+	if(prob(25))
+		create_shrapnel(get_turf(O), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(10, 1, src)
+		s.start()
+
+/datum/ammo/bullet/rifle/kramer/heap/on_hit_turf(turf/T, obj/projectile/P)
+	if(prob(25))
+		if(T.density)
+			create_shrapnel(get_turf(T), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+			s.set_up(10, 1, src)
+			s.start()
 
 /datum/ammo/bullet/rifle/am35/plasma
 	name = "plasma bolt"
@@ -325,6 +397,36 @@
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage = 40
 	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/rifle/l23/heap/on_hit_mob(mob/M, obj/projectile/P)
+	var/mob/living/carbon/human/target_human = M
+	if(target_human)
+		if(target_human.wear_suit)
+			if(prob(25))
+				if(istype(target_human.wear_suit, /obj/item/clothing/suit/storage/marine))
+					create_shrapnel(get_turf(M), 5, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+					s.set_up(10, 1, src)
+					s.start()
+	else
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(10, 1, src)
+		s.start()
+
+/datum/ammo/bullet/rifle/l23/heap/on_hit_obj(obj/O, obj/projectile/P)
+	if(prob(25))
+		create_shrapnel(get_turf(O), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(10, 1, src)
+		s.start()
+
+/datum/ammo/bullet/rifle/l23/heap/on_hit_turf(turf/T, obj/projectile/P)
+	if(prob(25))
+		if(T.density)
+			create_shrapnel(get_turf(T), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+			s.set_up(10, 1, src)
+			s.start()
 
 /datum/ammo/bullet/rifle/l23/incendiary
 	name = "incendiary rifle bullet"

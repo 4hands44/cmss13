@@ -320,6 +320,21 @@
 	else
 		cell_explosion(target, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
+/obj/vehicle/multitile/proc/at_munition_interior_explosion_effect_bullet(explosion_strength = 10, explosion_falloff = 5, shrapnel = TRUE, shrapnel_count = 48, datum/cause_data/cause_data)
+	if(!interior)
+		return
+
+	var/turf/centre = interior.get_middle_turf()
+
+	var/turf/target = get_random_turf_in_range(centre, 2, 0)
+
+	if(shrapnel)
+		create_shrapnel(target, shrapnel_count, , ,/datum/ammo/bullet/shrapnel, cause_data)
+		cell_explosion(target, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+		return
+	else
+		cell_explosion(target, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+
 /obj/vehicle/multitile/proc/munition_interior_bullet_effect(shrapnel = TRUE, shrapnel_count = 20, datum/cause_data/cause_data)
 	if(!interior)
 		return

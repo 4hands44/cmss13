@@ -107,7 +107,7 @@
 	damage = 30
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
-	penetration = ARMOR_PENETRATION_TIER_7
+	penetration = ARMOR_PENETRATION_TIER_5
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	handful_state = "flechette_shell"
 	multiple_handful_name = TRUE
@@ -126,7 +126,7 @@
 	damage = 30
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
-	penetration = ARMOR_PENETRATION_TIER_7
+	penetration = ARMOR_PENETRATION_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_5
 
 /datum/ammo/bullet/shotgun/flechette_spread/setup_faction_clash_values()
@@ -144,7 +144,7 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_5
 	accurate_range = 4
 	max_range = 4
-	damage = 65
+	damage = 25
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_1
@@ -211,7 +211,7 @@
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	accurate_range = 3
 	max_range = 3
-	damage = 75
+	damage = 65
 	penetration = 0
 	shell_speed = AMMO_SPEED_TIER_2
 	damage_armor_punch = 0
@@ -232,7 +232,7 @@
 	handful_state = "heavy_dragonsbreath"
 	multiple_handful_name = TRUE
 	damage_type = BURN
-	damage = 60
+	damage = 30
 	accurate_range = 3
 	max_range = 4
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/spread
@@ -257,7 +257,7 @@
 
 	accurate_range = 7
 	max_range = 8
-	damage = 90 //ouch.
+	damage = 70 //ouch.
 	penetration = ARMOR_PENETRATION_TIER_6
 	damage_armor_punch = 2
 
@@ -317,20 +317,16 @@
 	penetration = ARMOR_PENETRATION_TIER_10
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_2
 
-/datum/ammo/bullet/shotgun/heavy/flechette/setup_faction_clash_values()
-	. = ..()
-	damage *= 0.7
-
 /datum/ammo/bullet/shotgun/heavy/flechette_spread
 	name = "additional heavy flechette"
 	icon_state = "flechette"
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	max_range = 12
-	damage = 45
+	damage = 35
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
-	penetration = ARMOR_PENETRATION_TIER_10
+	penetration = ARMOR_PENETRATION_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_4
 
 /datum/ammo/bullet/shotgun/heavy/flechette_spread/setup_faction_clash_values()
@@ -350,7 +346,7 @@
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
-	damage = 55
+	damage = 35
 	max_range = 5
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	penetration = ARMOR_PENETRATION_TIER_1
