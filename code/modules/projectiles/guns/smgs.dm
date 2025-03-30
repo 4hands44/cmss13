@@ -26,7 +26,7 @@
 		/obj/item/attachable/magnetic_harness,
 	)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_SMG
 	start_automatic = TRUE
 
@@ -53,7 +53,7 @@
 	icon_state = "m39"
 	item_state = "m39"
 	flags_equip_slot = SLOT_BACK
-	current_mag = /obj/item/ammo_magazine/smg/m39
+	current_mag = /obj/item/ammo_magazine/smg/m39/heap
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/reddot,
@@ -91,6 +91,7 @@
 		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/mini_iff,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/stock/smg/collapsible/brace,
@@ -111,7 +112,7 @@
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_4
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_4
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
@@ -120,6 +121,58 @@
 
 /obj/item/weapon/gun/smg/m39/training
 	current_mag = /obj/item/ammo_magazine/smg/m39/rubber
+
+/obj/item/weapon/gun/smg/m39/recon
+	name = "\improper M39-R submachinegun"
+	desc = "The Armat Battlefield Systems M39-R submachinegun. This is a specialized variant made for use by FORECON units, and features an integrated supressor and lighter construction. A lightweight, lower caliber alternative to the various Pulse weapons used the USCM. Fires 10x20mm rounds out of 48 round magazines."
+	item_state = "m39-r"
+	fire_sound = "gun_silenced"
+	inherent_traits = list(TRAIT_GUN_SILENCED)
+	flags_equip_slot = SLOT_BACK
+	current_mag = /obj/item/ammo_magazine/smg/m39/heap
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/stock/smg,
+		/obj/item/attachable/stock/smg/collapsible,
+		/obj/item/attachable/stock/smg/collapsible/brace,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/magnetic_harness,
+	)
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	starting_attachment_types = list(/obj/item/attachable/stock/smg, /obj/item/attachable/reflex)
+	map_specific_decoration = FALSE
+
+/obj/item/weapon/gun/smg/m39recon/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 14, "rail_y" = 22, "under_x" = 21, "under_y" = 13, "stock_x" = 24, "stock_y" = 15)
+
+
+/obj/item/weapon/gun/smg/m39recon/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/flashlight/grip/m39r_grip= new(src)
+	m39r_grip.flags_attach_features &= ~ATTACH_REMOVABLE
+	m39r_grip.hidden = FALSE
+	m39r_grip.Attach(src)
+	update_attachable(m39r_grip.slot)
+
+/obj/item/weapon/gun/smg/m39recon/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_8
+	scatter = SCATTER_AMOUNT_TIER_7
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	fa_max_scatter = SCATTER_AMOUNT_TIER_10 + 0.5
+
 
 //-------------------------------------------------------
 
@@ -130,7 +183,7 @@
 	item_state = "m39b2"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/smgs.dmi'
 	current_mag = /obj/item/ammo_magazine/smg/m39/ap
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
 	map_specific_decoration = FALSE
 	starting_attachment_types = list(/obj/item/attachable/stock/smg/collapsible)
 
@@ -172,13 +225,13 @@
 		WEAR_BACK = 'icons/obj/items/weapons/guns/guns_by_map/snow/back.dmi',
 		WEAR_J_STORE = 'icons/obj/items/weapons/guns/guns_by_map/snow/suit_slot.dmi'
 	)
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
 	map_specific_decoration = FALSE
 	starting_attachment_types = list(/obj/item/attachable/stock/smg/collapsible)
 
 /obj/item/weapon/gun/smg/m39/corporate/no_lock //for PMC nightmares.
 	desc = "A Weyland-Yutani creation, this M-39 comes equipped in corporate white. Uses 10x20mm caseless ammunition. This one had its IFF electronics removed."
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/smg/m39/elite/whiteout//attachies + heap mag for whiteout.
 	starting_attachment_types = list(/obj/item/attachable/stock/smg, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip, /obj/item/attachable/magnetic_harness)
@@ -879,15 +932,15 @@
 
 /obj/item/weapon/gun/smg/p90/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_12
-	burst_delay = FIRE_DELAY_TIER_12
-	burst_amount = BURST_AMOUNT_TIER_3
+	set_fire_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
 	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_4
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
-	scatter_unwielded = SCATTER_AMOUNT_TIER_3
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_3
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 	fa_max_scatter = SCATTER_AMOUNT_TIER_10 + 0.5
 
@@ -896,14 +949,14 @@
 //P90, a classic SMG (TWE version).
 
 /obj/item/weapon/gun/smg/p90/twe
-	name = "\improper FN-TWE P90 submachinegun"
-	desc = "A variation of the FN P90 submachine gun. Used by mercenaries and royal marines commandos. This weapon only accepts the AP variation of the 5.7×28mm rounds."
+	name = "\improper FN-TWE P90 pulse submachinegun"
+	desc = "The FN Herstal FN-P90 submachinegun. Occasionally carried by light-infantry, scouts, engineers and medics. A lightweight, lower caliber alternative to the various Pulse weapons used the RMC. Fires 10x20mm rounds out of 50 round magazines. This weapon only accepts the 5.7×28mm round."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/smgs.dmi'
 	icon_state = "p90_twe"
 	item_state = "p90_twe"
 
 	fire_sound = 'sound/weapons/p90.ogg'
-	current_mag = /obj/item/ammo_magazine/smg/p90/twe
+	current_mag = /obj/item/ammo_magazine/smg/p90/twe/heap
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor, // Barrel
 		/obj/item/attachable/extended_barrel,
@@ -914,22 +967,28 @@
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/mini,
 		)
+	accepted_ammo = list(
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90/twe,
+		/obj/item/ammo_magazine/smg/p90/twe/heap,
+	)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
+	starting_attachment_types = list(/obj/item/attachable/scope/mini_iff,)
 
 /obj/item/weapon/gun/smg/p90/twe/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 22, "rail_y" = 24, "under_x" = 23, "under_y" = 15, "stock_x" = 28, "stock_y" = 17)
 
 /obj/item/weapon/gun/smg/p90/twe/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_12
-	burst_delay = FIRE_DELAY_TIER_12
-	burst_amount = BURST_AMOUNT_TIER_3
+	set_fire_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
 	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_4
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
-	scatter_unwielded = SCATTER_AMOUNT_TIER_3
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_4
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + 0.2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 	fa_max_scatter = SCATTER_AMOUNT_TIER_10 + 0.5

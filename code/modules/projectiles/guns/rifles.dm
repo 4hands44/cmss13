@@ -2344,8 +2344,9 @@
 	update_attachable(f90_shotgun_barrel.slot)
 
 /obj/item/weapon/gun/rifle/sa80
-	name = "\improper SA80 pulse rifle"
-	desc = "An older design of Pulse Rifle commonly used by the TWE. Uses 10x24mm caseless ammunition."
+	name = "\improper SA80-Type2 pulse rifle"
+	desc = "An older design of Pulse Rifle commonly used by the TWE military and navy. Uses 10x24mm caseless ammunition."
+	desc_lore = "Based loosely on the L85 program from the 1980s, the SA80-Type2 was a modernization effort by the TWE in direct response to the UA's Pulse Rifle Program. After the M41A's success in 2171, the TWE conceded that pulse weapons are the way-of-the-future and began moving away from conventional centerfire cased munitions. Due to surplus ammunition stockpiles from the 20th and 21st century and its bullpup design being an asset in the close quarters of frontier combat, the outdated SA80 was chosen as the basis for the program. RMC command refuses to deploy the weapon in large numbers citing frequent jams and generally poor field performance.  Most feed-related problems have been attributed to the RMC's weapon maintenance practices however, and the caseless upgrade has been seen as a great asset towards improving function."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "sa80"
 	item_state = "sa80"
@@ -2412,8 +2413,8 @@
 //sa80 UGL
 
 /obj/item/weapon/gun/rifle/sa80/ugl
-	name = "\improper SA80 pulse rifle"
-	desc = "An older design of Pulse Rifle commonly used by the TWE. This one features a built in UGL Uses 10x24mm caseless ammunition."
+	name = "\improper SA80-Type2 pulse rifle"
+	desc = "An older design of Pulse Rifle commonly used by the TWE military and navy. This one features a built in UGL Uses 10x24mm caseless ammunition."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "sa80_gl"
 	item_state = "sa80"
@@ -2450,8 +2451,8 @@
 //sa80 Machinegun
 
 /obj/item/weapon/gun/rifle/sa80/lmg
-	name = "\improper SA80 infantry support pulse machinegun"
-	desc = "An older design of Pulse Rifle commonly used by the TWE. Uses 10x24mm caseless ammunition."
+	name = "\improper SA80-Type2 infantry support pulse machinegun"
+	desc = "An older design of Pulse Squad Support weapon commonly used by the TWE military and navy. Uses 10x24mm caseless ammunition."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/machineguns.dmi'
 	icon_state = "sa80_lmg"
 	item_state = "sa80"
@@ -2953,4 +2954,3 @@
 	current_mag = /obj/item/ammo_magazine/rifle/xm51/cmb
 	map_specific_decoration = FALSE
 	starting_attachment_types = list(/obj/item/attachable/flashlight/grip, /obj/item/attachable/reflex)
-

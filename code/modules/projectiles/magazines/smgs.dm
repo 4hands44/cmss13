@@ -291,3 +291,14 @@
 	w_class = SIZE_MEDIUM
 	gun_type = /obj/item/weapon/gun/smg/p90/twe
 	max_rounds = 50
+
+/obj/item/ammo_magazine/smg/p90/twe/heap
+	name = "\improper FN-TWE P90 HEAP magazine (5.7×28mm)"
+	desc = "A 5.7×28mm (AP) magazine for the FN-TWE P90."
+	default_ammo = /datum/ammo/bullet/smg/p90/twe_heap
+	caliber = "5.7×28mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/smgs.dmi'
+	icon_state = "p90_twe"
+	w_class = SIZE_MEDIUM
+	gun_type = /obj/item/weapon/gun/smg/p90/twe
+	max_rounds = 50
