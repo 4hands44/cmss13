@@ -79,6 +79,15 @@
 		/obj/item/attachable/flashlight/grip,
 	)
 
+/obj/item/weapon/gun/m4ra_custom/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
+	. = ..()
+	if(!HAS_TRAIT(src, TRAIT_GUN_SILENCED))
+		if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
+			var/mob/living/carbon/human/huser = user
+			to_chat(user, SPAN_WARNING("Augh!! \The [src]'s firing resonates extremely loudly in your ears! You probably should have worn some sort of ear protection..."))
+			huser.apply_effect(6, STUTTER)
+			huser.AdjustEarDeafnessGuns(max(user.ear_deaf,2))
+
 /obj/item/weapon/gun/rifle/m4ra_custom/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/m4ra_barrel_custom/integrated = new(src)

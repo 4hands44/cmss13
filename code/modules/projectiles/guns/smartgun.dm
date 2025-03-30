@@ -91,6 +91,15 @@
 	var/recycletime = 120
 	var/cover_open = FALSE
 
+/obj/item/weapon/gun/smartgun/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
+	. = ..()
+	if(!HAS_TRAIT(src, TRAIT_GUN_SILENCED))
+		if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
+			var/mob/living/carbon/human/huser = user
+			to_chat(user, SPAN_WARNING("Augh!! \The [src]'s firing resonates extremely loudly in your ears! You probably should have worn some sort of ear protection..."))
+			huser.apply_effect(6, STUTTER)
+			huser.AdjustEarDeafnessGuns(max(user.ear_deaf,2))
+
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
 	ammo_primary_def = GLOB.ammo_list[ammo_primary_def] //Gun initialize calls replace_ammo() so we need to set these first.
 	ammo_secondary_def = GLOB.ammo_list[ammo_secondary_def]

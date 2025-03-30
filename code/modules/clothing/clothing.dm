@@ -160,6 +160,12 @@
 	LAZYREMOVE(GLOB.objects_of_interest, src)
 
 
+/obj/item/clothing/ears/earmuffs/earplugs
+	name = "ear plugs"
+	desc = "Designed to deafen extreme sounds. Their effectiveness is heavily debated, with the troops claiming that they don't do anything and result in hearing loss. The Weyland-Yutani Department of Veterans Affairs and USCMC High Command state the ear plugs work without issue...and that any resulting hearing loss is not service-related."
+	icon_state = "earplugs"
+	item_state = "earplugs"
+
 ///////////////////////////////////////////////////////////////////////
 //Suit
 /obj/item/clothing/suit
