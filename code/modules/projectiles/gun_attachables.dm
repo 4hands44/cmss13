@@ -465,6 +465,15 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
 	velocity_mod = AMMO_SPEED_TIER_1
 
+/obj/item/attachable/extended_barrel/sa80
+	icon_state = "sa80"
+	attach_icon = "sa80_a"
+
+/obj/item/attachable/extended_barrel/sa80/New()
+	..()
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	velocity_mod = AMMO_SPEED_TIER_1
+
 /obj/item/attachable/heavy_barrel
 	name = "barrel charger"
 	desc = "A hyper threaded barrel extender that fits to the muzzle of most firearms. Increases bullet speed and velocity.\nGreatly increases projectile damage at the cost of accuracy and firing speed."
@@ -769,6 +778,12 @@ Defined in conflicts.dm of the #defines folder.
 	burst_scatter_mod = -1
 	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 
+/obj/item/attachable/reflex/sa80_irons
+
+	name = "SA80 Carry Handle"
+	desc = "the carry handle and iron sights of an SA80"
+	icon_state = "sa80_iron"
+	attach_icon = "sa80_iron_a"
 
 /obj/item/attachable/flashlight
 	name = "rail flashlight"
@@ -1082,6 +1097,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/damage_falloff_scoped_buff
 	var/ignore_clash_fog = FALSE
 	var/using_scope
+	var/glint_message_range = 25
 
 /obj/item/attachable/scope/New()
 	..()
@@ -1123,6 +1139,11 @@ Defined in conflicts.dm of the #defines folder.
 		G.damage_falloff_mult += damage_falloff_scoped_buff
 		using_scope = TRUE
 		RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, PROC_REF(remove_scoped_buff))
+
+	for(var/mob/current_mob as anything in get_mobs_in_z_level_range(get_turf(user), glint_message_range) - user)
+		var/relative_dir = get_dir(current_mob, user)
+		var/final_dir = dir2text(relative_dir)
+		to_chat(current_mob, SPAN_HIGHDANGER("You see a suspicious glint [final_dir ? "the [final_dir]" : "nearby"]!"))
 
 /obj/item/attachable/scope/proc/remove_scoped_buff(mob/living/carbon/user, obj/item/weapon/gun/G)
 	SIGNAL_HANDLER
@@ -1312,6 +1333,47 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	select_gamemode_skin(type)
 	attach_icon = icon_state
+
+/obj/item/attachable/scope/mini_iff
+	name = "B8 Smart-Scope"
+	icon_state = "iffbarrel"
+	attach_icon = "iffbarrel_a"
+	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the M4RA Battle Rifle and M44 Combat Revolver."
+	desc_lore = "An experimental fire-control optic capable of linking into compatible IFF systems on certain weapons, designated the XAN/PVG-110 Smart Scope. Currently programmed for usage with the M4RA battle rifle and M44 Combat Revolver, due to their relatively lower rates of fire. Experimental technology developed by Armat, who have assured that all previously reported issues with false-negative IFF recognitions have been solved. Make sure to check the sight after every op, just in case."
+	slot = "rail"
+	zoom_offset = 6
+	zoom_viewsize = 7
+	pixel_shift_y = 15
+	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
+
+/obj/item/attachable/scope/mini_iff/New()
+	..()
+	damage_mod = -BULLET_DAMAGE_MULT_TIER_4
+	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_6
+	accuracy_unwielded_mod = 0
+
+	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_1
+	delay_scoped_nerf = 0
+	damage_falloff_scoped_buff = 0
+
+/obj/item/attachable/scope/mini_iff/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
+
+/obj/item/attachable/scope/mini_iff/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
+	if(do_after(user, 8, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		allows_movement = 1
+		. = ..()
+
+/obj/item/attachable/scope/mini_iff/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
+	. = ..()
+	if(G.zoom)
+		G.slowdown += dynamic_aim_slowdown
+
+/obj/item/attachable/scope/mini_iff/remove_scoped_buff(mob/living/carbon/user, obj/item/weapon/gun/G)
+	G.slowdown -= dynamic_aim_slowdown
+	..()
 
 /obj/item/attachable/scope/slavic
 	icon_state = "slavicscope"
@@ -2559,6 +2621,21 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 0
 
 /obj/item/attachable/stock/type71/New()
+	..()
+
+/obj/item/attachable/stock/ak
+	name = "ak84s Stock"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
+	icon_state = "ak_stock"
+	attach_icon = "ak_stock"
+	slot = "stock"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 15
+	size_mod = 0
+
+/obj/item/attachable/stock/ak/New()
 	..()
 
 /obj/item/attachable/stock/m60
@@ -3893,6 +3970,14 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A simple set of telescopic poles to keep a weapon stabilized during firing."
 	icon_state = "qjy72_bipod"
 	attach_icon = "qjy72_bipod"
+
+/obj/item/attachable/bipod/sa80
+	name = "bipod"
+	desc = "A simple set of telescopic poles to keep a weapon stabilized during firing. \nGreatly increases accuracy and reduces recoil when properly placed, but also increases weapon size and slows firing speed."
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
+	icon_state = "sa80_bipod"
+	attach_icon = "sa80_bipod_a"
+	slot = "muzzle"
 
 /obj/item/attachable/bipod/vulture
 	name = "heavy bipod"

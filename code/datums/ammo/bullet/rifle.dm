@@ -227,6 +227,12 @@
 
 	damage = 35
 
+/datum/ammo/bullet/rifle/mar40/ap
+	name = "heavy rifle bullet"
+
+	damage = 25
+	penetration = ARMOR_PENETRATION_TIER_8
+
 /datum/ammo/bullet/rifle/type71
 	name = "heavy rifle bullet"
 
