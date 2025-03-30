@@ -2452,7 +2452,7 @@
 /obj/item/weapon/gun/rifle/sa80/lmg
 	name = "\improper SA80 infantry support pulse machinegun"
 	desc = "An older design of Pulse Rifle commonly used by the TWE. Uses 10x24mm caseless ammunition."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "sa80_lmg"
 	item_state = "sa80"
 	fire_sound = "gun_smartgun_rattle"
