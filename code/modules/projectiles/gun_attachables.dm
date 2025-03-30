@@ -1049,8 +1049,8 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/alt_iff_scope
 	name = "B8 Smart-Scope"
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
-	icon_state = "iffbarrel"
-	attach_icon = "iffbarrel_a"
+	icon_state = "clown"
+	attach_icon = "clown_a"
 	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the M4RA Battle Rifle, the M44 Combat Revolver, and the M41A MK2 Pulse Rifle."
 	desc_lore = "An experimental fire-control optic capable of linking into compatible IFF systems on certain weapons, designated the XAN/PVG-110 Smart Scope. Experimental technology developed by Armat, who have assured that all previously reported issues with false-negative IFF recognitions have been solved. Make sure to check the sight after every deployment, just in case."
 	slot = "rail"

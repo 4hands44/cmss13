@@ -22,12 +22,12 @@
 	stocked_weapon = /obj/item/weapon/gun/rifle/m41aMK1
 	restock_type = /obj/item/weapon/gun/rifle/m41aMK1
 
-// /obj/structure/machinery/auto_rack/uscm/mk1/full/training
-//	desc = "The ARMAT brand weapons rack has deceptively small storage, presenting only a limited single stack of storage clamps, the device automatically cycles to a fully stocked shelf when the current one is depleted. This one is configured to hold the m41aMK1 Pulse Rifle."
-//	icon_state = "mk1rack"
-//	initial_stored = 4
-//	stocked_weapon = /obj/item/weapon/gun/rifle/m41aMK1/training
-//	restock_type = /obj/item/weapon/gun/rifle/m41aMK1/training
+/obj/structure/machinery/auto_rack/uscm/mk1/full/training
+	desc = "The ARMAT brand weapons rack has deceptively small storage, presenting only a limited single stack of storage clamps, the device automatically cycles to a fully stocked shelf when the current one is depleted. This one is configured to hold the m41aMK1 Pulse Rifle."
+	icon_state = "mk1rack"
+	initial_stored = 4
+	stocked_weapon = /obj/item/weapon/gun/rifle/m41aMK1/training
+	restock_type = /obj/item/weapon/gun/rifle/m41aMK1/training
 
 //M39----
 

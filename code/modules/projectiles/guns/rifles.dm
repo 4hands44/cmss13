@@ -93,7 +93,7 @@
 		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/attached_gun/extinguisher,
-		/obj/item/attachable/alt_iff_scope,
+		/obj/item/attachable/scope/mini_iff,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
 	)
@@ -1969,7 +1969,7 @@
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
-		/obj/item/attachable/alt_iff_scope,
+		/obj/item/attachable/scope/mini_iff,
 		/obj/item/attachable/flashlight/grip,
 	)
 
@@ -2054,7 +2054,7 @@
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
-		/obj/item/attachable/alt_iff_scope,
+		/obj/item/attachable/scope/mini_iff,
 		/obj/item/attachable/flashlight/grip,
 	)
 
@@ -2452,7 +2452,7 @@
 /obj/item/weapon/gun/rifle/sa80/lmg
 	name = "\improper SA80 infantry support pulse machinegun"
 	desc = "An older design of Pulse Rifle commonly used by the TWE. Uses 10x24mm caseless ammunition."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/machineguns.dmi'
 	icon_state = "sa80_lmg"
 	item_state = "sa80"
 	fire_sound = "gun_smartgun_rattle"
