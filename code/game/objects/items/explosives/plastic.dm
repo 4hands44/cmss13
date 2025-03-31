@@ -324,7 +324,7 @@
 	has_blast_wave_dampener = TRUE
 
 /obj/item/explosive/plastic/breaching_charge
-	name = "breaching charge"
+	name = "X16 breaching charge"
 	desc = "An explosive device used to break into areas while protecting the user from the blast as well as deploying deadly shrapnel on the other side."
 	icon_state = "satchel-charge"
 	item_state = "satchel-charge"
@@ -384,6 +384,16 @@
 	shrapnel_type = /datum/ammo/bullet/shrapnel/rubber
 	req_skill = SKILL_POLICE
 	req_skill_level = SKILL_POLICE_SKILLED
+	antigrief_protection = FALSE
+
+/obj/item/explosive/plastic/breaching_charge/cluster
+	name = "R6 Cluster Charge"
+	desc = "Unlike the standard breaching charge, the R6 injects a cone spray of minature impact explosives to clear rooms of potential threats."
+	icon_state = "riot-charge"
+	overlay_image = "riot-active"
+	shrapnel_volume = 20
+	shrapnel_type = /datum/ammo/bullet/shrapnel/explosive
+	explosion_strength = 5
 	antigrief_protection = FALSE
 
 /obj/item/explosive/plastic/breaching_charge/plasma

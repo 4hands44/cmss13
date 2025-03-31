@@ -84,3 +84,12 @@
 	new /obj/item/cell/high(src)
 	new /obj/item/cell/high(src)
 	new /obj/item/cell/high(src)
+
+/obj/item/storage/toolkit/ms/fill_preset_inventory()
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/circuitboard(src)
+	new /obj/item/stack/cable_coil(src)
+	new /obj/item/cell(src)
+	new /obj/item/cell(src)
+	new /obj/item/device/t_scanner(src)

@@ -33,6 +33,20 @@
 		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons)
 	))
 
+/datum/ammo/bullet/shrapnel/explosive
+	name = "grenade"
+	icon_state = "buckshot"
+
+/datum/ammo/bullet/shrapnel/explosive/on_hit_mob(mob/M, obj/projectile/P)
+	cell_explosion(get_turf(M), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+
+/datum/ammo/bullet/shrapnel/explosive/on_hit_obj(obj/O, obj/projectile/P)
+	cell_explosion(get_turf(O), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+
+/datum/ammo/bullet/shrapnel/explosive/on_hit_turf(turf/T, obj/projectile/P)
+	if(T.density)
+		cell_explosion(T, 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+
 /datum/ammo/bullet/shrapnel/rubber
 	name = "rubber pellets"
 	icon_state = "rubber_pellets"
