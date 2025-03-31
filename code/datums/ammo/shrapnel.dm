@@ -35,17 +35,21 @@
 
 /datum/ammo/bullet/shrapnel/explosive
 	name = "grenade"
-	icon_state = "buckshot"
+	icon_state = "grenade"
+	damage = 5
+	stamina_damage = 25
+	max_range = 5
+	penetration = 0
 
 /datum/ammo/bullet/shrapnel/explosive/on_hit_mob(mob/M, obj/projectile/P)
-	cell_explosion(get_turf(M), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+	cell_explosion(get_turf(M), 30, 15, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
 /datum/ammo/bullet/shrapnel/explosive/on_hit_obj(obj/O, obj/projectile/P)
-	cell_explosion(get_turf(O), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+	cell_explosion(get_turf(O), 30, 15, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
 /datum/ammo/bullet/shrapnel/explosive/on_hit_turf(turf/T, obj/projectile/P)
 	if(T.density)
-		cell_explosion(T, 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+		cell_explosion(get_turf(T), 30, 15, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
 /datum/ammo/bullet/shrapnel/rubber
 	name = "rubber pellets"

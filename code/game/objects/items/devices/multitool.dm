@@ -86,3 +86,71 @@
 		return
 	user_client.images -= highlight_image
 
+
+//advanced hacking tool
+
+/obj/item/device/hackingdevice
+	name = "\improper SSDD"
+	desc = "A complex handheld tool manufactured by Seegson. Packed in its own leather case the device is able to be used to override various machine functions. Contains loose wires for tapping in and a small computer terminal. Primarily used to pulse Airlock and APC wires on a shortwave frequency. It contains a small data buffer, keyboard, and memory tape as well, all of which are affixed to the leather case."
+	icon = 'icons/obj/items/marine-items.dmi'
+	icon_state = "ssdd_closed"
+	item_state = "ssdd_closed"
+	pickup_sound = 'sound/handling/multitool_pickup.ogg'
+	drop_sound = 'sound/handling/multitool_drop.ogg'
+	flags_atom = FPRINT|CONDUCT
+	force = 5
+	w_class = SIZE_SMALL
+	throwforce = 5
+	throw_range = 15
+	throw_speed = SPEED_VERY_FAST
+
+/obj/item/device/hackingdevice/attack_self(mob/user)
+	..()
+	if (icon_state == "ssdd_open")
+		icon_state = "ssdd_closed"
+	else
+		icon_state = "ssdd_open"
+	update_icon()
+
+	inherent_traits = list(TRAIT_TOOL_MULTITOOL)
+
+
+/obj/item/device/voightkampf
+	name = "\improper Voight-Kampff device"
+	desc = "A very advanced form of lie detector that measures contractions of the iris muscle and the presence of invisible airborne particles emitted from the body. The VK is used primarily by Blade Runners and TIS agents to determine if a suspect is truly human by measuring the degree of his empathic response through carefully worded questions and statements."
+	icon = 'icons/obj/items/devices.dmi'
+	icon_state = "voight_off"
+	item_state = "voight_off"
+	pickup_sound = 'sound/handling/multitool_pickup.ogg'
+	drop_sound = 'sound/handling/multitool_drop.ogg'
+	flags_atom = FPRINT|CONDUCT
+	force = 5
+	w_class = SIZE_SMALL
+	throwforce = 5
+	throw_range = 15
+	throw_speed = SPEED_VERY_FAST
+	var/scanning = FALSE
+
+
+/obj/item/device/voightkampf/attack_self(mob/user)
+	..()
+	if (icon_state == "voight_on")
+		icon_state = "voight_off"
+		scanning = FALSE
+	else
+		icon_state = "voight_on"
+		scanning = TRUE
+		voightnoise()
+	update_icon()
+
+/obj/item/device/voightkampf/proc/voightnoise()
+	if(scanning)
+		playsound(src,'sound/machines/click.ogg', 15, TRUE)
+		cycle()
+	else
+		return
+
+
+/obj/item/device/voightkampf/proc/cycle()
+	if(scanning)
+		voightnoise()

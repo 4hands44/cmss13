@@ -117,7 +117,7 @@
 	addtimer(VARSET_CALLBACK(src, spamcheck, FALSE), 3 SECONDS)
 
 /obj/item/device/trench_whistle/MouseDrop(obj/over_object)
-	if(ishuman(usr) || isrobot(usr))
+	if(ishuman(usr))
 
 		if(!usr.is_mob_restrained() && !usr.stat && usr.wear_mask == src)
 			switch(over_object.name)

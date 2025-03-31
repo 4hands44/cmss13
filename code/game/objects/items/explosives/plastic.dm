@@ -389,11 +389,13 @@
 /obj/item/explosive/plastic/breaching_charge/cluster
 	name = "R6 Cluster Charge"
 	desc = "Unlike the standard breaching charge, the R6 injects a cone spray of minature impact explosives to clear rooms of potential threats."
-	icon_state = "riot-charge"
-	overlay_image = "riot-active"
+	icon_state = "cluster-charge"
+	overlay_image = "cluster-active"
+	shrapnel_spread = 45
 	shrapnel_volume = 20
 	shrapnel_type = /datum/ammo/bullet/shrapnel/explosive
-	explosion_strength = 5
+	explosion_strength = 0
+	penetration = 0
 	antigrief_protection = FALSE
 
 /obj/item/explosive/plastic/breaching_charge/plasma

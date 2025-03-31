@@ -538,6 +538,24 @@
 	desc = "A fire-resistant chest patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconsbigpatch"
 
+/obj/item/clothing/accessory/patch/tis
+	name = "UAAC-TIS patch"
+	desc = "An elusive patch worn by members of the UAAC-TIS, also known as Three Eyes."
+	icon_state = "tis_patch"
+
+/obj/item/clothing/accessory/patch/mudskippers
+	name = "USCM Mudskippers patch"
+	desc = "A Mudstained and fire-resistant shoulder patch, worn by the men and women of the Mudskippers, the 4th Division 3rd brigade 15th Bat of the USCM."
+	icon_state = "mudskipperspatch"
+/obj/item/clothing/accessory/patch/helldivers
+	name = "USCM Helldivers patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the Helldivers, the 4th Division 3rd brigade 12th Bat of the USCM."
+	icon_state = "helldiverspatch"
+/obj/item/clothing/accessory/patch/tunnelrats
+	name = "USCM Tunnel Rats patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the Tunnel Rats, the 4th Division 3rd brigade 6th Bat of the USCM."
+	icon_state = "tunnelratspatch"
+
 /obj/item/clothing/accessory/patch/wy
 	name = "Weyland-Yutani patch"
 	desc = "A fire-resistant black shoulder patch featuring the Weyland-Yutani logo. A symbol of loyalty to the corporation, or perhaps ironic mockery, depending on your viewpoint."
@@ -567,6 +585,11 @@
 	name = "UPP patch"
 	desc = "An old fire-resistant shoulder patch, worn by the men and women of the Union of Progressive Peoples Armed Collective."
 	icon_state = "upppatch_alt"
+
+/obj/item/clothing/accessory/patch/tis
+	name = "UAAC-TIS patch"
+	desc = "An elusive patch worn by members of the UAAC-TIS, also known as Three Eyes."
+	icon_state = "tis_patch"
 
 /obj/item/clothing/accessory/patch/falcon/squad_main
 	name = "USCM Falling Falcons squad patch"
@@ -1330,3 +1353,43 @@ Wrist Accessories
 	. = ..()
 
 	. += " It reads: [SPAN_NOTICE("[worldtime2text()]")]"
+
+/obj/item/clothing/accessory/patch/mudskippers
+	name = "USCM Mudskippers patch"
+	desc = "A Mudstained and fire-resistant shoulder patch, worn by the men and women of the Mudskippers, the 4th Division 3rd brigade 15th Bat of the USCM."
+	icon_state = "mudskipperspatch"
+/obj/item/clothing/accessory/patch/helldivers
+	name = "USCM Helldivers patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the Helldivers, the 4th Division 3rd brigade 12th Bat of the USCM."
+	icon_state = "helldiverspatch"
+/obj/item/clothing/accessory/patch/tunnelrats
+	name = "USCM Tunnel Rats patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the Tunnel Rats, the 4th Division 3rd brigade 6th Bat of the USCM."
+	icon_state = "tunnelratspatch"
+
+/obj/item/clothing/accessory/flak
+	name = "M67 flak vest"
+	desc = "An older model of flak jacket worn by combat support personnel such as dropship crew, and smartgunners. Much comfier than it's M70 successor, can be worn under most combat armor, however ballistic protection leaves much to be desired..."
+	icon_state = "flak"
+	item_state = "flak"
+	var/tucked_in = FALSE
+	flags_armor_protection = BODY_FLAG_CHEST
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/accessory/flak/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("You can wear it differently by <b>using it in hand</b>.")
+
+/obj/item/clothing/accessory/flak/attack_self(mob/user)
+	..()
+
+	tucked_in = !tucked_in
+	if(tucked_in)
+		icon_state = "flakslim"
+		user.visible_message(SPAN_NOTICE("[user] tucks in [src]'s sleeves."), SPAN_NOTICE("You tuck in [src]'s sleeves."))
+	else
+		icon_state = initial(icon_state)
+		user.visible_message(SPAN_NOTICE("[user] decides to keep [src] nice and puffy."), SPAN_NOTICE("You decide to keep [src] nice and puffy."))
+
