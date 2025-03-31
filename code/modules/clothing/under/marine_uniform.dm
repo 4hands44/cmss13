@@ -466,7 +466,7 @@
 //=======================================================================\\
 
 /obj/item/clothing/under/marine/reconnaissance
-	name = "\improper USCM uniform"
+	name = "\improper USCM FORECON uniform"
 	desc = "Torn, Burned and blood stained. This uniform has seen much more than you could possibly imagine."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	item_icons = list(
@@ -487,6 +487,16 @@
 		if(3)
 			cut_suit_jacket(FALSE)
 
+/obj/item/clothing/under/marine/forecon
+	name = "\improper USCM FORECON compresssion uniform"
+	desc = "Special BDUs printed with a high contrast pattern for use on airless worlds or during boarding action. The Uniform also features an integrated harness for compatibility with the MK. 50 Compression series of combat suits."
+		icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
+	icon_state = "forecon_marine"
+	worn_state = "forecon_marine"
+	flags_atom = NO_GAMEMODE_SKIN
 
 //=========================//RESPONDERS\\================================\\
 //=======================================================================\\
