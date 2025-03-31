@@ -5,7 +5,7 @@
 */
 
 /datum/ammo/bullet/smartgun
-	name = "High Explosive Armor-piercing smartgun bullet"
+	name = "Armor-piercing smartgun bullet"
 	icon_state = "bullet_iff"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
@@ -13,7 +13,7 @@
 	max_range = 22
 	accuracy = HIT_ACCURACY_TIER_MAX
 	damage = 25
-	penetration = 0
+	penetration = ARMOR_PENETRATION_TIER_5
 	effective_range_max = 1
 
 /datum/ammo/bullet/smartgun/alt
@@ -25,21 +25,21 @@
 	effective_range_max = 22
 
 /datum/ammo/bullet/smartgun/armor_piercing
-	name = "\improper AP smartgun tracer bullet"
+	name = "\improper Armed HEAP smartgun tracer bullet"
 	icon_state = "bullet_ap_iff"
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_9_5
 	accurate_range = 12
 	accuracy = HIT_ACCURACY_TIER_2
 	damage = 20
-	penetration = ARMOR_PENETRATION_TIER_8
+	penetration = ARMOR_PENETRATION_TIER_10
 	damage_armor_punch = 1
 
 /datum/ammo/bullet/smartgun/armor_piercing/alt
-	name = "\improper AP smartgun bullet"
+	name = "\improper Armed HEAP smartgun bullet"
 	icon_state = "bullet"
 
-	damage_falloff = DAMAGE_FALLOFF_TIER_7
+	damage_falloff = DAMAGE_FALLOFF_TIER_10
 	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/dirty
