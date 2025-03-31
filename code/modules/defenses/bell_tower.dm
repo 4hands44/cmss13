@@ -213,8 +213,8 @@
 /obj/structure/machinery/defenses/bell_tower/mt/clear_tripwires()
 	if(md)
 		md.linked_tower = null
-		QDEL_NULL(md)null
 		QDEL_NULL(md)
+
 
 /obj/structure/machinery/defenses/bell_tower/cloaker
 	name = "camouflaged R-1NG bell tower"
