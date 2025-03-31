@@ -464,15 +464,23 @@
 
 
 /obj/item/storage/box/kit/pursuit
-	name = "\improper M39 Point Man Kit"
+	name = "\improper Pointman Breacher Kit"
 	pro_case_overlay = "pursuit"
+	desc = "A Pointman's kit containing an m39, Spare magazines penetrating magazines, explosives, shield support gear."
 
 /obj/item/storage/box/kit/pursuit/fill_preset_inventory()
 	new /obj/item/weapon/gun/smg/m39(src)
+	new /obj/item/weapon/shield/riot/ballistic/uscm(src)
+	new /obj/item/storage/large_holster/machete/full(src)
 	new /obj/item/attachable/stock/smg/collapsible/brace(src)
 	new /obj/item/attachable/magnetic_harness(src)
-	new /obj/item/storage/large_holster/machete/full(src)
-	new /obj/item/ammo_magazine/smg/m39/extended(src)
+	new /obj/item/ammo_magazine/smg/m39/penetrating(src)
+	new /obj/item/ammo_magazine/smg/m39/penetrating(src)
+	new /obj/item/maintenance_jack(src)
+	new /obj/item/tool/weldingtool/simple(src)
+	new /obj/item/explosive/plastic/breaching_charge(src)
+	new /obj/item/explosive/plastic/breaching_charge(src)
+	new /obj/item/explosive/plastic/breaching_charge(src)
 
 
 /obj/item/storage/box/kit/mini_engineer
@@ -658,3 +666,95 @@
 	new /obj/item/attachable/extended_barrel(src)
 	new /obj/item/ammo_magazine/rifle/type71/ap(src)
 	new /obj/item/ammo_magazine/rifle/type71/ap(src)
+
+/obj/item/storage/box/kit/nvgs
+	name = "\improper UPP Infared Goggles case"
+	pro_case_overlay = "sniper"
+
+/obj/item/storage/box/kit/nvgs/fill_preset_inventory()
+	new /obj/item/clothing/glasses/night/m42_night_goggles/upp(src)
+
+/obj/item/storage/box/kit/sapper
+	name = "\improper Sapper Kit"
+	pro_case_overlay = "defense"
+	desc = "A Sapper's equipment kit containing all the building materials and tools needed to quickly fortify a position in the field. Contains: 2x Stack of (Metal, Plasteel, Sandbags, Mines, Razorwire, Fragwire), 2x Nailgun Magazines, Tools"
+
+/obj/item/storage/box/kit/sapper/fill_preset_inventory()
+	new /obj/item/storage/backpack/marine/engineerpack/welder_chestrig(src)
+	new /obj/item/storage/pouch/construction/full(src)
+	new /obj/item/storage/pouch/construction/full(src)
+	new /obj/item/storage/toolkit/ms(src)
+	new /obj/item/explosive/mine(src)
+	new /obj/item/explosive/mine(src)
+	new /obj/item/explosive/mine(src)
+	new /obj/item/ammo_magazine/smg/nailgun(src)
+	new /obj/item/ammo_magazine/smg/nailgun(src)
+
+/obj/item/storage/box/kit/sentry
+	name = "\improper Sentry Net Kit"
+	pro_case_overlay = "sentry"
+	desc = "A  kit containing all the tools for a combat technician's to automate the defenses of a FOB or point of interest, including sentry guns, smart mines, and building materials.  Contains: x4 Sentryguns, 2 Upgrade kits, 3 Mine boxes, Tools"
+
+/obj/item/storage/box/kit/sentry/fill_preset_inventory()
+	new /obj/item/storage/backpack/marine/satchel/intel(src)
+	new /obj/item/storage/pouch/construction/full(src)
+	new /obj/item/device/sentry_computer(src)
+	new /obj/item/engi_upgrade_kit(src)
+	new /obj/item/engi_upgrade_kit(src)
+	new /obj/item/defenses/handheld/sentry(src)
+	new /obj/item/defenses/handheld/sentry(src)
+	new /obj/item/defenses/handheld/sentry(src)
+	new /obj/item/defenses/handheld/sentry(src)
+	new /obj/item/storage/toolkit/ms(src)
+	new /obj/item/storage/box/explosive_mines(src)
+	new /obj/item/storage/box/explosive_mines(src)
+	new /obj/item/storage/box/explosive_atmines(src)
+
+/obj/item/storage/box/kit/at
+	name = "\improper Anti tank Kit"
+	pro_case_overlay = "at"
+	desc = "A Squad Rifleman's Anti-Tank kit containing an M5 RPG, Spare rockets, and mines."
+
+/obj/item/storage/box/kit/fill_preset_inventory()
+	new /obj/item/storage/pouch/construction/full(src)
+	new /obj/item/weapon/gun/launcher/rocket(src)
+	new /obj/item/storage/backpack/marine/rocketpack(src)
+	new /obj/item/ammo_magazine/rocket/ap(src)
+	new /obj/item/ammo_magazine/rocket/ap(src)
+	new /obj/item/ammo_magazine/rocket/ap(src)
+	new /obj/item/ammo_magazine/rocket/ap(src)
+	new /obj/item/storage/box/explosive_atmines(src)
+	new /obj/item/storage/box/explosive_atmines(src)
+
+/obj/item/storage/box/kit/breacher
+	name = "\improper Demolition Kit"
+	pro_case_overlay = "breach"
+	desc = "A Combat Technician's demolition kit containing an array of explosives and tools to level any obstacle. Contains: C4, Breaching Charges, Hammer, Tools."
+
+/obj/item/storage/box/kit/breacher/fill_preset_inventory()
+	new /obj/item/storage/backpack/marine/engineerpack/welder_chestrig(src)
+	new /obj/item/weapon/twohanded/breacher(src)
+	new /obj/item/storage/toolkit/ms(src)
+	new /obj/item/storage/toolkit/ms(src)
+	new /obj/item/stack/folding_barricade/three(src)
+	new /obj/item/storage/pouch/explosive/C4(src)
+	new /obj/item/storage/pouch/explosive/breaching(src)
+	new /obj/item/storage/box/packet/incendiary(src)
+
+/obj/item/storage/box/kit/ewar
+	name = "\improper Electronic Warfare Kit"
+	pro_case_overlay = "ewar"
+	desc = "A Combat Technician's Electronic Warfare Kit  filled with tools to access UAVs and sentry nets, or hack anything. Contains: AR Headset, UAV, JIMA backpack, Computer, EMP grenades, Tools. (WIP, mostly Fluff)"
+
+/obj/item/storage/box/kit/ewar/fill_preset_inventory()
+	new /obj/item/storage/backpack/jima(src)
+	new /obj/item/device/sentry_computer(src)
+	new /obj/item/storage/toolkit/ms(src)
+	new /obj/item/clothing/glasses/night/hack_goggles(src)
+	new /obj/item/device/hackingdevice(src)
+	new /obj/item/device/motiondetector/intel(src)
+	new /obj/item/device/assembly/signaller(src)
+	new /obj/item/storage/pouch/explosive/emp(src)
+	new /obj/item/storage/pouch/electronics/full(src)
+	new /obj/item/uav_drone(src)
+	new /obj/item/uav_drone(src)
