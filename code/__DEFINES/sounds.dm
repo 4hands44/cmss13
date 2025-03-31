@@ -18,6 +18,9 @@
 #define SOUND_FREQ_HIGH 55000
 #define SOUND_FREQ_LOW 32000
 
+#define SOUND_MT_PING_HIGH 99000
+#define SOUND_MT_PING_LOW 22000
+
 #define ITEM_EQUIP_VOLUME 50
 
 //Reserved channels
