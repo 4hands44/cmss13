@@ -490,7 +490,7 @@
 /obj/item/clothing/under/marine/forecon
 	name = "\improper USCM FORECON compresssion uniform"
 	desc = "Special BDUs printed with a high contrast pattern for use on airless worlds or during boarding action. The Uniform also features an integrated harness for compatibility with the MK. 50 Compression series of combat suits."
-		icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
 	)
