@@ -353,4 +353,4 @@ window "detectorwindow"
 		zoom = 0
 		on-show = ""
 		on-hide = ""
-		style = ""
+		style = "
