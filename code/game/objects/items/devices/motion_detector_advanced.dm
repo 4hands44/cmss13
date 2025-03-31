@@ -175,9 +175,6 @@
 		if(distance > TRACKER_RANGE)
 			continue
 
-		if(isrobot(L))
-			continue
-
 		var/delta = L.l_move_time + time_to_detect
 		if(!L.action_busy && delta < world.time)
 			continue
