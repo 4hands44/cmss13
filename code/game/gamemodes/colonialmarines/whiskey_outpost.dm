@@ -589,13 +589,13 @@
 
 /obj/item/device/whiskey_supply_beacon //Whiskey Outpost Supply beacon. Might as well reuse the IR target beacon (Time to spook the fucking shit out of people.)
 	name = "ASB beacon"
-	desc = "Ammo Supply Beacon, it has 5 different settings for different supplies. Look at your weapons verb tab to be able to switch ammo drops."
+	desc = "Ammo Supply Beacon, it has different settings for different supplies. Look at your weapons verb tab to be able to switch ammo drops."
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "ir_beacon"
 	w_class = SIZE_SMALL
 	var/activated = 0
 	var/icon_activated = "ir_beacon_active"
-	var/supply_drop = 0 //0 = Regular ammo, 1 = Rocket, 2 = Smartgun, 3 = Sniper, 4 = Explosives + GL
+	var/supply_drop = 0
 
 /obj/item/device/whiskey_supply_beacon/attack_self(mob/user)
 	..()
@@ -613,10 +613,12 @@
 		"Explosives and grenades",
 		"Rocket ammo",
 		"Sniper ammo",
-		"Anti-Material Sniper ammo",
 		"Pyrotechnician tanks",
 		"Scout ammo",
 		"Smartgun ammo",
+		"Medical Supplies",
+		"Engineering Supplies",
+		"General Purpose Resupply",
 	)
 
 	var/supply_drop_choice = tgui_input_list(user, "Which supplies to call down?", "Supply Drop", supplies)
@@ -634,18 +636,24 @@
 		if("Sniper ammo")
 			supply_drop = 3
 			to_chat(usr, SPAN_NOTICE("Sniper ammo will now drop!"))
-		if("Anti-Material Sniper ammo")
-			supply_drop = 4
-			to_chat(usr, SPAN_NOTICE("Anti-Material Sniper ammo will now drop!"))
 		if("Explosives and grenades")
-			supply_drop = 5
+			supply_drop = 4
 			to_chat(usr, SPAN_NOTICE("Explosives and grenades will now drop!"))
 		if("Pyrotechnician tanks")
-			supply_drop = 6
+			supply_drop = 5
 			to_chat(usr, SPAN_NOTICE("Pyrotechnician tanks will now drop!"))
 		if("Scout ammo")
-			supply_drop = 7
+			supply_drop = 6
 			to_chat(usr, SPAN_NOTICE("Scout ammo will now drop!"))
+		if("Medical Supplies")
+			supply_drop = 7
+			to_chat(usr, SPAN_NOTICE("Medical Supplies will now drop!"))
+		if("Engineering Supplies")
+			supply_drop = 8
+			to_chat(usr, SPAN_NOTICE("Engineering Supplies will now drop!"))
+		if("General Purpose Resupply")
+			supply_drop = 9
+			to_chat(usr, SPAN_NOTICE("Food and supplies will now drop!"))
 		else
 			return
 
@@ -661,7 +669,7 @@
 	anchored = TRUE
 	w_class = 10
 	icon_state = "[icon_activated]"
-	playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
+	playsound(src, 'sound/effects/sos-morse-code.ogg', 15, 1)
 	to_chat(user, "You activate the [src]. Now toss it, the supplies will arrive in a moment!")
 
 	var/mob/living/carbon/C = user
@@ -669,6 +677,8 @@
 		C.toggle_throw_mode(THROW_MODE_NORMAL)
 
 	sleep(100) //10 seconds should be enough.
+	playsound(src, 'sound/effects/dropship_incoming.ogg', 15, 1)
+	sleep(20)
 	var/turf/T = get_turf(src) //Make sure we get the turf we're tossing this on.
 	drop_supplies(T, supply_drop)
 	playsound(src,'sound/effects/bamf.ogg', 50, 1)
@@ -676,43 +686,20 @@
 	return
 
 /obj/item/device/whiskey_supply_beacon/proc/drop_supplies(turf/T, SD)
-	if(!istype(T))
-		return
+	if(!istype(T)) return
 	var/list/spawnitems = list()
 	var/obj/structure/closet/crate/crate
 	crate = new /obj/structure/closet/crate/secure/weapon(T)
 	switch(SD)
 		if(0) // Alright 2 mags for the SL, a few mags for M41As that people would need. M39s get some love and split the shotgun load between slugs and buckshot.
-			spawnitems = list(/obj/item/ammo_magazine/rifle/m41aMK1,
-							/obj/item/ammo_magazine/rifle/m41aMK1,
-							/obj/item/ammo_magazine/rifle,
-							/obj/item/ammo_magazine/rifle,
-							/obj/item/ammo_magazine/rifle,
-							/obj/item/ammo_magazine/rifle/ap,
-							/obj/item/ammo_magazine/rifle/ap,
-							/obj/item/ammo_magazine/rifle/ap,
-							/obj/item/ammo_magazine/rifle/ap,
-							/obj/item/ammo_magazine/smg/m39,
-							/obj/item/ammo_magazine/smg/m39,
-							/obj/item/ammo_magazine/smg/m39,
-							/obj/item/ammo_magazine/smg/m39,
-							/obj/item/ammo_magazine/smg/m39/ap,
-							/obj/item/ammo_magazine/smg/m39/ap,
-							/obj/item/ammo_magazine/smg/m39/ap,
-							/obj/item/ammo_magazine/smg/m39/ap,
-							/obj/item/ammo_magazine/shotgun/slugs,
-							/obj/item/ammo_magazine/shotgun/slugs,
-							/obj/item/ammo_magazine/shotgun/slugs,
-							/obj/item/ammo_magazine/shotgun/buckshot,
-							/obj/item/ammo_magazine/shotgun/buckshot,
-							/obj/item/ammo_magazine/shotgun/buckshot)
-		if(1) // Six rockets should be good. Tossed in two AP rockets for possible late round fighting.
+			spawnitems = list(/obj/item/ammo_box/rounds/ap,
+							/obj/item/ammo_box/rounds/heap,
+							/obj/item/ammo_box/rounds/smg/ap,
+							/obj/item/ammo_box/rounds/smg/heap,
+							/obj/item/ammo_box/magazine/shotgun,
+							/obj/item/ammo_box/magazine/shotgun/buckshot)
+		if(1)
 			spawnitems = list(/obj/item/ammo_magazine/rocket,
-							/obj/item/ammo_magazine/rocket,
-							/obj/item/ammo_magazine/rocket,
-							/obj/item/ammo_magazine/rocket,
-							/obj/item/ammo_magazine/rocket,
-							/obj/item/ammo_magazine/rocket,
 							/obj/item/ammo_magazine/rocket,
 							/obj/item/ammo_magazine/rocket,
 							/obj/item/ammo_magazine/rocket/ap,
@@ -738,25 +725,67 @@
 							/obj/item/ammo_magazine/sniper,
 							/obj/item/ammo_magazine/sniper/incendiary,
 							/obj/item/ammo_magazine/sniper/flak)
-		if(4) //Amr sniper ammo.
-			spawnitems = list(/obj/item/ammo_magazine/sniper/anti_materiel,
-							/obj/item/ammo_magazine/sniper/anti_materiel,
-							/obj/item/ammo_magazine/sniper/anti_materiel,
-							/obj/item/ammo_magazine/sniper/anti_materiel,
-							/obj/item/ammo_magazine/sniper/anti_materiel)
-		if(5) // Give them explosives + Grenades for the Grenade spec. Might be too many grenades, but we'll find out.
+		if(4) // Give them explosives + Grenades for the Grenade spec. Might be too many grenades, but we'll find out.
 			spawnitems = list(/obj/item/storage/box/explosive_mines,
-							/obj/item/storage/belt/grenade/full)
-		if(6) // Pyrotech
+							/obj/item/storage/box/explosive_atmines,
+							/obj/item/storage/belt/grenade/full,
+							/obj/item/storage/box/nade_box,
+							/obj/item/storage/box/nade_box/frag)
+		if(5) // Pyrotech
 			var/fuel = pick(/obj/item/ammo_magazine/flamer_tank/large/B, /obj/item/ammo_magazine/flamer_tank/large/X)
 			spawnitems = list(/obj/item/ammo_magazine/flamer_tank/large,
 							/obj/item/ammo_magazine/flamer_tank/large,
 							fuel)
-		if(7) // Scout
+		if(6) // Scout
 			spawnitems = list(/obj/item/ammo_magazine/rifle/m4ra/custom,
 							/obj/item/ammo_magazine/rifle/m4ra/custom,
 							/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
 							/obj/item/ammo_magazine/rifle/m4ra/custom/impact)
+		if(7) // Medical
+			spawnitems = list(/obj/item/tool/surgery/surgical_line,
+			/obj/item/tool/surgery/synthgraft,
+			/obj/item/device/healthanalyzer,
+			/obj/item/storage/belt/medical/lifesaver/full,
+			/obj/item/device/defibrillator,
+			/obj/item/storage/firstaid/regular,
+			/obj/item/storage/firstaid/adv,
+			/obj/item/storage/firstaid/toxin,
+			/obj/item/storage/firstaid/rad,
+			/obj/item/reagent_container/blood/OMinus,
+			/obj/item/reagent_container/blood/OMinus,
+			/obj/item/reagent_container/blood/OMinus,
+			/obj/item/reagent_container/blood/OMinus,
+			/obj/item/storage/pouch/medical,
+			/obj/item/storage/pouch/firstaid/full,
+			/obj/item/storage/pouch/firstaid/full)
+		if(8) //Engi
+			spawnitems = list( /obj/item/storage/pouch/construction/full,
+			/obj/item/stack/sandbags_empty/full,
+			/obj/item/stack/sandbags_empty/full,
+			/obj/item/tool/shovel/etool/folded,
+			/obj/item/tool/shovel/etool/folded,
+			/obj/item/stack/folding_barricade/three,
+			/obj/item/stack/folding_barricade/three,
+			/obj/item/storage/box/explosive_atmines,
+			/obj/item/storage/box/explosive_mines,
+			/obj/item/storage/toolbox/mechanical,
+			/obj/item/storage/box/kit/defensegunner,
+			/obj/item/storage/box/kit/engineering_supply_kit)
+		if(9) //General
+			spawnitems = list(/obj/item/device/radio,
+			/obj/item/device/radio,
+			/obj/item/device/radio,
+			/obj/item/storage/firstaid/regular,
+			/obj/item/storage/box/donkpockets,
+			/obj/item/storage/box/donkpockets,
+			/obj/item/clothing/mask/gas,
+			/obj/item/clothing/mask/gas,
+			/obj/item/stack/sandbags_empty/full,
+			/obj/item/storage/box/m94,
+			/obj/item/storage/box/m94,
+			/obj/item/storage/box/m94/signal,
+			/obj/item/ammo_box/magazine/misc/mre,
+			/obj/item/device/whiskey_supply_beacon)
 	crate.storage_capacity = 60
 	for(var/path in spawnitems)
 		new path(crate)
