@@ -184,16 +184,6 @@
 	//detector_range = 7 //yeah no offscreen bs with this
 
 
-/obj/item/device/motiontracker/adv/internal/apply_debuff(mob/target)
-	var/mob/living/to_apply = target
-	if(HAS_TRAIT(to_apply, TRAIT_CHARGING))
-		to_chat(to_apply, SPAN_WARNING("You ignore some weird noises as you charge."))
-		return
-	if(istype(to_apply))
-		to_apply.set_effect(2, SUPERSLOW)
-		to_chat(to_apply, SPAN_WARNING("You feel very heavy."))
-		sound_to(to_apply, 'sound/items/detector.ogg')
-
 /obj/structure/machinery/defenses/bell_tower/mt
 	name = "R-1NG motion detector tower"
 	desc = "A tactical advanced version of the motion detector. Has an increased range, disrupts the activity of hostiles nearby."
