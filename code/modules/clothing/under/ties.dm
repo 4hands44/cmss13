@@ -705,7 +705,7 @@
 	. = ..()
 	// Only do this for the base type '/obj/item/clothing/accessory/poncho'.
 	select_gamemode_skin(/obj/item/clothing/accessory/poncho)
-	inv_overlay = image("icon" = inv_overlay_icon, "icon_state" = "[icon_state]")
+	inv_overlay = image(icon = inv_overlay_icon, icon_state = icon_state)
 	update_icon()
 	verbs += /obj/item/clothing/accessory/poncho/proc/toggle
 
