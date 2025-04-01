@@ -652,10 +652,73 @@
 
 /*
 //================================================
+			Gas Grenades
+//================================================
+*/
+
+/obj/item/explosive/grenade/gas
+	name = "\improper PARENT GAS GRENADE FOR DEVS THIS SHOULD NOT BE HERE"
+	desc = "Dev man has done an oopsie."
+	icon_state = "null"//null icon
+
+
+
+/*
+//================================================
+			Toxic Gas Grenade
+//================================================
+*/
+
+/obj/item/explosive/grenade/gas/toxic_gas
+	name = "\improper MZS Gas canister"
+	desc = "A canister grenade of deadly MZS gas. It is set to detonate in 4 seconds."
+	icon_state = "gas_grenade"//temp icon
+	color = "#649933"
+	det_time = 40
+	item_state = "grenade_phos_clf"//temp icon
+	underslug_launchable = FALSE
+	harmful = TRUE
+	antigrief_protection = TRUE
+	/// The nerve gas datum
+	var/datum/effect_system/smoke_spread/toxic/toxic_gas
+	/// The typepath of the nerve gas
+	var/toxic_gas_type = /datum/effect_system/smoke_spread/toxic
+	/// The radius the gas will reach
+	var/toxic_gas_radius = 8
+
+/obj/item/explosive/grenade/gas/toxic_gas/Initialize(mapload, ...)
+	. = ..()
+	toxic_gas = new toxic_gas_type
+	toxic_gas.attach(src)
+
+/obj/item/explosive/grenade/gas/toxic_gas/Destroy()
+	QDEL_NULL(toxic_gas)
+	return ..()
+
+/obj/item/explosive/grenade/gas/toxic_gas/prime()
+	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
+	toxic_gas.set_up(toxic_gas_radius, 0, get_turf(src), null, 6)
+	toxic_gas.start()
+	qdel(src)
+
+
+/obj/item/explosive/grenade/gas/toxic_gas/primed
+	toxic_gas_radius = 20
+	det_time = 6
+	item_state = "mortar"
+	icon_state = "mortar"
+	anchored = TRUE
+
+/obj/item/explosive/grenade/gas/toxic_gas/primed/Initialize()
+	. = ..()
+	activate()
+
+/*
+//================================================
 			Nerve Gas Grenades
 //================================================
 */
-/obj/item/explosive/grenade/nerve_gas
+/obj/item/explosive/grenade/gas/nerve_gas
 	name = "\improper CN20 canister grenade"
 	desc = "A canister grenade of deadly nerve gas. It is set to detonate in 4 seconds."
 	icon_state = "flashbang2"//temp icon
@@ -671,24 +734,128 @@
 	/// The radius the gas will reach
 	var/nerve_gas_radius = 2
 
-/obj/item/explosive/grenade/nerve_gas/Initialize(mapload, ...)
+/obj/item/explosive/grenade/gas/nerve_gas/Initialize(mapload, ...)
 	. = ..()
 	nerve_gas = new nerve_gas_type
 	nerve_gas.attach(src)
 
-/obj/item/explosive/grenade/nerve_gas/Destroy()
+/obj/item/explosive/grenade/gas/nerve_gas/Destroy()
 	QDEL_NULL(nerve_gas)
 	return ..()
 
-/obj/item/explosive/grenade/nerve_gas/prime()
+/obj/item/explosive/grenade/gas/nerve_gas/prime()
 	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
 	nerve_gas.set_up(nerve_gas_radius, 0, get_turf(src), null, 6)
 	nerve_gas.start()
 	qdel(src)
 
-/obj/item/explosive/grenade/nerve_gas/xeno
+/obj/item/explosive/grenade/gas/nerve_gas/xeno
 	name = "\improper CN20-X canister grenade"
 	nerve_gas_type = /datum/effect_system/smoke_spread/cn20/xeno
+
+/obj/item/explosive/grenade/gas/nerve_gas/primed
+	nerve_gas_radius = 16
+	det_time = 6
+	item_state = "mortar"
+	icon_state = "mortar"
+	anchored = TRUE
+
+/obj/item/explosive/grenade/gas/nerve_gas/primed/Initialize()
+	. = ..()
+	activate()
+
+/*
+//================================================
+			Poison Gas Grenades
+//================================================
+*/
+/obj/item/explosive/grenade/gas/mustard_gas
+	name = "\improper HD canister"
+	desc = "A canister grenade of deadly mustard gas. It is set to detonate in 4 seconds."
+	icon_state = "mustard_grenade"//temp icon
+	det_time = 40
+	item_state = "grenade_phos_clf"//temp icon
+	underslug_launchable = FALSE
+	harmful = TRUE
+	antigrief_protection = TRUE
+	/// The nerve gas datum
+	var/datum/effect_system/smoke_spread/mustard/mustard_gas
+	/// The typepath of the nerve gas
+	var/mustard_gas_type = /datum/effect_system/smoke_spread/mustard
+	/// The radius the gas will reach
+	var/mustard_gas_radius = 8
+
+/obj/item/explosive/grenade/gas/mustard_gas/Initialize(mapload, ...)
+	. = ..()
+	mustard_gas = new mustard_gas_type
+	mustard_gas.attach(src)
+
+/obj/item/explosive/grenade/gas/mustard_gas/Destroy()
+	QDEL_NULL(mustard_gas)
+	return ..()
+
+/obj/item/explosive/grenade/gas/mustard_gas/prime()
+	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
+	mustard_gas.set_up(mustard_gas_radius, 0, get_turf(src), null, 6)
+	mustard_gas.start()
+	qdel(src)
+
+
+/obj/item/explosive/grenade/gas/mustard_gas/primed
+	mustard_gas_radius = 20
+	det_time = 6
+	item_state = "mortar"
+	icon_state = "mortar"
+	anchored = TRUE
+
+/obj/item/explosive/grenade/mustard_gas/primed/Initialize()
+	. = ..()
+	activate()
+
+//================================================
+/obj/item/explosive/grenade/gas/chlorine_gas
+	name = "\improper Chlorine Gas canister"
+	desc = "A canister grenade of deadly chlorine gas. It is set to detonate in 4 seconds."
+	icon_state = "chlorine_grenade"//temp icon
+	det_time = 40
+	item_state = "grenade_phos_clf"//temp icon
+	underslug_launchable = FALSE
+	harmful = TRUE
+	antigrief_protection = TRUE
+	/// The nerve gas datum
+	var/datum/effect_system/smoke_spread/chlorine/chlorine_gas
+	/// The typepath of the nerve gas
+	var/chlorine_gas_type = /datum/effect_system/smoke_spread/chlorine
+	/// The radius the gas will reach
+	var/chlorine_gas_radius = 8
+
+/obj/item/explosive/grenade/gas/chlorine_gas/Initialize(mapload, ...)
+	. = ..()
+	chlorine_gas = new chlorine_gas_type
+	chlorine_gas.attach(src)
+
+/obj/item/explosive/grenade/gas/chlorine_gas/Destroy()
+	QDEL_NULL(chlorine_gas)
+	return ..()
+
+/obj/item/explosive/grenade/gas/chlorine_gas/prime()
+	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
+	chlorine_gas.set_up(chlorine_gas_radius, 0, get_turf(src), null, 6)
+	chlorine_gas.start()
+	qdel(src)
+
+
+/obj/item/explosive/grenade/gas/chlorine_gas/primed
+	chlorine_gas_radius = 20
+	det_time = 6
+	item_state = "mortar"
+	icon_state = "mortar"
+	anchored = TRUE
+
+/obj/item/explosive/grenade/gas/chlorine_gas/primed/Initialize()
+	. = ..()
+	activate()
+
 
 /*
 //================================================
@@ -937,7 +1104,7 @@
 	radius = 3
 	fire_type = FIRE_VARIANT_DEFAULT
 
-/obj/item/explosive/grenade/nerve_gas/xeno/rmc
+/obj/item/explosive/grenade/gas/nerve_gas/xeno/rmc
 	name = "\improper R2175/CN20 grenade"
 	desc = "A small grenade containing a vial of deadly nerve gas. Usually knocks out the targets for long enough to allow RMCs to take them out. You sense your Drill Instructor's screaming in the back of your head, mentioning something about a gas mask. It is set to detonate in 3.5 seconds."
 	icon_state = "rmc_grenade_gas"
