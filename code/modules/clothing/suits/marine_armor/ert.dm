@@ -575,7 +575,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	storage_slots = 2
 
-/obj/item/clothing/suit/storage/marine/clf/riot
+/obj/item/clothing/suit/storage/militia/clf/riot
 	name = "\improper UA-M1 Repainted body armor"
 	desc = "An Repaired Set of UA-M1 body armor that is employed by UA security, riot control and union-busting teams. This Set of Armor Has Been Repainted in Dark Brown Colours and has Handmade Kneepads and Armpads added to it, Is Used by the insurgents since the previous owners aren't using them for the defense of the UA anymore."
 	icon_state = "clf_ua"
@@ -584,10 +584,11 @@
 /obj/item/clothing/suit/storage/marine/ghillie/clf
 	name = "\improper Camouflaged Hunting Gear Rig"
 	desc = "An Camouflaged Hunter Gear Rig that has an Armor Plate on the Body while it sports handmade kneepads, is the basic gear used by the more elite Insurgent Freedom Fighters. This Armor Features civilian grade thermal dampening."
+	icon = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi'
 	icon_state = "clf_hunter"
 	storage_slots = 3
 
-/obj/item/clothing/suit/storage/marine/clf/hunter
+/obj/item/clothing/suit/storage/militia/clf/hunter
 	name = "\improper Camouflaged Hunting Gear Rig"
 	desc = "A Civilian style Hunting Rig that has an venlar breast plate, and handmade kneepads, is among the basic gear used by most Insurgent Freedom Fighters."
 	icon_state = "clf_hunter"
@@ -596,14 +597,17 @@
 /obj/item/clothing/suit/storage/marine/clf/upplight
 	name = "\improper UA-M1 Repainted body armor"
 	desc = "A set of UPP combat Armor modified by insurgents to be more lightweight and mobile."
+	icon = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi'
 	icon_state = "clf_combat"
 	storage_slots = 3
 
 /obj/item/clothing/suit/storage/marine/clf/uppheavy
 	name = "\improper UA-M1 Repainted body armor"
+	icon = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi'
 	desc = "An extremely heavy-duty set of body armor made out of Handcrafted Armor Plates, Repurposed Surplus Ballistic Vests and Several Armors Combined in one, Heavy and Highly Resistant, Made by the Insurgents For Their Autogunners and to Show that they are Prepared for Something Bigger than a Guerrilla War."
 	icon_state = "clf_heavy"
 	storage_slots = 2
+
 //===========================//CMB\\================================\\
 //=====================================================================\\
 
