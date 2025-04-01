@@ -310,11 +310,12 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
 	)
-	armor_bullet = CLOTHING_ARMOR_HIGH
-	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_VERYHIGH
+	armor_bullet = CLOTHING_ARMOR_VERYHIGHPLUS
+	armor_bomb = CLOTHING_ARMOR_VERYHIGHPLUS
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
-	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_VERYHIGH
 	storage_slots = 1
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP, /obj/item/clothing/under/marine/veteran/UPP/medic, /obj/item/clothing/under/marine/veteran/UPP/engi)
 
@@ -323,12 +324,12 @@
 	desc = "Standard body armor of the UPP military, the UL6 (Union Light MK6) is a light body armor, slightly weaker than the M3 pattern body armor in service with the USCM, specialized towards ballistics protection. This set of personal armor lacks the iconic neck piece and some of the armor in favor of user mobility."
 	storage_slots = 3
 	icon_state = "upp_armor_support"
-	slowdown = SLOWDOWN_ARMOR_LIGHT
-	armor_melee = CLOTHING_ARMOR_HIGH
-	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_VERYHIGH
+	armor_bullet = CLOTHING_ARMOR_VERYHIGHPLUS
+	armor_bomb = CLOTHING_ARMOR_VERYHIGHPLUS
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
-	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_VERYHIGH
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/support/synth
 	name = "\improper UL6 Synthetic personal armor"
@@ -361,14 +362,12 @@
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN
 	flags_armor_protection = BODY_FLAG_ALL_BUT_HEAD
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
-	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
-	armor_energy = CLOTHING_ARMOR_MEDIUM
-	armor_bomb = CLOTHING_ARMOR_HIGH
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
-	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
+	armor_melee = CLOTHING_ARMOR_VERYHIGHPLUS
+	armor_bullet = CLOTHING_ARMOR_ULTRAHIGHPLUS
+	armor_bomb = CLOTHING_ARMOR_VERYHIGHPLUS
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_VERYHIGHPLUS
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/heavy/Initialize()
 	. = ..()
@@ -543,6 +542,68 @@
 	desc = "The hauberk of a colonist militia member, created from boiled leather and some modern armored plates. While not the most powerful form of armor, and primitive compared to most modern suits of armor, it gives the wearer almost perfect mobility, which suits the needs of the local colonists. It is also quick to don, easy to hide, and cheap to produce in large workshops. This one has straps interweaved with the plates, that allow the user to fire a captured smartgun, if a bit uncomfortably."
 	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
 
+/obj/item/clothing/suit/storage/militia/ranger
+	name = "Insurgent ranger armor"
+	desc = "Constructed from salvaged longstreet tank plating. This armor covers the wearer and provides impressive protection from anything but anti-tank weapons. The primary downside is due to crude construction, and the large size of the plates it is incredibly cumbersome to move in."
+	icon_state = "mlu_ranger"
+	slowdown = SLOWDOWN_ARMOR_VERY_HEAVY
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_VERYHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_HIGH
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_VERYHIGH
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_VERYLOW
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	storage_slots = 0
+
+/obj/item/clothing/suit/storage/militia/ranger/leader
+	name = "colonial militia ranger armor"
+	desc = "Constructed from salvaged longstreet tank plating. This armor covers the wearer and provides impressive protection from anything but anti-tank weapons.The primary downside is due to crude construction, and the large size of the plates it is incredibly cumbersome to move in. This one features a nice all weather trenchcoat like is commonly found on the frontier."
+	icon_state = "mlu_ranger_leader"
+	slowdown = SLOWDOWN_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_VERYHIGH
+	armor_bullet = CLOTHING_ARMOR_VERYHIGHPLUS
+	armor_laser = CLOTHING_ARMOR_HIGH
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_VERYHIGH
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_VERYLOW
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	storage_slots = 2
+
+/obj/item/clothing/suit/storage/marine/clf/riot
+	name = "\improper UA-M1 Repainted body armor"
+	desc = "An Repaired Set of UA-M1 body armor that is employed by UA security, riot control and union-busting teams. This Set of Armor Has Been Repainted in Dark Brown Colours and has Handmade Kneepads and Armpads added to it, Is Used by the insurgents since the previous owners aren't using them for the defense of the UA anymore."
+	icon_state = "clf_ua"
+	storage_slots = 2
+
+/obj/item/clothing/suit/storage/marine/ghillie/clf
+	name = "\improper Camouflaged Hunting Gear Rig"
+	desc = "An Camouflaged Hunter Gear Rig that has an Armor Plate on the Body while it sports handmade kneepads, is the basic gear used by the more elite Insurgent Freedom Fighters. This Armor Features civilian grade thermal dampening."
+	icon_state = "clf_hunter"
+	storage_slots = 3
+
+/obj/item/clothing/suit/storage/marine/clf/hunter
+	name = "\improper Camouflaged Hunting Gear Rig"
+	desc = "A Civilian style Hunting Rig that has an venlar breast plate, and handmade kneepads, is among the basic gear used by most Insurgent Freedom Fighters."
+	icon_state = "clf_hunter"
+	storage_slots = 3
+
+/obj/item/clothing/suit/storage/marine/clf/upplight
+	name = "\improper UA-M1 Repainted body armor"
+	desc = "A set of UPP combat Armor modified by insurgents to be more lightweight and mobile."
+	icon_state = "clf_combat"
+	storage_slots = 3
+
+/obj/item/clothing/suit/storage/marine/clf/uppheavy
+	name = "\improper UA-M1 Repainted body armor"
+	desc = "An extremely heavy-duty set of body armor made out of Handcrafted Armor Plates, Repurposed Surplus Ballistic Vests and Several Armors Combined in one, Heavy and Highly Resistant, Made by the Insurgents For Their Autogunners and to Show that they are Prepared for Something Bigger than a Guerrilla War."
+	icon_state = "clf_heavy"
+	storage_slots = 2
 //===========================//CMB\\================================\\
 //=====================================================================\\
 
@@ -925,6 +986,21 @@
 	desc = "A heavier version of the armor system used by the Three World Empire's Royal Marines Commandos. Designers from a Weyland Yutani subsidary, Lindenthal-Ehrenfeld Militärindustrie, iterated on the USCMC's M3 pattern personal armor in their Tokonigara lab to create an armor systemed to suit the unique needs of the Three World Empire's smaller but better equipped Royal Marines."
 	icon_state = "rmc_pointman"
 	item_state = "rmc_pointman"
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	storage_slots = 7
+	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
+	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/bw_webbing
+	name = "kestrel light combat webbing armour"
+	desc = "A heavier version of the armor system used by the Three World Empire's Royal Blackwatch. Designers from a Weyland Yutani subsidary, Lindenthal-Ehrenfeld Militärindustrie, iterated on the USCMC's M3 pattern personal armor in their Tokonigara lab to create an armor systemed to suit the unique needs of the Three World Empire's smaller but better equipped Militaries."
+	icon_state = "rmc_webbing"
+	item_state = "rmc_webbing"
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_bomb = CLOTHING_ARMOR_HIGHPLUS

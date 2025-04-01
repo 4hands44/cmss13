@@ -201,6 +201,61 @@
 	icon_state = "bulletproofbadge"
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
+/obj/item/clothing/suit/armor/QRF
+	name = "C9 Tactical Response Armor"
+	desc = "The main protection in a Marshal's QRF team. While outdated compared to the M3 series, is cheaper to produce and maintain as well as lighter. It has markings on all sides denoting the user as an agent of the Colonial Marshals."
+	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
+	icon_state = "cmb_qrf"
+	item_state = "cmb_qrf"
+	flags_armor_protection = BODY_FLAG_ALL_BUT_HEAD
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	slowdown = SLOWDOWN_ARMOR_MEDIUM
+//  uniform_restricted = list(/obj/item/clothing/under/CM_uniform/QRF)
+
+/obj/item/clothing/suit/armor/QRF/smartgun
+	name = "C9S Smartgun Mesh"
+	desc = "Specially modified QRF armor designed to carry the M56 Smartgun platform, the lessened plating reduces protection somewhat. It has markings on all sides denoting the user as an agent of the Colonial Marshals."
+	icon_state = "cmb_qrf_sg"
+	item_state = "cmb_qrf_sg"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	flags_inventory = SMARTGUN_HARNESS
+
+/obj/item/clothing/suit/armor/QRF/corpsman
+	name = "C9 Medical Response Armor"
+	desc = "A modification of the normal QRF system, the medic gear is substantially lighter at the cost of protection, useful for quickly providing aid. It has markings on all sides denoting the user as an medic of the Colonial Marshals."
+	icon_state = "cmb_qrf_corp"
+	item_state = "cmb_qrf_corp"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+
+/obj/item/clothing/suit/armor/bulletproof/badge
+	icon_state = "bulletproofbadge"
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+
 /obj/item/clothing/suit/armor/riot
 	name = "riot suit"
 	desc = "A suit of armor with heavy padding to protect against melee attacks. Looks like it might impair movement."
@@ -269,6 +324,24 @@
 /obj/item/clothing/suit/armor/riot/marine/vintage_riot
 	desc = "Barring the slightly off-color plates, it's preserved quite well."
 	icon_state = "old_riot"
+
+/obj/item/clothing/suit/armor/riot/marine/honorguard
+	name = "\improper Honorguard defensive armor"
+	desc = "A heavy, rugged set of armor plates for when you really, really need to not die horribly while protecting someone. Slows you down though."
+	icon_state = "riot"
+	item_state = "swat_suit"
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_VERYHIGHPLUS
+	armor_bomb = CLOTHING_ARMOR_VERYHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
+	unacidable = TRUE
 
 /obj/item/clothing/suit/armor/swat
 	name = "swat suit"
