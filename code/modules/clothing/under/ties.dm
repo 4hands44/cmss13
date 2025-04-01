@@ -697,7 +697,6 @@
 	flags_atom = MAP_COLOR_INDEX
 
 	var/buttoned = FALSE
-	var/initial_icon_state
 	slot = ACCESSORY_SLOT_PONCHO
 	actions_types = list(/datum/action/item_action)
 
@@ -718,14 +717,14 @@
 		return 0
 
 	if(src.buttoned == FALSE)
-		src.icon_state = "[initial_icon_state]_c"
+		src.icon_state = "[initial(icon_state)]_c"
 		src.buttoned = TRUE
 		to_chat(usr, SPAN_INFO("You close \the [src]."))
 	else
-		src.icon_state = "[initial_icon_state]"
+		src.icon_state = "[initial(icon_state)]"
 		src.buttoned = FALSE
 		to_chat(usr, SPAN_INFO("You open \the [src]"))
-	update_clothing_icon()
+	update_icon()
 
 /obj/item/clothing/accessory/poncho/attack_self(mob/user)
 	..()
@@ -1370,6 +1369,8 @@ Wrist Accessories
 /obj/item/clothing/accessory/flak
 	name = "M67 flak vest"
 	desc = "An older model of flak jacket worn by combat support personnel such as dropship crew, and smartgunners. Much comfier than it's M70 successor, can be worn under most combat armor, however ballistic protection leaves much to be desired..."
+	icon = 'icons/obj/items/clothing/accessory/misc.dmi'
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/misc.dmi'
 	icon_state = "flak"
 	item_state = "flak"
 	var/tucked_in = FALSE
@@ -1390,6 +1391,5 @@ Wrist Accessories
 		icon_state = "flakslim"
 		user.visible_message(SPAN_NOTICE("[user] tucks in [src]'s sleeves."), SPAN_NOTICE("You tuck in [src]'s sleeves."))
 	else
-		icon_state = initial(icon_state)
+		icon_state = "[initial(icon_state)]"
 		user.visible_message(SPAN_NOTICE("[user] decides to keep [src] nice and puffy."), SPAN_NOTICE("You decide to keep [src] nice and puffy."))
-
