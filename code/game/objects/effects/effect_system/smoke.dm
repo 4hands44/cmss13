@@ -16,7 +16,7 @@
 	layer = ABOVE_MOB_LAYER + 0.1 //above mobs and barricades
 	var/amount = 2
 	var/spread_speed = 1 //time in decisecond for a smoke to spread one tile.
-	var/time_to_live = 8
+	var/time_to_live = 15
 	var/smokeranking = SMOKE_RANK_HARMLESS //Override priority. A higher ranked smoke cloud will displace lower and equal ones on spreading.
 	var/datum/cause_data/cause_data = null
 
@@ -132,7 +132,7 @@
 /////////////////////////////////////////////
 
 /obj/effect/particle_effect/smoke/bad
-	time_to_live = 10
+	time_to_live = 15
 	smokeranking = SMOKE_RANK_LOW
 
 /obj/effect/particle_effect/smoke/bad/Move()
@@ -294,7 +294,10 @@
 	name = "mustard gas"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "mustard"
+	time_to_live = 100
+	opacity = FALSE
 	smokeranking = SMOKE_RANK_HIGH
+
 
 /obj/effect/particle_effect/smoke/mustard/Move()
 	. = ..()
@@ -302,20 +305,99 @@
 		affect(creature)
 
 /obj/effect/particle_effect/smoke/mustard/affect(mob/living/carbon/human/creature)
+	if(!istype(creature) || issynth(creature))
+		return FALSE
+
+	if(creature.wear_mask && (creature.wear_mask.flags_inventory & BLOCKGASEFFECT))
+		creature.burn_skin(0.5)
+		creature.updatehealth()
+		return
+	else
+		creature.burn_skin(3)
+		creature.apply_damage(3, OXY)
+		creature.apply_damage(1, TOX)
+		creature.apply_internal_damage(1, "lungs")
+		if(creature.coughedtime != 1)
+			creature.coughedtime = 1
+			if(ishuman(creature)) //Humans only to avoid issues
+				creature.emote("gasp")
+			addtimer(VARSET_CALLBACK(creature, coughedtime, 0), 2 SECONDS)
+		creature.updatehealth()
+		return
+
+/////////////////////////////////////////////
+// Chlorine Gas
+/////////////////////////////////////////////
+
+/obj/effect/particle_effect/smoke/chlorine
+	name = "chlorine gas"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "mustard"
+	color = "#ADFF2F"
+	time_to_live = 100
+	opacity = FALSE
+	smokeranking = SMOKE_RANK_HIGH
+
+
+/obj/effect/particle_effect/smoke/chlorine/Move()
 	. = ..()
-	if(!.)
-		return FALSE
-	if(issynth(creature))
+	for(var/mob/living/carbon/human/creature in get_turf(src))
+		affect(creature)
+
+/obj/effect/particle_effect/smoke/chlorine/affect(mob/living/carbon/human/creature)
+	if(!istype(creature) || issynth(creature))
 		return FALSE
 
-	if(creature.burn_skin(0.75))
-		creature.last_damage_data = cause_data
+	if(creature.wear_mask && (creature.wear_mask.flags_inventory & BLOCKGASEFFECT))
+		return
+	else
+		creature.apply_damage(3, OXY)
+		creature.apply_damage(2, TOX)
+		creature.apply_internal_damage(1, "lungs")
+		if(creature.coughedtime != 1)
+			creature.coughedtime = 1
+			if(ishuman(creature)) //Humans only to avoid issues
+				creature.emote("gasp")
+			addtimer(VARSET_CALLBACK(creature, coughedtime, 0), 2 SECONDS)
+		creature.updatehealth()
+		return
 
-	if(creature.coughedtime < world.time && !creature.stat)
-		creature.coughedtime = world.time + 2 SECONDS
-		if(ishuman(creature)) //Humans only to avoid issues
-			creature.emote("gasp")
-	return TRUE
+/////////////////////////////////////////////
+// Toxic Gas
+/////////////////////////////////////////////
+
+/obj/effect/particle_effect/smoke/toxic
+	name = "Toxic gas"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "mustard"
+	color = "#ff2f2f"
+	time_to_live = 50
+	opacity = FALSE
+	smokeranking = SMOKE_RANK_HIGH
+
+
+/obj/effect/particle_effect/smoke/toxic/Move()
+	. = ..()
+	for(var/mob/living/carbon/human/creature in get_turf(src))
+		affect(creature)
+
+/obj/effect/particle_effect/smoke/toxic/affect(mob/living/carbon/human/creature)
+	if(!istype(creature) || issynth(creature))
+		return FALSE
+
+	if(creature.wear_mask && (creature.wear_mask.flags_inventory & BLOCKGASEFFECT))
+		return
+	else
+		creature.vomit()
+		creature.apply_damage(1, TOX)
+		creature.apply_internal_damage(1, "lungs")
+		if(creature.coughedtime != 1)
+			creature.coughedtime = 1
+			if(ishuman(creature)) //Humans only to avoid issues
+				creature.emote("gasp")
+			addtimer(VARSET_CALLBACK(creature, coughedtime, 0), 2 SECONDS)
+		creature.updatehealth()
+		return
 
 /////////////////////////////////////////////
 // Phosphorus Gas
@@ -388,6 +470,7 @@
 	color = "#80c7e4"
 	var/xeno_affecting = FALSE
 	opacity = FALSE
+	time_to_live = 30
 	alpha = 75
 
 /obj/effect/particle_effect/smoke/cn20/xeno
@@ -777,6 +860,12 @@
 /datum/effect_system/smoke_spread/phosphorus
 	smoke_type = /obj/effect/particle_effect/smoke/phosphorus
 
+/datum/effect_system/smoke_spread/miasma
+	smoke_type = /obj/effect/particle_effect/smoke/miasma
+
+/datum/effect_system/smoke_spread/weedkiller
+	smoke_type = /obj/effect/particle_effect/smoke/weedkiller
+
 /datum/effect_system/smoke_spread/phosphorus/start(intensity, max_intensity)
 	if(holder)
 		location = get_turf(holder)
@@ -791,6 +880,15 @@
 
 /datum/effect_system/smoke_spread/cn20
 	smoke_type = /obj/effect/particle_effect/smoke/cn20
+
+/datum/effect_system/smoke_spread/mustard
+	smoke_type = /obj/effect/particle_effect/smoke/mustard
+
+/datum/effect_system/smoke_spread/chlorine
+	smoke_type = /obj/effect/particle_effect/smoke/chlorine
+
+/datum/effect_system/smoke_spread/toxic
+	smoke_type = /obj/effect/particle_effect/smoke/toxic
 
 /datum/effect_system/smoke_spread/cn20/xeno
 	smoke_type = /obj/effect/particle_effect/smoke/cn20/xeno
