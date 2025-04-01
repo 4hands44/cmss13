@@ -476,13 +476,23 @@
 	return ..()
 
 /obj/item/mortar_shell/flamer_fire_act(dam, datum/cause_data/flame_cause_data)
-	addtimer(VARSET_CALLBACK(src, burning, FALSE), 5 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
-
 	if(burning)
 		return
 	burning = TRUE
 	cause_data = create_cause_data("Burning Mortar Shell", flame_cause_data.resolve_mob(), src)
-	handle_fire(cause_data)
+	handle_fire()
+
+/obj/item/mortar_shell/proc/handle_fire()
+	visible_message(SPAN_WARNING("[src] catches on fire and starts cooking off! It's gonna blow!"))
+	anchored = TRUE // don't want other explosions launching it elsewhere
+
+	var/datum/effect_system/spark_spread/sparks = new()
+	sparks.set_up(n = 10, loca = loc)
+	sparks.start()
+	new /obj/effect/warning/explosive(loc, 5 SECONDS)
+
+	addtimer(CALLBACK(src, PROC_REF(detonate), loc), 5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (src)), 5.5 SECONDS)
 
 /obj/item/mortar_shell/proc/can_explode()
 	return TRUE
@@ -495,24 +505,9 @@
 
 	return FALSE
 
-/obj/item/mortar_shell/flare/can_explode()
+/obj/item/mortar_shell/airburst/can_explode()
+	cell_explosion(src, 100, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, )
 	return FALSE
-
-/obj/item/mortar_shell/proc/handle_fire(cause_data)
-	if(can_explode())
-		visible_message(SPAN_WARNING("[src] catches on fire and starts cooking off! It's gonna blow!"))
-		anchored = TRUE // don't want other explosions launching it elsewhere
-		var/datum/effect_system/spark_spread/sparks = new()
-		sparks.set_up(n = 10, loca = loc)
-		sparks.start()
-		new /obj/effect/warning/explosive(loc, 5 SECONDS)
-
-		addtimer(CALLBACK(src, PROC_REF(explode), cause_data), 5 SECONDS)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (src)), 5.5 SECONDS)
-
-
-/obj/item/mortar_shell/proc/explode(flame_cause_data)
-	cell_explosion(src, 100, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, flame_cause_data)
 
 /obj/structure/closet/crate/secure/mortar_ammo
 	name = "\improper M402 mortar ammo crate"
@@ -563,8 +558,6 @@
 	new /obj/item/mortar_shell/flare(src)
 	new /obj/item/mortar_shell/flare(src)
 	new /obj/item/mortar_shell/flare(src)
-	new /obj/item/device/encryptionkey/engi(src)
-	new /obj/item/device/encryptionkey/engi(src)
 	new jtac_key_type(src)
 	new jtac_key_type(src)
 	new /obj/item/device/binoculars/range(src)

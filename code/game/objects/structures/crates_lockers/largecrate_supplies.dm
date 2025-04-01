@@ -231,7 +231,7 @@
 /obj/structure/largecrate/supply/explosives/mortar_cn20
 	name = "80mm cn20-gas mortar shell case (x25)"
 	desc = "A case containing twenty-five 80mm cn20 nerve gas mortar shells."
-	supplies = list(/obj/item/mortar_shell/cn20 = 25)
+	supplies = list(/obj/item/mortar_shell/nerve = 25)
 
 /obj/structure/largecrate/supply/explosives/mortar_mustard
 	name = "80mm mustard-gas mortar shell case (x25)"
