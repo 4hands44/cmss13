@@ -742,7 +742,7 @@
 // M56E HMG gunner belt
 /obj/item/storage/belt/marine/m2c
 	name = "\improper M804 heavygunner storage rig"
-	desc = "The M804 heavygunner storage rig is an M276 pattern toolbelt rig modified to carry ammunition for heavy machinegun systems, and engineering tools for the gunner."
+	desc = "The M804 CSW Operator storage rig is an M276 pattern toolbelt rig modified to carry ammunition for crew served weapon systems, and engineering tools for the gunner."
 	icon_state = "m2c_ammo_rig"
 	item_state = "m2c_ammo_rig"
 	icon = 'icons/obj/items/clothing/belts/belts.dmi'
@@ -757,7 +757,7 @@
 	)
 	storage_slots = 7
 	max_w_class = SIZE_LARGE
-	max_storage_space = 30
+	max_storage_space = 50
 	can_hold = list(
 		/obj/item/tool/weldingtool,
 		/obj/item/tool/wrench,
@@ -765,11 +765,18 @@
 		/obj/item/tool/crowbar,
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/explosive/plastic,
+		/obj/item/explosive/atmine,
 		/obj/item/explosive/mine,
 		/obj/item/ammo_magazine/m2c,
 		/obj/item/tool/wirecutters,
 		/obj/item/ammo_magazine/m56d,
+		/obj/item/mortar_shell,
+
 	)
+	bypass_w_limit = list(
+		/obj/item/mortar_shell,
+		)
+
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/shotgun

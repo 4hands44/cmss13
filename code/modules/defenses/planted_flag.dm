@@ -217,3 +217,9 @@
 
 #undef PLANTED_FLAG_BUFF
 #undef PLANTED_FLAG_RANGE
+
+/obj/item/storage/backpack/jima/comtech
+
+	name = "M701 Portable computer frame mount"
+	icon_state = "flag_backpack"
+	desc = "A bulky framework backpack stuffed full of telecommunication and computing equipment. It relays UAV data directly into the HUDs of near by marines allowing them to perform better. "

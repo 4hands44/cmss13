@@ -667,7 +667,6 @@
 
 	//an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile
 	var/effective_accuracy = P.get_effective_accuracy()
-	var/distance_limit = 6 //number of tiles needed to max out block probability
 	var/accuracy_factor = 50 //degree to which accuracy affects probability   (if accuracy is 100, probability is unaffected. Lower accuracies will increase block chance)
 
 	var/hitchance = min(projectile_coverage, (projectile_coverage * distance / (projectile_coverage_distance_limit * (cade_direction_correct ? 3 : 1))) + accuracy_factor * (1 - effective_accuracy/100))

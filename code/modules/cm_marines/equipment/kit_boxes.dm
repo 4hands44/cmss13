@@ -739,6 +739,8 @@
 	new /obj/item/storage/toolkit/ms(src)
 	new /obj/item/storage/toolkit/ms(src)
 	new /obj/item/stack/folding_barricade/three(src)
+	new /obj/item/explosive/plastic/breaching_charge/cluster(src)
+	new /obj/item/explosive/plastic/breaching_charge/cluster(src)
 	new /obj/item/storage/pouch/explosive/C4(src)
 	new /obj/item/storage/pouch/explosive/breaching(src)
 	new /obj/item/storage/box/packet/incendiary(src)
