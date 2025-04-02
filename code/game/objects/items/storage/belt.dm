@@ -2276,6 +2276,7 @@
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/stack/cable_coil,
 		/obj/item/cell,
+		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/handful,

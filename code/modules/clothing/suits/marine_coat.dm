@@ -101,11 +101,56 @@
 	has_buttons = TRUE
 	icon_state = "coat_officer"
 
-/obj/item/clothing/suit/storage/jacket/marine/trench
+/obj/item/clothing/suit/storage/jacket/marine/service/trenchcoat
 	name = "marine trenchcoat"
 	desc = "A staple item for units deploying to wet or cold enviroments."
 	has_buttons = TRUE
+	storage_slots = 4
 	icon_state = "marine_trenchcoat"
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
+
+/obj/item/clothing/suit/storage/jacket/marine/service/trenchcoat_tan
+	name = "marine trenchcoat"
+	desc = "A staple item for units deploying to wet or cold enviroments."
+	has_buttons = TRUE
+	storage_slots = 4
+	icon = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi'
+	icon_state = "marine_trenchcoat_tan"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+	initial_icon_state = "marine_trenchcoat_tan"
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
+
+/obj/item/clothing/suit/storage/jacket/marine/service/trenchcoat_grn
+	name = "marine trenchcoat"
+	desc = "A staple item for units deploying to wet or cold enviroments."
+	has_buttons = TRUE
+	storage_slots = 4
+	icon = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi'
+	icon_state = "marine_trenchcoat_grn"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+	initial_icon_state = "marine_trenchcoat_grn"
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
+
+
+/obj/item/clothing/suit/storage/jacket/marine/service/trenchcoat_blk
+	name = "marine trenchcoat"
+	desc = "A staple item for units deploying to wet or cold enviroments."
+	has_buttons = TRUE
+	storage_slots = 4
+	icon = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi'
+	icon_state = "marine_trenchcoat_blk"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+	initial_icon_state = "marine_trenchcoat_blk"
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/jacket/marine/pilot
 	name = "\improper M70B1 light flak jacket"
@@ -281,6 +326,7 @@
 	name = "bridge coat"
 	desc = "A heavy synthetic woolen coat issued to USCM Officers. Based on a classical design this coat is quite nice on cold nights in the Air conditioned CIC or a miserable cold night on a barren world. This one is a Dressy Blue for a Commanding officer."
 	has_buttons = FALSE
+	storage_slots = 4
 	item_state = "bridge_coat"
 	icon_state = "bridge_coat"
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
@@ -289,6 +335,7 @@
 	name = "bridge coat"
 	desc = "A heavy synthetic woolen coat issued to USCM Officers. Based on a classical design this coat is quite nice on cold nights in the Air conditioned CIC or a miserable cold night on a barren world. This one is Black."
 	has_buttons = FALSE
+	storage_slots = 4
 	item_state = "bridge_coat_grey"
 	icon_state = "bridge_coat_grey"
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)

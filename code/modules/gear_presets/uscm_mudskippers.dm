@@ -1,4 +1,4 @@
-/datum/equipment_preset/ms
+/datum/equipment_preset/uscm_mudskippers
 	name = "Mudskipper"
 	faction = FACTION_MARINE
 	faction_group = FACTION_LIST_MARINE
@@ -7,6 +7,9 @@
 	var/auto_squad_name
 	///Allows the squad to be set even if spawned on admin z level
 	var/ert_squad = FALSE
+
+/datum/equipment_preset/uscm_mudskippers/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_NORMAL
 
 	utility_under = list(/obj/item/clothing/under/marine)
 	utility_hat = list(/obj/item/clothing/head/cmcap)
@@ -25,24 +28,21 @@
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
 
-/datum/equipment_preset/ms/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_NORMAL
-
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/ms/commander
-	name = "MS Commanding Officer"
+/datum/equipment_preset/uscm_mudskippers/commander
+	name = "Commanding Officer (Mudskippers)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	assignment = JOB_MS_CO
 	rank = JOB_MS_CO
-	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "CDR"
+	paygrades = list(PAY_SHORT_MO5)
+	role_comm_title = "CO"
 	skills = /datum/skills/commander
-	idtype = /obj/item/card/id/gold
+	idtype = /obj/item/card/id/gold/council
 
-	minimap_icon = "co_MS"
+	minimap_icon = "co"
 	minimap_background = "background_command"
 
 	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
@@ -60,112 +60,820 @@
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit)
 
-/datum/equipment_preset/ms/commander/New()
+/datum/equipment_preset/uscm_mudskippers/commander/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_MARINE_ALL)
 
-/datum/equipment_preset/ms/commander/load_gear(mob/living/carbon/human/new_human)
-	var/sidearm = "Mateba"
-	var/kit = null
-	var/sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
+/datum/equipment_preset/uscm_mudskippers/commander/load_race(mob/living/carbon/human/new_human, client/mob_client)
+	..()
+	ADD_TRAIT(new_human, TRAIT_EMOTE_CD_EXEMPT, TRAIT_SOURCE_JOB)
+
+/datum/equipment_preset/uscm_mudskippers/commander/load_gear(mob/living/carbon/human/new_human)
+
 	var/back_item = /obj/item/storage/backpack/satchel/lockable
 
-	if(new_human.client && new_human.client.prefs)
-		sidearm = new_human.client.prefs.commander_sidearm
-		switch(sidearm)
-			if(CO_GUN_MATEBA)
-				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
-				kit = /obj/item/storage/mateba_case/captain
-			if(CO_GUN_MATEBA_SPECIAL)
-				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/special
-			if(CO_GUN_MATEBA_COUNCIL)
-				sidearmpath = /obj/item/storage/belt/gun/mateba/council/full
-				kit = /obj/item/storage/mateba_case/captain/council
-			if(CO_GUN_DEAGLE)
-				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co
-			if(CO_GUN_DEAGLE_COUNCIL)
-				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
-
-	//back
-	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
-	if(kit)
-		new_human.equip_to_slot_or_del(new kit(new_human), WEAR_IN_BACK)
-	//head
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(new_human), WEAR_HEAD)
+	new_human.set_species("Human Hero")
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
-	//uniform
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/command(new_human), WEAR_BODY)
-	//jacket
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/SO(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/ceremonial(new_human), WEAR_J_STORE)
-	//waist
-	new_human.equip_to_slot_or_del(new sidearmpath(new_human), WEAR_WAIST)
-	//limbs
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress/commander(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_L_HAND)
-	//pockets
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/formal/servicedress(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/waistcoat(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/trenchcoat_tan(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated/black(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/black(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/cmateba/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(new_human), WEAR_L_STORE)
-
-/datum/equipment_preset/ms/load_preset(mob/living/carbon/human/new_human, randomise, count_participant)
-	. = ..()
-	if(!auto_squad_name || (should_block_game_interaction(new_human) && !ert_squad))
-		return
-	if(!GLOB.data_core.manifest_modify(new_human.real_name, WEAKREF(new_human), assignment, rank))
-		GLOB.data_core.manifest_inject(new_human)
-
-	var/obj/item/card/id/ID = new_human.get_idcard()
-	var/datum/money_account/acct = create_account(new_human, rand(30, 50), GLOB.paygrades[ID.paygrade])
-	ID.associated_account_number = acct.account_number
-
-	var/datum/squad/auto_squad = get_squad_by_name(auto_squad_name)
-	if(auto_squad)
-		transfer_marine_to_squad(new_human, auto_squad, new_human.assigned_squad, ID)
-	if(!ert_squad && !auto_squad.active)
-		auto_squad.engage_squad(FALSE)
-
-	new_human.marine_buyable_categories[MARINE_CAN_BUY_EAR] = 0
-	new_human.sec_hud_set_ID()
-	new_human.hud_set_squad()
-
-	if(new_human.wear_l_ear)
-		if(istype(new_human.wear_l_ear, /obj/item/device/radio/headset/almayer/marine))
-			var/obj/item/device/radio/headset/almayer/marine/equipped_headset = new_human.wear_l_ear
-			equipped_headset.add_hud_tracker(new_human)
-	else if(new_human.wear_r_ear)
-		if(istype(new_human.wear_r_ear, /obj/item/device/radio/headset/almayer/marine))
-			var/obj/item/device/radio/headset/almayer/marine/equipped_headset = new_human.wear_r_ear
-			equipped_headset.add_hud_tracker(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/cotablet(new_human), WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate(new_human), WEAR_ACCESSORY)
 
 
-//*****************************************************************************************************/
-/datum/equipment_preset/ms/pfc
-	name = "USCM Squad Rifleman"
+//MAJOR
+/datum/equipment_preset/uscm_mudskippers/commander/major
+	name = "USCM Major (Mudskippers)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
-	access = list(ACCESS_MARINE_PREP)
-	assignment = JOB_SQUAD_MARINE
-	rank = JOB_SQUAD_MARINE
-	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_3)
-	role_comm_title = "RFN"
-	skills = /datum/skills/pfc
+	idtype = /obj/item/card/id/gold
+	rank = JOB_MS_CO
+	paygrades = list(PAY_SHORT_MO4)
+	role_comm_title = "CO"
 
-	minimap_icon = "private"
-	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
-	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black, , /obj/item/clothing/suit/storage/jacket/marine/dress)
 
-/datum/equipment_preset/ms/pfc/load_gear(mob/living/carbon/human/new_human)
+
+/datum/equipment_preset/uscm_mudskippers/commander/major/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster(new_human), WEAR_ACCESSORY)
+	. = ..()
+
+//--Company Commander---//
+
+/datum/equipment_preset/uscm_mudskippers/ccommander
+	name = "Company Commander (Mudskippers)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	assignment = JOB_MS_GC
+	rank = JOB_MS_GC
+	paygrades = list(PAY_SHORT_MO3)
+	role_comm_title = "CDR"
+	skills = /datum/skills/commander
+	idtype = /obj/item/card/id/gold
+
+	minimap_icon = "xo"
+	minimap_background = "background_command"
+
+	utility_under = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/marine/officer/command, /obj/item/clothing/under/marine/officer/boiler)
+	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
+	utility_extra = list(/obj/item/clothing/glasses/sunglasses,/obj/item/clothing/glasses/sunglasses/big,/obj/item/clothing/glasses/sunglasses/aviator,/obj/item/clothing/glasses/mbcg)
+
+	service_under = list(/obj/item/clothing/under/marine/officer/bridge)
+	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
+	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
+	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black, /obj/item/clothing/head/marine/peaked/service)
+
+	dress_under = list(/obj/item/clothing/under/marine/dress, /obj/item/clothing/under/marine/officer/formal/servicedress)
+	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
+	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain/white, /obj/item/clothing/head/marine/peaked/captain/black, /obj/item/clothing/head/marine/peaked)
+	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black, , /obj/item/clothing/suit/storage/jacket/marine/dress)
+
+/datum/equipment_preset/uscm_mudskippers/ccommander/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_MAIN)
+
+/datum/equipment_preset/uscm_mudskippers/ccommander/load_gear(mob/living/carbon/human/new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/boiler(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/brown_vest(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/cmateba/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/medhud(new_human), WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/trench_whistle,(new_human), WEAR_IN_JACKET)
+
+//--Company Commander Commander Ground---//
+
+/datum/equipment_preset/uscm_mudskippers/ccommander/ground
+	name = "Company Commander-Ground (Mudskippers)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+/datum/equipment_preset/uscm_mudskippers/ccommander/ground/load_gear(mob/living/carbon/human/new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/boiler(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/cmateba/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/medhud(new_human), WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/trench_whistle,(new_human), WEAR_IN_JACKET)
+
+//---Adjutant---//
+/datum/equipment_preset/uscm_mudskippers/xo
+	name = "Adjutant(Mudskippers)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	idtype = /obj/item/card/id/silver
+	assignment = JOB_MS_XO
+	rank = JOB_MS_XO
+	paygrades = list(PAY_SHORT_MO2)
+	role_comm_title = "Adjc"
+	minimum_age = 35
+	skills = /datum/skills/commander
+
+	minimap_icon = "so"
+	minimap_background = "background_command"
+
+	utility_under = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/marine/officer/command, /obj/item/clothing/under/marine/officer/boiler)
+	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
+	utility_extra = list(/obj/item/clothing/glasses/sunglasses,/obj/item/clothing/glasses/sunglasses/big,/obj/item/clothing/glasses/sunglasses/aviator,/obj/item/clothing/glasses/mbcg)
+
+	service_under = list(/obj/item/clothing/under/marine/officer/formal/gray, /obj/item/clothing/under/marine/officer/formal/turtleneck)
+	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
+	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black, /obj/item/clothing/head/marine/peaked/service)
+
+	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
+
+/datum/equipment_preset/uscm_mudskippers/xo/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
+
+/datum/equipment_preset/uscm_mudskippers/xo/load_gear(mob/living/carbon/human/new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/trench_whistle,(new_human), WEAR_IN_JACKET)
+
+//---LT---//
+/datum/equipment_preset/uscm_mudskippers/lt
+	name = "USCM Lieutenant(Mudskippers)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	idtype = /obj/item/card/id/silver
+	assignment = JOB_MS_LT
+	rank = JOB_MS_LT
+	paygrades = list(PAY_SHORT_MO1)
+	role_comm_title = "LT"
+	minimum_age = 25
+	skills = /datum/skills/commander
+
+	minimap_icon = "so"
+	minimap_background = "background_command"
+
+/datum/equipment_preset/uscm_mudskippers/lt/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_MAIN)
+
+/datum/equipment_preset/uscm_mudskippers/lt/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/bridge(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(new_human), WEAR_ACCESSORY)
+
+/datum/equipment_preset/uscm_mudskippers/lt/o2
+	paygrades = list(PAY_SHORT_MO2)
+
+//---Platoon Commander---//
+/datum/equipment_preset/uscm_mudskippers/pc
+	name = "Platoon Commander(Mudskippers)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	idtype = /obj/item/card/id/silver
+	assignment = JOB_MS_PC
+	rank = JOB_MS_PC
+	paygrades = list(PAY_SHORT_MO1)
+	role_comm_title = "LT"
+	minimum_age = 25
+	skills = /datum/skills/commander
+
+	minimap_icon = "so"
+	minimap_background = "background_command"
+
+	utility_under = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/marine/officer/command, /obj/item/clothing/under/marine/officer/boiler)
+	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
+
+/datum/equipment_preset/uscm_mudskippers/pc/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_MAIN)
+
+/datum/equipment_preset/uscm_mudskippers/pc/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/boiler(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/bridge(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new/obj/item/tool/crew_monitor(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/trench_whistle,(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/medhud(new_human), WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate(new_human), WEAR_L_HAND)
+
+/datum/equipment_preset/uscm_mudskippers/pc/o2
+	paygrades = list(PAY_SHORT_MO2)
+
+//------------------Squad------------------//
+
+//---SL---//
+/datum/equipment_preset/uscm_mudskippers/leader
+	name = "Squad Leader(mudskippers)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP)
+	assignment = JOB_MS_SL
+	rank = JOB_SQUAD_LEADER
+	paygrades = list(PAY_SHORT_ME5)
+	role_comm_title = "SL"
+	minimum_age = 27
+	skills = /datum/skills/commander
+
+	minimap_icon = "leader"
+
+/datum/equipment_preset/uscm_mudskippers/leader/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_MAIN)
+
+/datum/equipment_preset/uscm_mudskippers/leader/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
-/datum/equipment_preset/ms/pfc/cryo
-	name = "USCM Cryo Squad Rifleman"
-	auto_squad_name = SQUAD_MARINE_CRYO
+//---Equipped---
+/datum/equipment_preset/uscm_mudskippers/leader/full
+	name = "Squad Leader(mudskippers)"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-/datum/equipment_preset/ms/pfc/cryo/load_gear(mob/living/carbon/human/new_human)
-	..()
+/datum/equipment_preset/uscm_mudskippers/leader/full/load_gear(mob/living/carbon/human/new_human)
+//clothes
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/lead(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs/earplugs(new_human), WEAR_R_EAR)
+//accessory
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/brown_vest(new_human), WEAR_ACCESSORY)
+//armor
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/bridge(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium/leader(new_human), WEAR_JACKET)
+//storage
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/mk1_heap(new_human), WEAR_R_STORE)
+//item
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiontracker/adv, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/roller/bedroll(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/leader(new_human), WEAR_IN_BACK)
+//vest items
+	new_human.equip_to_slot_or_del(new /obj/item/device/trench_whistle,(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_IN_ACCESSORY)
+//weapon
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1(new_human), WEAR_J_STORE)
+
+/datum/equipment_preset/uscm_mudskippers/leader/full/e4
+	paygrades = list(PAY_SHORT_ME4)
+
+/datum/equipment_preset/uscm_mudskippers/leader/full/e6
+	paygrades = list(PAY_SHORT_ME6)
+
+/datum/equipment_preset/uscm_mudskippers/leader/full/e7
+	paygrades = list(PAY_SHORT_ME7)
+
+/datum/equipment_preset/uscm_mudskippers/leader/full/e8
+	paygrades = list(PAY_SHORT_ME8)
+
+//---SG---//
+/datum/equipment_preset/uscm_mudskippers/sg
+	name = "Squad Smartgunner(mudskippers)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	access = list(
+		ACCESS_MARINE_COMMAND,
+		ACCESS_MARINE_CHEMISTRY,
+		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_MORGUE,
+		ACCESS_MARINE_KITCHEN,
+		ACCESS_MARINE_ALPHA,
+		ACCESS_MARINE_BRAVO,
+		ACCESS_MARINE_CHARLIE,
+		ACCESS_MARINE_DELTA,
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_SMARTPREP,
+		ACCESS_MARINE_DATABASE,
+		ACCESS_MARINE_BRIG,
+	)
+	assignment = JOB_MS_SMARTGUNNER
+	rank = JOB_SQUAD_SMARTGUN
+	paygrades = list(PAY_SHORT_ME3)
+	role_comm_title = "SG"
+	skills = /datum/skills/commander
+
+	minimap_icon = "smartgunner"
+
+/datum/equipment_preset/uscm_mudskippers/sg/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/marine/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+
+//---Equipped---
+/datum/equipment_preset/uscm_mudskippers/sg/full
+	name = "Squad Smartgunner(mudskippers)"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+/datum/equipment_preset/uscm_mudskippers/sg/full/load_gear(mob/living/carbon/human/new_human)
+//clothes
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs/earplugs(new_human), WEAR_R_EAR)
+//accessory
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/flak(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/brown_vest(new_human), WEAR_ACCESSORY)
+//armor
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(new_human), WEAR_J_STORE)
+//storage
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flamertank(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(new_human), WEAR_WAIST)
+//vest items
+	new_human.equip_to_slot_or_del(new /obj/item/smartgun_battery(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/roller/bedroll(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_IN_JACKET)
+//weapons
+	if(prob(50))
+		new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/smartgunner/full(new_human), WEAR_BACK)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/underextinguisher(new_human), WEAR_BACK)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank(new_human), WEAR_IN_R_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank(new_human), WEAR_IN_R_STORE)
+
+/datum/equipment_preset/uscm_mudskippers/sg/full/e2
+	paygrades = list(PAY_SHORT_ME2)
+
+/datum/equipment_preset/uscm_mudskippers/sg/full/e3
+	paygrades = list(PAY_SHORT_ME3)
+
+/datum/equipment_preset/uscm_mudskippers/sg/full/e4
+	paygrades = list(PAY_SHORT_ME4)
+
+//---Medic---//
+/datum/equipment_preset/uscm_mudskippers/medic
+	name = "Squad Hospital Corpsman(mudskippers)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	access = list(
+		ACCESS_MARINE_COMMAND,
+		ACCESS_MARINE_CHEMISTRY,
+		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_MORGUE,
+		ACCESS_MARINE_KITCHEN,
+		ACCESS_MARINE_ALPHA,
+		ACCESS_MARINE_BRAVO,
+		ACCESS_MARINE_CHARLIE,
+		ACCESS_MARINE_DELTA,
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_MEDPREP,
+		ACCESS_MARINE_DATABASE,
+		ACCESS_MARINE_BRIG,
+	)
+	assignment = JOB_MS_MEDIC
+	rank = JOB_SQUAD_MEDIC
+	paygrades = list(PAY_SHORT_ME3)
+	role_comm_title = "HM"
+	skills = /datum/skills/commander
+
+	minimap_icon = "medic"
+
+	utility_under = list(/obj/item/clothing/under/marine/medic)
+
+/datum/equipment_preset/uscm_mudskippers/medic/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/marine/satchel/medic
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine/medic
+
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+
+//---Equipped---
+/datum/equipment_preset/uscm_mudskippers/medic/full
+	name = "Squad Hospital Corpsman(mudskippers)"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+/datum/equipment_preset/uscm_mudskippers/medic/full/load_gear(mob/living/carbon/human/new_human)
+//clothes
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/medic(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/med(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs/earplugs(new_human), WEAR_R_EAR)
+//accessory
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped(new_human), WEAR_ACCESSORY)
+//armor
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/medic(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium/carrier(new_human), WEAR_JACKET)
+//storage
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/medic(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_advanced(new_human), WEAR_L_STORE)
+//armor equipment
+	new_human.equip_to_slot_or_del(new /obj/item/roller/surgical(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/roller(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/roller/bedroll(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_IN_JACKET)
+//equipment
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator(new_human), WEAR_IN_BACK)
+//kit
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/czsp/medical(new_human), WEAR_L_HAND)
+//weapon
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/mk1_heap(new_human), WEAR_R_STORE)
+
+/datum/equipment_preset/uscm_mudskippers/medic/full/e4
+	paygrades = list(PAY_SHORT_ME4)
+
+//---Engi---//
+/datum/equipment_preset/uscm_mudskippers/engineer
+	name = "Squad Combat Technician(mudskippers)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	access = list(
+		ACCESS_MARINE_COMMAND,
+		ACCESS_MARINE_CHEMISTRY,
+		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_MORGUE,
+		ACCESS_MARINE_KITCHEN,
+		ACCESS_MARINE_ALPHA,
+		ACCESS_MARINE_BRAVO,
+		ACCESS_MARINE_CHARLIE,
+		ACCESS_MARINE_DELTA,
+		ACCESS_MARINE_ENGPREP,
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_DATABASE,
+		ACCESS_MARINE_BRIG,
+	)
+	assignment = JOB_MS_ENGINEER
+	rank = JOB_SQUAD_ENGI
+	paygrades = list(PAY_SHORT_ME4)
+	role_comm_title = "ComTech"
+	skills = /datum/skills/commander
+
+	minimap_icon = "engi"
+
+	utility_under = list(/obj/item/clothing/under/marine/engineer)
+
+/datum/equipment_preset/uscm_mudskippers/engineer/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine/tech
+
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+
+//---Equipped---
+/datum/equipment_preset/uscm_mudskippers/engineer/full
+	name = "Squad Combat Technician(mudskippers)"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+/datum/equipment_preset/uscm_mudskippers/engineer/full/load_gear(mob/living/carbon/human/new_human)
+//clothes
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/engineer(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/engi(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs/earplugs(new_human), WEAR_R_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
+//accessory
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/brown_vest(new_human), WEAR_ACCESSORY)
+//armor
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tech(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium/carrier(new_human), WEAR_JACKET)
+//storage
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/utility/full/ms(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/welder_chestrig(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/sling(new_human), WEAR_R_STORE)
+//items
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiontracker/adv, WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/roller/bedroll(new_human), WEAR_IN_BACK)
+//vest items
+	new_human.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_IN_ACCESSORY)
+//kit
+	pick_engi_kit(new_human)
+//weapon
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/heap(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/heap(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/heap(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/heap(new_human), WEAR_IN_JACKET)
+
+/datum/equipment_preset/uscm_mudskippers/engineer/full/e3
+	paygrades = list(PAY_SHORT_ME3)
+
+/datum/equipment_preset/proc/pick_engi_kit(mob/living/carbon/human/new_human)
+	if(!istype(new_human)) return
+	var/engi_kit = pick(
+		/obj/item/storage/box/kit/sapper,
+		/obj/item/storage/box/kit/sentry,
+		/obj/item/storage/box/spec/pyro,
+		/obj/item/storage/box/kit/at,
+		/obj/item/storage/box/kit/breacher,
+		/obj/item/storage/box/kit/ewar,
+		)
+	new_human.equip_to_slot_or_del(new engi_kit, WEAR_L_HAND)
+
+//---RFM---//
+/datum/equipment_preset/uscm_mudskippers/rfm
+	name = "Squad Rifleman(mudskippers)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	access = list(
+		ACCESS_MARINE_COMMAND,
+		ACCESS_MARINE_CHEMISTRY,
+		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_MORGUE,
+		ACCESS_MARINE_KITCHEN,
+		ACCESS_MARINE_ALPHA,
+		ACCESS_MARINE_BRAVO,
+		ACCESS_MARINE_CHARLIE,
+		ACCESS_MARINE_DELTA,
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_DATABASE,
+		ACCESS_MARINE_BRIG,
+	)
+	assignment = JOB_MS_RFM
+	rank = JOB_MS_RFM
+	paygrades = list(PAY_SHORT_ME2)
+	role_comm_title = "Rfm"
+	skills = /datum/skills/commander
+
+	minimap_icon = "private"
+
+/datum/equipment_preset/uscm_mudskippers/rfm/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/marine/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+
+/datum/equipment_preset/uscm_mudskippers/rfm/full
+	name = "Squad Rifleman(mudskippers)"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+/datum/equipment_preset/uscm_mudskippers/rfm/full/load_gear(mob/living/carbon/human/new_human)
+//clothing
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs/earplugs(new_human), WEAR_R_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
+//accessory
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/brown_vest(new_human), WEAR_ACCESSORY)
+//armor
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium/carrier(new_human), WEAR_JACKET)
+//storage
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/utility/full(new_human), WEAR_WAIST)
+//items
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiontracker/adv, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/roller/bedroll(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive(new_human), WEAR_IN_BACK)
+//vest items
+	new_human.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_IN_ACCESSORY)
+//kit
+	pick_rfm_kit(new_human)
+//weapon
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/mk1_heap(new_human), WEAR_R_STORE)
+
+/datum/equipment_preset/uscm_mudskippers/rfm/full/e1
+	paygrades = list(PAY_SHORT_ME1)
+
+/datum/equipment_preset/uscm_mudskippers/rfm/full/e3
+	paygrades = list(PAY_SHORT_ME3)
+
+/datum/equipment_preset/uscm_mudskippers/rfm/full/e4
+	paygrades = list(PAY_SHORT_ME4)
+
+
+/datum/equipment_preset/proc/pick_rfm_kit(mob/living/carbon/human/new_human)
+	if(!istype(new_human)) return
+	var/rfm_kit = pick(
+		/obj/item/storage/box/spec/pyro,
+		/obj/item/storage/box/spec/heavy_grenadier,
+		/obj/item/storage/box/spec/scout,
+		/obj/item/storage/box/spec/demolitionist,
+		/obj/item/storage/box/spec/sniper,
+		/obj/item/storage/box/kit/heavy_support,
+		/obj/item/storage/box/kit/pursuit,
+		/obj/item/storage/box/kit/mini_jtac,
+		)
+	new_human.equip_to_slot_or_del(new rfm_kit, WEAR_L_HAND)
+
+//------------------Support------------------//
+
+//---PO---//
+/datum/equipment_preset/uscm_mudskippers/po
+	name = "USCM Pilot (Mudskippers)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	idtype = /obj/item/card/id/silver
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT)
+	assignment = JOB_MS_PILOT
+	rank = JOB_MS_PILOT
+	paygrades = list(PAY_SHORT_ME4)
+	role_comm_title = "DP"
+	skills = /datum/skills/pilot
+
+	minimap_icon = "pilot"
+
+/datum/equipment_preset/uscm_mudskippers/po/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/satchel
+	if(new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs/earplugs(new_human), WEAR_R_EAR)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(new_human), WEAR_ACCESSORY)
+
+/datum/equipment_preset/uscm_mudskippers/po/e5
+	paygrades = list(PAY_SHORT_ME5)
+
+/datum/equipment_preset/uscm_mudskippers/po/w1
+	paygrades = list(PAY_SHORT_MW1)
+
+/datum/equipment_preset/uscm_mudskippers/po/w2
+	paygrades = list(PAY_SHORT_MW2)
+
+/datum/equipment_preset/uscm_mudskippers/po/w3
+	paygrades = list(PAY_SHORT_MW3)
+
+//---Tank Crwmn---//
+/datum/equipment_preset/uscm_mudskippers/tank
+	name = "USCM Vehicle Crewman (mudskippers)"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+	access = list(
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_CREWMAN,
+		ACCESS_MARINE_ALPHA,
+		ACCESS_MARINE_BRAVO,
+		ACCESS_MARINE_CHARLIE,
+		ACCESS_MARINE_DELTA,
+	)
+	assignment = JOB_MS_CREWMAN
+	rank = JOB_MS_CREWMAN
+	paygrades = list(PAY_SHORT_MW1)
+	role_comm_title = "CRMN"
+	minimum_age = 30
+	skills = /datum/skills/tank_crew
+
+	minimap_icon = "vc"
+
+/datum/equipment_preset/uscm_mudskippers/tank/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/marine/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/vc(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs/earplugs(new_human), WEAR_R_EAR)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/tanker(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/tanker, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(new_human), WEAR_ACCESSORY)
+
+//---Intel---//
+/datum/equipment_preset/uscm_mudskippers/intel
+	name = "USCM Intelligence Officer (Mudskippers)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	idtype = /obj/item/card/id/silver
+	access = list(
+		ACCESS_MARINE_COMMAND,
+		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_ALPHA,
+		ACCESS_MARINE_BRAVO,
+		ACCESS_MARINE_CHARLIE,
+		ACCESS_MARINE_DELTA,
+	)
+	assignment = JOB_MS_INTEL
+	rank = JOB_MS_INTEL
+	paygrades = list(PAY_SHORT_MW2)
+	role_comm_title = "IO"
+	skills = /datum/skills/intel
+
+	utility_under = list(/obj/item/clothing/under/marine/officer/intel)
+
+	minimap_icon = "io"
+
+/datum/equipment_preset/uscm_mudskippers/intel/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/marine/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/intel(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(new_human), WEAR_ACCESSORY)
+
+/datum/equipment_preset/uscm_mudskippers/intel/wo3
+	paygrades = list(PAY_SHORT_MW3)
+
+/datum/equipment_preset/uscm_mudskippers/intel/wo4
+	paygrades = list(PAY_SHORT_MW4)
+
+/datum/equipment_preset/uscm_mudskippers/intel/wo5
+	paygrades = list(PAY_SHORT_MW5)
+
+/datum/equipment_preset/uscm_mudskippers/intel/o1
+	paygrades = list(PAY_SHORT_MO1)

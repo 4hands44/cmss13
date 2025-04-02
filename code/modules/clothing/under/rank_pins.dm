@@ -71,6 +71,31 @@
 	icon_state = "ranks_snco"
 
 //OFFICERS
+/obj/item/clothing/accessory/ranks/marine/w1
+	name = "rank boards"
+	rank_short = PAY_SHORT_MW1
+	icon_state = "ranks_officer"
+
+/obj/item/clothing/accessory/ranks/marine/w2
+	name = "rank boards"
+	rank_short = PAY_SHORT_MW2
+	icon_state = "ranks_officer"
+
+/obj/item/clothing/accessory/ranks/marine/w3
+	name = "rank boards"
+	rank_short = PAY_SHORT_MW3
+	icon_state = "ranks_officer"
+
+/obj/item/clothing/accessory/ranks/marine/w4
+	name = "rank boards"
+	rank_short = PAY_SHORT_MW4
+	icon_state = "ranks_seniorofficer"
+
+/obj/item/clothing/accessory/ranks/marine/w5
+	name = "rank boards"
+	rank_short = PAY_SHORT_MW5
+	icon_state = "ranks_seniorofficer"
+
 /obj/item/clothing/accessory/ranks/marine/o1
 	name = "rank boards"
 	rank_short = PAY_SHORT_MO1

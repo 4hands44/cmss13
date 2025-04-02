@@ -38,6 +38,22 @@
 #define PAY_SHORT_ME9C "ME9C"
 
 /// MO1, Second Lieutenant
+#define PAY_SHORT_MW1 "MW1"
+
+/// MO2, First Lieutenant
+#define PAY_SHORT_MW2 "MW2"
+/// MO3, Captain
+
+#define PAY_SHORT_MW3 "MW3"
+/// MO4, Major
+
+#define PAY_SHORT_MW4 "MW4"
+/// MO5, Lieutenant Colonel
+
+#define PAY_SHORT_MW5 "MW5"
+/// MO6, Colonel
+
+/// MO1, Second Lieutenant
 #define PAY_SHORT_MO1 "MO1"
 
 /// MO2, First Lieutenant

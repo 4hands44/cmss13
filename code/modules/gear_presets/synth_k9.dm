@@ -6,7 +6,7 @@
 	minimap_icon = "synth_k9"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	faction = FACTION_MARINE
-	idtype = /obj/item/card/id/gold
+	idtype = /obj/item/card/id/dogtag
 	assignment = JOB_SYNTH_K9
 	rank = "Synthetic K9"
 	paygrades = list(PAY_SHORT_SYN_K9 = JOB_PLAYTIME_TIER_0)
