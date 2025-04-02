@@ -913,6 +913,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	name = "\improper M10 auto pistol"
 	desc = "The Armat Battlefield Systems M10 Auto Pistol, a compact, rapid-firing sidearm designed for close-quarters defense. With a 40-round magazine, it emphasizes fire rate over precision, providing effective suppressive fire in short-range engagements."
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi'
+	fire_sound = 'sound/weapons/gun_m39.ogg'
 	icon_state = "m10"
 	item_state = "m10"
 	attachable_allowed = list(
