@@ -206,7 +206,7 @@
 		to_chat(user, SPAN_WARNING("You don't need to use this! Give it to another marine to make them your handler."))
 		return FALSE
 
-	if(user.job != JOB_SQUAD_MEDIC && user.job != JOB_POLICE)
+	if(user.job != JOB_SQUAD_MEDIC && user.job != JOB_POLICE && user.job != JOB_MS_MEDIC)
 		to_chat(user, SPAN_WARNING("This is not meant for you."))
 		return
 

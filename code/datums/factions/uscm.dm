@@ -14,18 +14,18 @@
 		else if(I)
 			_role = I.rank
 		switch(GET_DEFAULT_ROLE(_role))
-			if(JOB_SQUAD_ENGI)
+			if(JOB_SQUAD_ENGI, JOB_MS_ENGINEER)
 				marine_rk = "engi"
-			if(JOB_SQUAD_SPECIALIST)
+			if(JOB_SQUAD_SPECIALIST, JOB_MS_RFM)
 				marine_rk = "spec"
 			if(JOB_SQUAD_TEAM_LEADER)
 				marine_rk = "tl"
-			if(JOB_SQUAD_MEDIC)
+			if(JOB_SQUAD_MEDIC, JOB_MS_MEDIC)
 				if(current_human.rank_fallback == "medk9")
 					marine_rk = "medk9" //We don't need Medics to lose their job when converting to K9 Handlers as it would duplicate JOB_SQUAD_MEDIC
 				else
 					marine_rk = "med"
-			if(JOB_SQUAD_SMARTGUN)
+			if(JOB_SQUAD_SMARTGUN, JOB_MS_SMARTGUNNER)
 				marine_rk = "gun"
 			if(JOB_XO)
 				marine_rk = "xo"
@@ -98,7 +98,7 @@
 			if(JOB_XO)
 				marine_rk = "xo"
 				border_rk = "command"
-			if(JOB_CO)
+			if(JOB_CO, JOB_MS_CO)
 				marine_rk = "co"
 				border_rk = "command"
 			if(JOB_USCM_OBSV)
@@ -107,7 +107,7 @@
 			if(JOB_SO)
 				marine_rk = "so"
 				border_rk = "command"
-			if(JOB_AUXILIARY_OFFICER)
+			if(JOB_AUXILIARY_OFFICER, JOB_MS_XO)
 				marine_rk = "aso"
 				border_rk = "command"
 			if(JOB_GENERAL, JOB_COLONEL, JOB_ACMC, JOB_CMC)
@@ -119,11 +119,11 @@
 				marine_rk = "leader"
 			if(JOB_SQUAD_TECH)
 				marine_rk = "tech"
-			if(JOB_INTEL)
+			if(JOB_INTEL, JOB_MS_INTEL)
 				marine_rk = "io"
 			if(JOB_CAS_PILOT)
 				marine_rk = "gp"
-			if(JOB_DROPSHIP_PILOT)
+			if(JOB_DROPSHIP_PILOT, JOB_MS_PILOT)
 				marine_rk = "dp"
 			if(JOB_DROPSHIP_CREW_CHIEF)
 				marine_rk = "dcc"
@@ -132,7 +132,7 @@
 				border_rk = "command"
 			if(JOB_POLICE)
 				marine_rk = "mp"
-			if(JOB_TANK_CREW)
+			if(JOB_TANK_CREW, JOB_MS_CREWMAN)
 				marine_rk = "tc"
 			if(JOB_WARDEN)
 				marine_rk = "warden"
@@ -203,9 +203,9 @@
 			if(JOB_RIOT_CHIEF)
 				marine_rk = "crmp"
 			// Whiskey Outpost
-			if(JOB_WO_CO)
+			if(JOB_WO_CO, JOB_MS_GC)
 				marine_rk = "wo_co"
-			if(JOB_WO_XO)
+			if(JOB_WO_XO, JOB_MS_PC)
 				marine_rk = "wo_xo"
 			if(JOB_WO_CHIEF_POLICE)
 				marine_rk = "hgsl"
@@ -226,17 +226,17 @@
 			if(JOB_WO_PILOT)
 				marine_rk = "wo_mcrew"
 			// Check squad marines here too, for the unique ones
-			if(JOB_SQUAD_ENGI)
+			if(JOB_SQUAD_ENGI, JOB_MS_ENGINEER)
 				marine_rk = "engi"
-			if(JOB_SQUAD_MEDIC)
+			if(JOB_SQUAD_MEDIC, JOB_MS_MEDIC)
 				marine_rk = "med"
-			if(JOB_SQUAD_SPECIALIST)
+			if(JOB_SQUAD_SPECIALIST, JOB_MS_RFM)
 				marine_rk = "spec"
-			if(JOB_SQUAD_SMARTGUN)
+			if(JOB_SQUAD_SMARTGUN, JOB_MS_SMARTGUNNER)
 				marine_rk = "gun"
 			if(JOB_SQUAD_TEAM_LEADER)
 				marine_rk = "tl"
-			if(JOB_SQUAD_LEADER)
+			if(JOB_SQUAD_LEADER, JOB_MS_SL)
 				marine_rk = "leader"
 		if(current_human.rank_override)
 			marine_rk = current_human.rank_override

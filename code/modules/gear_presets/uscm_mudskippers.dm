@@ -39,7 +39,7 @@
 	rank = JOB_MS_CO
 	paygrades = list(PAY_SHORT_MO5)
 	role_comm_title = "CO"
-	skills = /datum/skills/commander
+	skills = /datum/skills/ms/commander
 	idtype = /obj/item/card/id/gold/council
 
 	minimap_icon = "co"
@@ -120,7 +120,7 @@
 	rank = JOB_MS_GC
 	paygrades = list(PAY_SHORT_MO3)
 	role_comm_title = "CDR"
-	skills = /datum/skills/commander
+	skills = /datum/skills/ms/commander
 	idtype = /obj/item/card/id/gold
 
 	minimap_icon = "xo"
@@ -195,7 +195,7 @@
 	paygrades = list(PAY_SHORT_MO2)
 	role_comm_title = "Adjc"
 	minimum_age = 35
-	skills = /datum/skills/commander
+	skills = /datum/skills/ms/lt
 
 	minimap_icon = "so"
 	minimap_background = "background_command"
@@ -242,7 +242,7 @@
 	paygrades = list(PAY_SHORT_MO1)
 	role_comm_title = "LT"
 	minimum_age = 25
-	skills = /datum/skills/commander
+	skills = /datum/skills/ms/lt
 
 	minimap_icon = "so"
 	minimap_background = "background_command"
@@ -282,7 +282,7 @@
 	paygrades = list(PAY_SHORT_MO1)
 	role_comm_title = "LT"
 	minimum_age = 25
-	skills = /datum/skills/commander
+	skills = /datum/skills/ms/lt
 
 	minimap_icon = "so"
 	minimap_background = "background_command"
@@ -332,7 +332,7 @@
 	paygrades = list(PAY_SHORT_ME5)
 	role_comm_title = "SL"
 	minimum_age = 27
-	skills = /datum/skills/commander
+	skills = /datum/skills/ms/sl
 
 	minimap_icon = "leader"
 
@@ -424,7 +424,7 @@
 	rank = JOB_SQUAD_SMARTGUN
 	paygrades = list(PAY_SHORT_ME3)
 	role_comm_title = "SG"
-	skills = /datum/skills/commander
+	skills = /datum/skills/ms/rifleman
 
 	minimap_icon = "smartgunner"
 
@@ -509,7 +509,7 @@
 	rank = JOB_SQUAD_MEDIC
 	paygrades = list(PAY_SHORT_ME3)
 	role_comm_title = "HM"
-	skills = /datum/skills/commander
+	skills = /datum/skills/ms/medic
 
 	minimap_icon = "medic"
 
@@ -589,7 +589,7 @@
 	rank = JOB_SQUAD_ENGI
 	paygrades = list(PAY_SHORT_ME4)
 	role_comm_title = "ComTech"
-	skills = /datum/skills/commander
+	skills = /datum/skills/ms/engi
 
 	minimap_icon = "engi"
 
@@ -680,7 +680,7 @@
 	rank = JOB_MS_RFM
 	paygrades = list(PAY_SHORT_ME2)
 	role_comm_title = "Rfm"
-	skills = /datum/skills/commander
+	skills = /datum/skills/ms/rifleman
 
 	minimap_icon = "private"
 
@@ -777,7 +777,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs/earplugs(new_human), WEAR_R_EAR)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/flight(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(new_human), WEAR_ACCESSORY)
