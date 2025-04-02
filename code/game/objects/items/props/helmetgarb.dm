@@ -570,7 +570,7 @@
 
 /obj/item/prop/helmetgarb/helmet_gasmask
 	name = "\improper M5 integrated gasmask"
-	desc = "The USCM had its funding pulled for these when it became apparent that not every deployed enlisted was wearing a helmet 24/7; much to the bafflement of UA High Command."
+	desc = "The USCM had its funding pulled for these when it became apparent that not every deployed enlisted was wearing a helmet 24/7; much to the bafflement of UA High Command. The filter on this helmet is expired and thus only really useful against minor threats."
 	icon_state = "gasmask"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/visors.dmi',

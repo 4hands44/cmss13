@@ -373,6 +373,17 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	max_rounds = 40
 	gun_type = /obj/item/weapon/gun/pistol/m10
 
+/obj/item/ammo_magazine/pistol/m10/ap
+	name = "\improper M10 HV magazine (10x20mm)"
+	desc = "A compact 40-round high-velocity magazine, designed for rapid reloads and reliable performance in close-quarters combat."
+	default_ammo = /datum/ammo/bullet/smg/ap
+	caliber = "10x20mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
+	icon_state = "m10"
+	bonus_overlay = "m10_overlay"
+	max_rounds = 40
+	gun_type = /obj/item/weapon/gun/pistol/m10
+
 /obj/item/ammo_magazine/pistol/m10/extended
 	name = "\improper M10 HV extended magazine (10x20mm)"
 	desc = "A 78-round high-velocity magazine, offering additional firepower for sustained engagements without significantly increasing reload time."

@@ -61,7 +61,7 @@
 	icon_state = "m39"
 	item_state = "m39"
 	flags_equip_slot = SLOT_BACK
-	current_mag = /obj/item/ammo_magazine/smg/m39/heap
+	current_mag = /obj/item/ammo_magazine/smg/m39/ap
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/reddot,
