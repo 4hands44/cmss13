@@ -258,6 +258,7 @@
 	desc = "Designed to be worn over a jumpsuit rather than clipped on."
 	icon_state = "webbing"
 	item_state = "webbing"
+	storage_slots = 12
 	allowed = list(
 		/obj/item/weapon/baton,
 		/obj/item/restraint/handcuffs,
@@ -278,7 +279,7 @@
 		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
 		/obj/item/storage/large_holster/katana,
-		/obj/item/device/motiondetector,
+		/obj/item/device/motiontracker/adv,
 	)
 
 /obj/item/clothing/suit/storage/utility_vest
