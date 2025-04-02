@@ -200,12 +200,13 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 //----Squad-----
 #define JOB_MS_RFM "Mudskippers Squad Rifleman"
+#define JOB_MS_K9 "Mudskippers Squad K9 Handler"
 #define JOB_MS_MEDIC "Mudskippers Squad Hospital Corpsman"
 #define JOB_MS_ENGINEER "Mudskippers Squad Combat Technician"
 #define JOB_MS_SMARTGUNNER "Mudskippers Squad Support rifleman"
 #define JOB_MS_SL "Mudskippers Squad Leader"
 
-#define JOB_MUDSKIPPER_SQUAD_LIST list(JOB_MS_RFM, JOB_MS_MEDIC, JOB_MS_ENGINEER, JOB_MS_SMARTGUNNER, JOB_MS_SL)
+#define JOB_MUDSKIPPER_SQUAD_LIST list(JOB_MS_RFM, JOB_MS_K9, JOB_MS_MEDIC, JOB_MS_ENGINEER, JOB_MS_SMARTGUNNER, JOB_MS_SL)
 
 //----Support----
 

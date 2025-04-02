@@ -32,7 +32,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_mudskippers/commander
-	name = "Commanding Officer (Mudskippers)"
+	name = "Mudskippers-Commanding Officer"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	assignment = JOB_MS_CO
@@ -92,7 +92,7 @@
 
 //MAJOR
 /datum/equipment_preset/uscm_mudskippers/commander/major
-	name = "USCM Major (Mudskippers)"
+	name = "Mudskippers- Major"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/gold
@@ -113,7 +113,7 @@
 //--Company Commander---//
 
 /datum/equipment_preset/uscm_mudskippers/ccommander
-	name = "Company Commander (Mudskippers)"
+	name = "Mudskippers-Company Commander"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	assignment = JOB_MS_GC
@@ -165,7 +165,7 @@
 //--Company Commander Commander Ground---//
 
 /datum/equipment_preset/uscm_mudskippers/ccommander/ground
-	name = "Company Commander-Ground (Mudskippers)"
+	name = "Mudskippers-Company Commander-Ground"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 /datum/equipment_preset/uscm_mudskippers/ccommander/ground/load_gear(mob/living/carbon/human/new_human)
@@ -186,7 +186,7 @@
 
 //---Adjutant---//
 /datum/equipment_preset/uscm_mudskippers/xo
-	name = "Adjutant(Mudskippers)"
+	name = "Mudskippers-Adjutant"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -233,7 +233,7 @@
 
 //---LT---//
 /datum/equipment_preset/uscm_mudskippers/lt
-	name = "USCM Lieutenant(Mudskippers)"
+	name = "Mudskippers-Lieutenant"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -273,7 +273,7 @@
 
 //---Platoon Commander---//
 /datum/equipment_preset/uscm_mudskippers/pc
-	name = "Platoon Commander(Mudskippers)"
+	name = "Mudskippers-Platoon Commander"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -323,7 +323,7 @@
 
 //---SL---//
 /datum/equipment_preset/uscm_mudskippers/leader
-	name = "Squad Leader(mudskippers)"
+	name = "Mudskippers-Squad Leader"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP)
@@ -349,7 +349,7 @@
 
 //---Equipped---
 /datum/equipment_preset/uscm_mudskippers/leader/full
-	name = "Squad Leader(mudskippers)"
+	name = "Mudskippers-Squad Leader(Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 /datum/equipment_preset/uscm_mudskippers/leader/full/load_gear(mob/living/carbon/human/new_human)
@@ -402,7 +402,7 @@
 
 //---SG---//
 /datum/equipment_preset/uscm_mudskippers/sg
-	name = "Squad Smartgunner(mudskippers)"
+	name = "Mudskippers-Squad Smartgunner"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	access = list(
 		ACCESS_MARINE_COMMAND,
@@ -437,7 +437,7 @@
 
 //---Equipped---
 /datum/equipment_preset/uscm_mudskippers/sg/full
-	name = "Squad Smartgunner(mudskippers)"
+	name = "Mudskippers-Squad Smartgunner(Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 /datum/equipment_preset/uscm_mudskippers/sg/full/load_gear(mob/living/carbon/human/new_human)
@@ -487,7 +487,7 @@
 
 //---Medic---//
 /datum/equipment_preset/uscm_mudskippers/medic
-	name = "Squad Hospital Corpsman(mudskippers)"
+	name = "Mudskippers-Squad Hospital Corpsman"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	access = list(
 		ACCESS_MARINE_COMMAND,
@@ -524,7 +524,7 @@
 
 //---Equipped---
 /datum/equipment_preset/uscm_mudskippers/medic/full
-	name = "Squad Hospital Corpsman(mudskippers)"
+	name = "Mudskippers-Squad Hospital Corpsman(Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 /datum/equipment_preset/uscm_mudskippers/medic/full/load_gear(mob/living/carbon/human/new_human)
@@ -566,7 +566,7 @@
 
 //---Engi---//
 /datum/equipment_preset/uscm_mudskippers/engineer
-	name = "Squad Combat Technician(mudskippers)"
+	name = "Mudskippers-Squad Combat Technician"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(
@@ -604,7 +604,7 @@
 
 //---Equipped---
 /datum/equipment_preset/uscm_mudskippers/engineer/full
-	name = "Squad Combat Technician(mudskippers)"
+	name = "Mudskippers-Squad Combat Technician(Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 /datum/equipment_preset/uscm_mudskippers/engineer/full/load_gear(mob/living/carbon/human/new_human)
@@ -659,7 +659,7 @@
 
 //---RFM---//
 /datum/equipment_preset/uscm_mudskippers/rfm
-	name = "Squad Rifleman(mudskippers)"
+	name = "Mudskippers-Squad Rifleman"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	access = list(
 		ACCESS_MARINE_COMMAND,
@@ -692,7 +692,7 @@
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
 /datum/equipment_preset/uscm_mudskippers/rfm/full
-	name = "Squad Rifleman(mudskippers)"
+	name = "Mudskippers-Squad Rifleman(Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 /datum/equipment_preset/uscm_mudskippers/rfm/full/load_gear(mob/living/carbon/human/new_human)
@@ -752,11 +752,91 @@
 		)
 	new_human.equip_to_slot_or_del(new rfm_kit, WEAR_L_HAND)
 
+//---K9---//
+/datum/equipment_preset/uscm_mudskippers/k9
+	name = "Mudskippers-Squad K9 Handler"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	access = list(
+		ACCESS_MARINE_COMMAND,
+		ACCESS_MARINE_CHEMISTRY,
+		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_MORGUE,
+		ACCESS_MARINE_KITCHEN,
+		ACCESS_MARINE_ALPHA,
+		ACCESS_MARINE_BRAVO,
+		ACCESS_MARINE_CHARLIE,
+		ACCESS_MARINE_DELTA,
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_DATABASE,
+		ACCESS_MARINE_BRIG,
+	)
+	assignment = JOB_MS_K9
+	rank = JOB_MS_K9
+	paygrades = list(PAY_SHORT_ME2)
+	role_comm_title = "Rfm"
+	skills = /datum/skills/ms/rifleman
+
+	minimap_icon = "private"
+
+/datum/equipment_preset/uscm_mudskippers/k9/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/marine/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+
+/datum/equipment_preset/uscm_mudskippers/k9/full
+	name = "Mudskippers-Squad K9 Handler(Equipped)"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+/datum/equipment_preset/uscm_mudskippers/k9/full/load_gear(mob/living/carbon/human/new_human)
+//clothing
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs/earplugs(new_human), WEAR_R_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
+//accessory
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/mudskippers(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/brown_vest(new_human), WEAR_ACCESSORY)
+//armor
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium/carrier(new_human), WEAR_JACKET)
+//storage
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/utility/full(new_human), WEAR_WAIST)
+//items
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiontracker/adv, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/roller/bedroll(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive(new_human), WEAR_IN_BACK)
+//vest items
+	new_human.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_IN_ACCESSORY)
+//kit
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/spec/k9_handler/rifleman(new_human), WEAR_R_HAND)
+//weapon
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/mk1_heap(new_human), WEAR_R_STORE)
+
+/datum/equipment_preset/uscm_mudskippers/k9/full/e1
+	paygrades = list(PAY_SHORT_ME1)
+
+/datum/equipment_preset/uscm_mudskippers/k9/full/e3
+	paygrades = list(PAY_SHORT_ME3)
+
+/datum/equipment_preset/uscm_mudskippers/k9/full/e4
+	paygrades = list(PAY_SHORT_ME4)
+
 //------------------Support------------------//
 
 //---PO---//
 /datum/equipment_preset/uscm_mudskippers/po
-	name = "USCM Pilot (Mudskippers)"
+	name = "Mudskippers-Pilot"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -796,7 +876,7 @@
 
 //---Tank Crwmn---//
 /datum/equipment_preset/uscm_mudskippers/tank
-	name = "USCM Vehicle Crewman (mudskippers)"
+	name = "Mudskippers-Vehicle Crewman"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(
@@ -832,7 +912,7 @@
 
 //---Intel---//
 /datum/equipment_preset/uscm_mudskippers/intel
-	name = "USCM Intelligence Officer (Mudskippers)"
+	name = "Mudskippers-Intelligence Officer"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver

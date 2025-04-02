@@ -200,6 +200,24 @@
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/device/binoculars(src)
 
+/obj/item/storage/box/spec/k9_handler/rifleman
+	name = "\improper K9 handler Kit"
+	desc = "Contains the equipment needed for a K9 Handler to perform their duties."
+	kit_overlay = "k9_handler"
+	kit_name = "k9_handler"
+
+/obj/item/storage/box/spec/k9_handler/rifleman/fill_preset_inventory()
+	new /obj/item/device/k9_scanner(src)
+	new /obj/item/storage/firstaid/synth(src)
+	new /obj/item/device/helmet_visor/welding_visor(src)
+	new /obj/item/device/binoculars(src)
+	new /obj/item/pamphlet/skill/k9_handler(src)
+	new /obj/item/pamphlet/skill/k9_handler(src)
+	new /obj/item/device/whistle(src)
+	new /obj/item/device/radio/headset/almayer/marine/overwatch_camera/cryo(src)
+	new /obj/item/clothing/suit/storage/marine/M3S(src)
+	new /obj/item/clothing/head/helmet/marine/scout(src)
+	new /obj/item/clothing/glasses/night/M4RA(src)
 
 //maybe put in req for later use?
 /obj/item/storage/box/spec/B18

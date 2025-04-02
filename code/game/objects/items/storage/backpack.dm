@@ -852,7 +852,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	)
 	unacidable = TRUE
 	explo_proof = TRUE
-	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/M3S) //Need to wear Scout armor and helmet to equip this.
+	uniform_restricted = list(/obj/item/clothing/suit/storage/marine)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	var/camo_active = FALSE
 	var/camo_alpha = 10

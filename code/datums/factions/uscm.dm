@@ -27,6 +27,8 @@
 					marine_rk = "med"
 			if(JOB_SQUAD_SMARTGUN, JOB_MS_SMARTGUNNER)
 				marine_rk = "gun"
+			if(JOB_MS_K9)
+				marine_rk = "medk9"
 			if(JOB_XO)
 				marine_rk = "xo"
 			if(JOB_CO)
@@ -226,6 +228,8 @@
 			if(JOB_WO_PILOT)
 				marine_rk = "wo_mcrew"
 			// Check squad marines here too, for the unique ones
+			if(JOB_MS_K9)
+				marine_rk = "medk9"
 			if(JOB_SQUAD_ENGI, JOB_MS_ENGINEER)
 				marine_rk = "engi"
 			if(JOB_SQUAD_MEDIC, JOB_MS_MEDIC)
