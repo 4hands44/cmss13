@@ -943,6 +943,63 @@
 	desc = "This is used by the marine Foxtrot combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
+/obj/item/device/radio/headset/almayer/marine/overwatch_camera
+	name = "M5 Camera Gear"
+	desc = "A camera and associated headgear designed to allow marine commanders to see what their troops can see. A more robust version of this equipment is integrated into all standard USCM combat helmets."
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	icon_state = "cam_gear_off"
+	item_icons = list(
+		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+	)
+	item_state_slots = list(
+		WEAR_L_EAR = "cam_gear",
+		WEAR_R_EAR = "cam_gear",
+	)
+	flags_equip_slot = SLOT_EAR
+	var/obj/structure/machinery/camera/camera
+
+/obj/item/device/radio/headset/almayer/marine/overwatch_camera/Initialize(mapload, ...)
+	. = ..()
+	camera = new /obj/structure/machinery/camera/overwatch(src)
+	AddComponent(/datum/component/overwatch_console_control)
+
+/obj/item/device/radio/headset/almayer/marine/overwatch_camera/Destroy()
+	QDEL_NULL(camera)
+	return ..()
+
+/obj/item/device/radio/headset/almayer/marine/overwatch_camera/equipped(mob/living/carbon/human/mob, slot)
+	if(camera)
+		camera.c_tag = mob.name
+		camera.status = TRUE
+		icon_state = "cam_gear_on"
+		update_icon()
+	..()
+
+/obj/item/device/radio/headset/almayer/marine/overwatch_camera/unequipped(mob/user, slot)
+	. = ..()
+	if(camera)
+		camera.status = FALSE
+		icon_state = "cam_gear_off"
+		update_icon()
+
+/obj/item/device/radio/headset/almayer/marine/overwatch_camera/dropped(mob/user)
+	if(camera)
+		camera.c_tag = "Unknown"
+	..()
+
+/obj/item/device/radio/headset/almayer/marine/overwatch_camera/hear_talk(mob/living/sourcemob, message, verb, datum/language/language, italics)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_HEAR_TALK, sourcemob, message, verb, language, italics, loc == sourcemob)
+
+/obj/item/device/radio/headset/almayer/marine/overwatch_camera/see_emote(mob/living/sourcemob, emote, audible)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, loc == sourcemob && audible)
+
+/obj/item/device/radio/headset/almayer/marine/overwatch_camera/cryo
+	name = "marine foxtrot radio headset"
+	desc = "This is used by Foxtrot squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	icon_state = "cryo_headset"
+	frequency = CRYO_FREQ
+
 /obj/item/device/radio/headset/almayer/marine/mortar
 	name = "mortar crew radio headset"
 	desc = "This is used by the dust raider's bunker mortar crew to get feedback on how good the hits of that 80mm rain turned out. Comes with access to the engineering channel with :e, JTAC for coordinating with :j, Intel with :t, and request more shells supply with :u - this ain't Winchester Outpost!"

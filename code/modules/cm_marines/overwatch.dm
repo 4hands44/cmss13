@@ -731,7 +731,7 @@
 /obj/structure/machinery/computer/overwatch/proc/marine_has_camera(mob/living/carbon/human/marine)
 	if(istype(marine.head, /obj/item/clothing/head/helmet/marine))
 		return TRUE
-	if(istype(marine.wear_l_ear, /obj/item/device/overwatch_camera) || istype(marine.wear_r_ear, /obj/item/device/overwatch_camera))
+	if(istype(marine.wear_l_ear, /obj/item/device/overwatch_camera) || istype(marine.wear_r_ear, /obj/item/device/overwatch_camera) || istype(marine.wear_r_ear, /obj/item/device/radio/headset/almayer/marine/overwatch_camera) || istype(marine.wear_l_ear, /obj/item/device/radio/headset/almayer/marine/overwatch_camera))
 		return TRUE
 	return FALSE
 /// returns the overwatch camera the human is wearing
@@ -744,6 +744,9 @@
 /obj/item/device/overwatch_camera/get_camera()
 	return camera
 
+/obj/item/device/radio/headset/almayer/marine/overwatch_camera/get_camera()
+	return camera
+
 ///returns camera holder
 /mob/living/carbon/human/proc/get_camera_holder()
 	if(istype(head, /obj/item/clothing/head/helmet/marine))
@@ -754,6 +757,12 @@
 		cam_gear = wear_l_ear
 		return cam_gear
 	if(istype(wear_r_ear, /obj/item/device/overwatch_camera))
+		cam_gear = wear_r_ear
+		return cam_gear
+	if(istype(wear_l_ear, /obj/item/device/radio/headset/almayer/marine/overwatch_camera))
+		cam_gear = wear_l_ear
+		return cam_gear
+	if(istype(wear_r_ear, /obj/item/device/radio/headset/almayer/marine/overwatch_camera))
 		cam_gear = wear_r_ear
 		return cam_gear
 

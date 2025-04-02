@@ -2300,7 +2300,7 @@
 	new /obj/item/device/multitool(src)
 
 /obj/item/storage/belt/gun/utility/full/ms/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/smg/nailgun/compact())
+	handle_item_insertion(new /obj/item/weapon/gun/smg/nailgun/compact/tactical())
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wrench(src)
 	new /obj/item/tool/weldingtool(src)

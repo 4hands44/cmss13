@@ -88,6 +88,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 
 		list("ARMOR (CHOOSE 1)", 0, null, null, null),
 		list("Commanding Officer's M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/CO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Commanding Officer's M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/CO/bomber, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("M11C Helmet", 0, /obj/item/clothing/head/helmet/marine/leader/CO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
@@ -134,20 +135,17 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		list("Rebreather", 0, /obj/item/clothing/mask/rebreather, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 
 		list("PATCHES (DISCRETIONARY)", 0, null, null, null),
-		list("Falling Falcons Shoulder Patch", 0, /obj/item/clothing/accessory/patch/falcon, null, VENDOR_ITEM_REGULAR),
-		list("Falling Falcons UA Shoulder Patch", 0, /obj/item/clothing/accessory/patch/falconalt, null, VENDOR_ITEM_REGULAR),
 		list("USCM Large Chest Patch", 0, /obj/item/clothing/accessory/patch/uscmlarge, null, VENDOR_ITEM_REGULAR),
 		list("USCM Shoulder Patch", 0, /obj/item/clothing/accessory/patch, null, VENDOR_ITEM_REGULAR),
 		list("United Americas Shoulder patch", 0, /obj/item/clothing/accessory/patch/ua, null, VENDOR_ITEM_REGULAR),
 		list("United Americas Flag Shoulder patch", 0, /obj/item/clothing/accessory/patch/uasquare, null, VENDOR_ITEM_REGULAR),
-		list("Falling Falcons Challenge Coin", 0, /obj/item/coin/silver/falcon, null, VENDOR_ITEM_REGULAR)
 ))
 
 /obj/structure/machinery/cm_vending/clothing/commanding_officer
 	name = "\improper ColMarTech Commanding Officer Equipment Rack"
 	desc = "An automated equipment vendor for the Commanding Officer. Contains a prime selection of equipment for only the USCM's top officers."
 	req_access = list(ACCESS_MARINE_SENIOR)
-	vendor_role = list(JOB_CO, JOB_WO_CO)
+	vendor_role = list(JOB_CO, JOB_MS_CO, JOB_MS_GC, JOB_WO_CO)
 
 /obj/structure/machinery/cm_vending/clothing/commanding_officer/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_commanding_officer

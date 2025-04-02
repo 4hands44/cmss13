@@ -98,7 +98,7 @@
 	vision_flags = SEE_TURFS
 	fullscreen_vision = null
 	req_skill = SKILL_SPEC_WEAPONS
-	req_skill_level = SKILL_SPEC_SMARTGUN
+	req_skill_level = list(SKILL_SPEC_SMARTGUN, SKILL_SPEC_ALL)
 
 	var/far_sight = FALSE
 	var/obj/item/weapon/gun/smartgun/linked_smartgun = null

@@ -309,7 +309,7 @@
 
 /obj/item/device/overwatch_camera
 	name = "M5 Camera Gear"
-	desc = "A camera and associated headgear designed to allow marine commanders to see what their troops can see. A more robust version of this equipment is integrated into all standard USCM combat helmets."
+	desc = "A camera and associated headgear designed to allow marine commanders to see what their troops can see. A more robust version of this equipment is integrated into all standard USCM combat helmets. This one does not include a Radio earpiece."
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	icon_state = "cam_gear_off"
 	item_icons = list(

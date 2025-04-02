@@ -48,7 +48,7 @@
 	name = "\improper ColMarTech Squad ComTech Tools Vendor"
 	desc = "A vending machine that stores various extra tools that are useful on the field."
 	icon_state = "tool"
-	req_access = list(ACCESS_MARINE_ENGPREP)
+	req_access = list(ACCESS_MARINE_PREP)
 
 /obj/structure/machinery/cm_vending/sorted/tech/comtech_tools/populate_product_list(scale)
 	listed_products = list(
