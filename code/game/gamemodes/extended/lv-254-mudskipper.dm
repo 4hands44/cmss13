@@ -10,7 +10,7 @@
 	to_world("<B>The current game mode is - LV-254!</B>")
 
 /datum/game_mode/extended/lv254m/get_roles_list()
-	return GLOB.ROLES_USCM
+	return GLOB.ROLES_BLACKGOLD
 
 /datum/game_mode/extended/lv254m/post_setup()
 	initialize_post_marine_gear_list()
