@@ -109,3 +109,15 @@
 	if(ishuman(target) && ishuman(user))
 		ADD_TRAIT(target, TRAIT_USING_WHEELCHAIR, TRAIT_SOURCE_BUCKLE)
 	. = ..()
+
+/obj/structure/bed/chair/wheelchair/officechair
+	name = "office chair"
+	desc = "You sit in this. Either by will or force."
+	icon_state = "officechair_dark"
+
+/obj/structure/bed/chair/wheelchair/officechair/handle_rotation()
+	overlays.Cut()
+	var/image/O = image(icon = 'icons/obj/structures/props/furniture/chairs.dmi', icon_state = "null", layer = FLY_LAYER, dir = src.dir)
+	overlays += O
+	if(buckled_mob)
+		buckled_mob.setDir(dir)

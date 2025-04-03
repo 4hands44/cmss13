@@ -169,7 +169,7 @@
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("M37A2 Pump Shotgun", floor(scale * 3), /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),
 		list("M39 Submachinegun", floor(scale * 2.5), /obj/item/weapon/gun/smg/m39, VENDOR_ITEM_REGULAR),
-		list("M41A Pulse Rifle MK2", floor(scale * 4), /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_REGULAR),
+		list("M41A Pulse Rifle MK1", round(scale * 3), /obj/item/weapon/gun/rifle/m41aMK1, VENDOR_ITEM_REGULAR),
 		list("M4RA Battle Rifle", floor(scale * 2), /obj/item/weapon/gun/rifle/m4ra, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),

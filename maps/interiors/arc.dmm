@@ -24,20 +24,29 @@
 /turf/open/floor,
 /area/interior/vehicle/arc)
 "Dn" = (
-/obj/structure/machinery/prop/almayer/CICmap/computer{
-	dir = 4;
-	layer = 2.98;
-	pixel_x = -13;
-	pixel_y = 4
-	},
 /obj/structure/machinery/computer/groundside_operations/arc{
 	dir = 4;
 	layer = 2.981;
 	pixel_x = -13;
 	pixel_y = -9
 	},
-/obj/structure/bed/chair/comfy/arc{
-	dir = 8
+/obj/structure/machinery/prop/almayer/CICmap/computer{
+	dir = 4;
+	layer = 2.98;
+	pixel_x = -13;
+	pixel_y = 4
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle{
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/obj/structure/extinguisher_cabinet/lifeboat{
+	icon = 'icons/obj/vehicles/interiors/general.dmi';
+	pixel_y = 12;
+	pixel_x = -6
 	},
 /turf/open/floor,
 /area/interior/vehicle/arc)
@@ -73,6 +82,9 @@
 	},
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -7
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
 	},
 /turf/open/floor,
 /area/interior/vehicle/arc)

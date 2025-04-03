@@ -1020,6 +1020,10 @@
 	icon = 'icons/obj/vehicles/interiors/arc.dmi'
 	icon_state = "overwatch_computer"
 
+/obj/structure/machinery/computer/overwatch/apc
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
+	icon_state = "bluemultimonitorsmall_on"
+
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF
 	freq = CLF_FREQ
