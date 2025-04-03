@@ -7,7 +7,7 @@
 	icon_state = "autocannon"
 	disp_icon = "arc"
 	disp_icon_state = "autocannon"
-	activation_sounds = list('sound/weapons/gun_m60.ogg')
+	activation_sounds = list('sound/effects/arc_gau.mp3')
 
 	damage_multiplier = 0.1
 	health = 125
@@ -32,14 +32,14 @@
 		GUN_FIREMODE_BURSTFIRE,
 	)
 	burst_delay = 2
-	burst_amount = 3
+	burst_amount = 10
 
 	/// Potential targets the turret can shoot at
 	var/list/targets = list()
 	/// The currently focused sentry target
 	var/atom/movable/sentry_target = null
 	/// The range that this turret can shoot at the furthest
-	var/turret_range = 5
+	var/turret_range = 10
 	/// What factions this sentry is aligned with
 	var/faction_group = FACTION_LIST_MARINE
 

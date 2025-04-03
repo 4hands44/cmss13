@@ -17,7 +17,7 @@
 
 	interior_map = /datum/map_template/interior/arc
 
-	passengers_slots = 2 // 5 total. Reserved slots are added to passenger slots.
+	passengers_slots = 5 // 5 total. Reserved slots are added to passenger slots.
 	xenos_slots = 4
 
 	entrances = list(
@@ -246,8 +246,8 @@
 */
 /obj/effect/vehicle_spawner/arc
 	name = "ARC Transport Spawner"
-	icon = 'icons/obj/vehicles/apc.dmi'
-	icon_state = "apc_base"
+	icon = 'icons/obj/vehicles/arc.dmi'
+	icon_state = "arc_base"
 	pixel_x = -48
 	pixel_y = -48
 
