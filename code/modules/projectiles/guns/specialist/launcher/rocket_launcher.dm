@@ -27,6 +27,8 @@
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	attachable_allowed = list(
 		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/mini/alt_iff_scope,
 	)
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_INTERNAL_MAG
@@ -46,7 +48,7 @@
 
 
 /obj/item/weapon/gun/launcher/rocket/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 8, "rail_y" = 21, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 16, "rail_y" = 21, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 
 
 /obj/item/weapon/gun/launcher/rocket/set_gun_config_values()
@@ -154,7 +156,7 @@
 			if(reload_sound)
 				playsound(user, reload_sound, 25, 1)
 			else
-				playsound(user,'sound/machines/click.ogg', 25, 1)
+				playsound(user,'sound/machines/rpg_reload.mp3', 25, 1)
 		else
 			to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 			return

@@ -25,9 +25,9 @@
 	name = "\improper M4RA Battle sight"
 	gender = NEUTER
 	desc = "A headset and night vision goggles system for the M4RA Battle Rifle. Allows highlighted imaging of surroundings, as well as the ability to view the suit sensor health status readouts of other marines. Click it to toggle."
-	icon_state = "m4ra_goggles"
-	deactive_state = "m4ra_goggles_0"
-	vision_flags = SEE_TURFS
+	icon_state = "s_ghillie_goggles"
+	deactive_state = "s_ghillie_goggles_0"
+	vision_flags = SEE_INFRA|SEE_MOBS
 	hud_type = MOB_HUD_MEDICAL_BASIC
 	toggleable = TRUE
 	fullscreen_vision = null
@@ -40,7 +40,7 @@
 	desc = "A headset and night vision goggles system for the M4RA Battle Rifle. Allows highlighted imaging of surroundings, as well as the ability to view the health statuses of others. Click it to toggle."
 	icon_state = "m4_goggles"
 	deactive_state = "m4_goggles_0"
-	vision_flags = SEE_TURFS
+	vision_flags = SEE_INFRA|SEE_MOBS
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
 	toggleable = TRUE
 	fullscreen_vision = null
@@ -50,9 +50,9 @@
 	name = "\improper M42 scout sight"
 	gender = NEUTER
 	desc = "A headset and night vision goggles system for the M42 Scout Rifle. Allows highlighted imaging of surroundings. Click it to toggle."
-	icon_state = "m42_goggles"
-	deactive_state = "m42_goggles_0"
-	vision_flags = SEE_TURFS
+	icon_state = "ghillie_goggles"
+	deactive_state = "ghillie_goggles_0"
+	vision_flags = SEE_INFRA|SEE_MOBS
 	toggleable = TRUE
 	fullscreen_vision = null
 	actions_types = list(/datum/action/item_action/toggle)
@@ -61,13 +61,16 @@
 /obj/item/clothing/glasses/night/m42_night_goggles/spotter
 	name = "\improper M42 spotter sight"
 	desc = "A companion headset and night vision goggles system for USCM spotters. Allows highlighted imaging of surroundings. Click it to toggle."
+	icon_state = "m42_goggles"
+	deactive_state = "m42_goggles_0"
+	vision_flags = SEE_INFRA|SEE_MOBS|SEE_TURFS
 
 /obj/item/clothing/glasses/night/m42_night_goggles/m42c
 	name = "\improper M42C special operations sight"
 	desc = "A specialized variation of the M42 scout sight system, intended for use with the high-power M42C anti-tank sniper rifle. Allows for highlighted imaging of surroundings, as well as detection of thermal signatures even from a great distance. Click it to toggle."
-	icon_state = "m56_goggles"
-	deactive_state = "m56_goggles_0"
-	vision_flags = SEE_TURFS|SEE_MOBS
+	icon_state = "ghillie_goggles"
+	deactive_state = "ghillie_goggles_0"
+	vision_flags = SEE_TURFS|SEE_INFRA|SEE_MOBS
 
 /obj/item/clothing/glasses/night/m42_night_goggles/upp
 	name = "\improper Type 9 commando goggles"
@@ -95,7 +98,7 @@
 	deactive_state = "m56_goggles_0"
 	toggleable = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
-	vision_flags = SEE_TURFS
+	vision_flags = SEE_INFRA|SEE_MOBS
 	fullscreen_vision = null
 	req_skill = SKILL_SPEC_WEAPONS
 	req_skill_level = list(SKILL_SPEC_SMARTGUN, SKILL_SPEC_ALL)
