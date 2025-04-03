@@ -21,6 +21,8 @@
 	reload_sound = 'sound/weapons/handling/flamer_reload.ogg'
 	dry_fire_sound = list('sound/weapons/flamer_dryfire1.ogg', 'sound/weapons/flamer_dryfire2.ogg')
 	fire_sound = ""
+	flags_item = TWOHANDED|SMARTGUNNER_BACKPACK_OVERRIDE
+
 
 	var/ignite_sound = 'sound/weapons/handling/flamer_ignition.ogg'
 	var/extinguish_sound = 'sound/weapons/handling/flamer_ignition.ogg'
@@ -41,7 +43,6 @@
 	)
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY|GUN_TRIGGER_SAFETY
 	gun_category = GUN_CATEGORY_HEAVY
-	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
 
 /obj/item/weapon/gun/flamer/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -64,7 +65,7 @@
 
 /obj/item/weapon/gun/flamer/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_5 * 5)
+	set_fire_delay(FIRE_DELAY_TIER_7)
 
 /obj/item/weapon/gun/flamer/unique_action(mob/user)
 	toggle_gun_safety()
@@ -393,6 +394,14 @@
 /obj/item/weapon/gun/flamer/deathsquad/standard
 	current_mag = /obj/item/ammo_magazine/flamer_tank
 
+/obj/item/weapon/gun/flamer/auto
+	name = "\improper M240A1 incinerator unit"
+	start_semiauto = FALSE
+	start_automatic = TRUE
+
+/obj/item/weapon/gun/flamer/auto/underextinguisher
+	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher)
+
 /obj/item/weapon/gun/flamer/M240T
 	name = "\improper M240-T incinerator unit"
 	desc = "An improved version of the M240A1 incinerator unit, the M240-T model is capable of dispersing a larger variety of fuel types."
@@ -506,8 +515,7 @@
 	return FALSE
 
 /obj/item/weapon/gun/flamer/M240T/auto // With NEW advances in science, we've learned how to drain a pyro's tank in 6 seconds, or your money back!
-	name = "\improper M240-T2 incinerator unit"
-	desc = "A prototyped model of the M240-T incinerator unit, it was discontinued after its automatic mode was deemed too expensive to deploy in the field."
+	name = "\improper M240-T incinerator unit"
 	start_semiauto = FALSE
 	start_automatic = TRUE
 
@@ -941,3 +949,8 @@
 		'sound/weapons/surv_flamer_fire3.ogg',
 		'sound/weapons/surv_flamer_fire4.ogg')
 	return pick(fire_sounds)
+
+/obj/item/weapon/gun/flamer/survivor
+	name = "\improper improvised flamethrower"
+	start_semiauto = FALSE
+	start_automatic = TRUE

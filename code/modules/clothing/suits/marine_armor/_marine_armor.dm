@@ -382,6 +382,10 @@
 /obj/item/clothing/suit/storage/marine/MP/CO/bomber
 	name = "\improper M3 pattern commanding officer armored jacket"
 	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge. This one has a jacket over it for added warmth."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
 	icon_state = "co_bomber_armored"
 	item_state = "co_bomber_armored"
 	item_state_slots = list(WEAR_JACKET = "co_bomber_armored")

@@ -687,7 +687,7 @@
 	for(var/i in 1 to 5)
 		new /obj/item/explosive/mine/pmc(src)
 
-/obj/item/storage/box/explosive_atminess
+/obj/item/storage/box/explosive_atmines
 	name = "\improper M20 mine box"
 	desc = "A secure box holding five M20 anti-tank mines."
 	icon = 'icons/obj/items/storage/packets.dmi'
@@ -695,11 +695,11 @@
 	item_state = "minebox"
 	w_class = SIZE_MEDIUM
 	max_storage_space = 20
-	can_hold = list(/obj/item/explosive/atmine)
+	can_hold = list(/obj/item/atmine)
 
 /obj/item/storage/box/explosive_atmines/fill_preset_inventory()
 	for(var/i in 1 to 5)
-		new /obj/item/explosive/atmine(src)
+		new /obj/item/atmine(src)
 
 /obj/item/storage/box/m94
 	name = "\improper M94 marking flare pack"
