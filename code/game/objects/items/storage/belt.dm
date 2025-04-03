@@ -701,6 +701,10 @@
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 
+/obj/item/storage/belt/marine/smartgunner/xm99/fill_preset_inventory()
+	new /obj/item/ammo_magazine/rifle/xm99a(src)
+	new /obj/item/ammo_magazine/rifle/xm99a(src)
+
 /obj/item/storage/belt/marine/smartgunner/full/fill_preset_inventory()
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
@@ -2132,6 +2136,7 @@
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/smartgun,
+		/obj/item/ammo_magazine/rifle/xm99a,
 	)
 	flags_atom = FPRINT // has gamemode skin
 
@@ -2140,6 +2145,12 @@
 	new /obj/item/ammo_magazine/pistol/hp(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
+
+/obj/item/storage/belt/gun/smartgunner/xm99/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3())
+	new /obj/item/ammo_magazine/pistol/hp(src)
+	new /obj/item/ammo_magazine/rifle/xm99a(src)
+	new /obj/item/ammo_magazine/rifle/xm99a(src)
 
 /obj/item/storage/belt/gun/smartgunner/pmc
 	name = "\improper M802 pattern 'Dirty' smartgunner sidearm rig"

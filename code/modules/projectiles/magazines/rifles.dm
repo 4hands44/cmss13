@@ -784,11 +784,11 @@
 	default_ammo = /datum/ammo/bullet/shotgun/light/rubber
 
 /obj/item/ammo_magazine/rifle/xm99a
-	name = "\improper XM99A1 Magazine (pellets)"
-	desc = "A cannister of cadmium pellets."
+	name = "\improper XM99A1 Canister (pellets)"
+	desc = "A canister of cadmium pellets."
 	w_class = SIZE_LARGE
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm/flamers.dmi'
-	icon_state = "flametank"
+	icon_state = "xm99a"
 	flags_magazine = AMMUNITION_CANNOT_REMOVE_BULLETS
 	max_rounds = 50
 	gun_type = /obj/item/weapon/gun/rifle/xm99a

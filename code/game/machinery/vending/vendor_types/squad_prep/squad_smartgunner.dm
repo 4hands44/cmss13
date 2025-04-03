@@ -5,8 +5,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_smartgun, list(
 		list("Essential Smartgunner Set", 0, /obj/effect/essentials_set/smartgunner/m56, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 		list("Essential xm99a gunner Set", 0, /obj/effect/essentials_set/smartgunner/xm99a, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
-		list("SMARTGUN AMMUNITION", 0, null, null, null),
+		list("SUPPORT WEAPON AMMUNITION", 0, null, null, null),
 		list("M56 Smartgun Drum", 15, /obj/item/ammo_magazine/smartgun, null, VENDOR_ITEM_RECOMMENDED),
+		list("XM99A1 Plasmagun Canister", 25, /obj/item/ammo_magazine/rifle/xm99a, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("GUN ATTACHMENTS (CHOOSE 1)", 0, null, null, null),
 		list("Laser Sight", 0, /obj/item/attachable/lasersight, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
@@ -78,6 +79,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_smartgun, list(
 
 		list("BELT", 0, null, null, null),
 		list("M802 Smartgunner Sidearm Belt", 0, /obj/item/storage/belt/gun/smartgunner/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
+		list("M802 Plasmagunner Sidearm Belt", 0, /obj/item/storage/belt/gun/smartgunner/xm99/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
 		list("M280 Smartgunner Drum Belt", 0, /obj/item/storage/belt/marine/smartgunner, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),

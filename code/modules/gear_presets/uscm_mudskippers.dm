@@ -487,12 +487,8 @@
 //armor
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/bridge(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(new_human), WEAR_J_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(new_human), WEAR_EYES)
 //storage
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flamertank(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(new_human), WEAR_WAIST)
 //vest items
 	new_human.equip_to_slot_or_del(new /obj/item/smartgun_battery(new_human), WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(new_human), WEAR_IN_ACCESSORY)
@@ -501,10 +497,31 @@
 	new_human.equip_to_slot_or_del(new /obj/item/roller/bedroll(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_IN_JACKET)
 //weapons
-	if(prob(50))
+	if(prob(25))
+		new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/xm99/full(new_human), WEAR_WAIST)
+		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/xm99a/scoped(new_human), WEAR_J_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/medhud/plasma(new_human), WEAR_EYES)
 		new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/smartgunner/full(new_human), WEAR_BACK)
-	else
+		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_R_STORE)
+	if(prob(25))
+		new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/xm99/full(new_human), WEAR_WAIST)
+		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/xm99a/scoped(new_human), WEAR_J_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/medhud/plasma(new_human), WEAR_EYES)
 		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/auto/underextinguisher(new_human), WEAR_BACK)
+		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flamertank(new_human), WEAR_R_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank(new_human), WEAR_IN_R_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank(new_human), WEAR_IN_R_STORE)
+	if(prob(25))
+		new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(new_human), WEAR_WAIST)
+		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(new_human), WEAR_J_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(new_human), WEAR_EYES)
+		new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/smartgunner/full(new_human), WEAR_BACK)
+		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_R_STORE)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(new_human), WEAR_J_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(new_human), WEAR_EYES)
+		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/auto/underextinguisher(new_human), WEAR_BACK)
+		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flamertank(new_human), WEAR_R_STORE)
 		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank(new_human), WEAR_IN_R_STORE)
 		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank(new_human), WEAR_IN_R_STORE)
 

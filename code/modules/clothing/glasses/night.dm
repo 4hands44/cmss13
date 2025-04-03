@@ -72,6 +72,15 @@
 	deactive_state = "ghillie_goggles_0"
 	vision_flags = SEE_TURFS|SEE_INFRA|SEE_MOBS
 
+/obj/item/clothing/glasses/night/medhud/plasma
+	name = "\improper M56-B head mounted sight"
+	gender = NEUTER
+	desc = "A stripped down version of the M56 headset and goggles system refitted for the XM99a Plasmagun. Has a low-res short-range imager, allowing for view of terrain."
+	icon_state = "m56_goggles"
+	deactive_state = "m56_goggles_0"
+	vision_flags = SEE_INFRA|SEE_MOBS
+
+
 /obj/item/clothing/glasses/night/m42_night_goggles/upp
 	name = "\improper Type 9 commando goggles"
 	gender = PLURAL

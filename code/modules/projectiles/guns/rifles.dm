@@ -2961,7 +2961,7 @@
 // xm99a
 /obj/item/weapon/gun/rifle/xm99a
 	name = "XXM99A1"
-	desc = "As an experimental weapon, the XM99A1 sees limited use within the United States Colonial Marine Corps."
+	desc = "As an experimental weapon, the XM99A1 sees limited use within the United States Colonial Marine Corps. In combat the weapon frequently suffers from its high energy draw to pellet count."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm/energy_weapons.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/energy_weapons_lefthand.dmi',
@@ -3093,10 +3093,13 @@
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_1)
 	set_burst_amount(FIRE_DELAY_TIER_10)
-	set_burst_delay(FIRE_DELAY_TIER_4)
+	set_burst_delay(FIRE_DELAY_TIER_8)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+
+/obj/item/weapon/gun/rifle/xm99a/scoped
+	starting_attachment_types = list(/obj/item/attachable/scope/mini_iff, /obj/item/attachable/gyro)
