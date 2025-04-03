@@ -2954,3 +2954,149 @@
 	current_mag = /obj/item/ammo_magazine/rifle/xm51/cmb
 	map_specific_decoration = FALSE
 	starting_attachment_types = list(/obj/item/attachable/flashlight/grip, /obj/item/attachable/reflex)
+//-------------------------------------------------------
+
+
+//-------------------------------------------------------
+// xm99a
+/obj/item/weapon/gun/rifle/xm99a
+	name = "XXM99A1"
+	desc = "As an experimental weapon, the XM99A1 sees limited use within the United States Colonial Marine Corps."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm/energy_weapons.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/energy_weapons_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/energy_weapons_righthand.dmi'
+	)
+	icon_state = "xm99a"
+	item_state = "xm99a"
+	current_mag = /obj/item/ammo_magazine/rifle/xm99a
+	map_specific_decoration = FALSE
+	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
+	unload_sound = 'sound/weapons/handling/flamer_unload.ogg'
+	reload_sound = 'sound/weapons/handling/flamer_reload.ogg'
+	mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse.dmi'
+	flags_equip_slot = NO_FLAGS
+	w_class = SIZE_HUGE
+	force = 20
+	wield_delay = WIELD_DELAY_FAST
+	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
+	unacidable = TRUE
+	explo_proof = TRUE
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MUZZLE_BLUE
+	auto_retrieval_slot = WEAR_J_STORE
+
+	attachable_allowed = list(
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/mini_iff,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/flashlight/grip,
+		)
+
+	var/obj/item/smartgun_battery/battery = null
+	/// Whether the smartgun drains the battery (Ignored if requires_battery is false)
+	var/requires_power = TRUE
+	/// Whether the smartgun requires a battery
+	var/requires_battery = TRUE
+	/// Whether the smartgun requires a harness to use
+	var/requires_harness = TRUE
+	var/drain = 5000
+
+/obj/item/weapon/gun/rifle/xm99a/Initialize(mapload, ...)
+
+	battery = new /obj/item/smartgun_battery(src)
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MUZZLE_BLUE
+	. = ..()
+	AddComponent(/datum/component/iff_fire_prevention)
+	update_icon()
+
+/obj/item/weapon/gun/rifle/xm99a/Destroy()
+	QDEL_NULL(battery)
+	. = ..()
+
+/obj/item/weapon/gun/rifle/xm99a/able_to_fire(mob/living/user)
+	. = ..()
+	if(.)
+		if(!ishuman(user))
+			return FALSE
+		var/mob/living/carbon/human/H = user
+		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+			balloon_alert(user, "insufficient skills")
+			return FALSE
+		if(requires_harness)
+			if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
+				balloon_alert(user, "harness required")
+				return FALSE
+
+/obj/item/weapon/gun/rifle/xm99a/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
+	if(!requires_battery)
+		return ..()
+
+	if(battery)
+		if(!requires_power)
+			return ..()
+		if(drain_battery())
+			return ..()
+
+/obj/item/weapon/gun/rifle/xm99a/proc/drain_battery(override_drain)
+
+	var/actual_drain = (rand(drain / 2, drain) / 25)
+
+	if(override_drain)
+		actual_drain = (rand(override_drain / 2, override_drain) / 25)
+
+	if(battery && battery.power_cell.charge > 0)
+		if(battery.power_cell.charge > actual_drain)
+			battery.power_cell.charge -= actual_drain
+		else
+			battery.power_cell.charge = 0
+			to_chat(usr, SPAN_WARNING("[src] emits a low power warning and immediately shuts down!"))
+			return FALSE
+		return TRUE
+	if(!battery || battery.power_cell.charge == 0)
+		balloon_alert(usr, "low power")
+		return FALSE
+	return FALSE
+
+/obj/item/weapon/gun/rifle/xm99a/get_examine_text(mob/user)
+	. = ..()
+	var/rounds = 0
+	if(current_mag && current_mag.current_rounds)
+		rounds = current_mag.current_rounds
+	var/message = "[rounds ? "Ammo counter shows [rounds] round\s remaining." : "It's dry."]"
+	. += message
+
+	if(battery && get_dist(user, src) <= 1)
+		. += "A small gauge on [battery] reads: Power: [battery.power_cell.charge] / [battery.power_cell.maxcharge]."
+
+/obj/item/weapon/gun/rifle/xm99a/attackby(obj/item/attacking_object, mob/user)
+	if(istype(attacking_object, /obj/item/smartgun_battery))
+		var/obj/item/smartgun_battery/new_cell = attacking_object
+		visible_message(SPAN_NOTICE("[user] swaps out the power cell in [src]."),
+			SPAN_NOTICE("You swap out the power cell in [src] and drop the old one."))
+		to_chat(user, SPAN_NOTICE("The new cell contains: [new_cell.power_cell.charge] power."))
+		battery.update_icon()
+		battery.forceMove(get_turf(user))
+		battery = new_cell
+		user.drop_inv_item_to_loc(new_cell, src)
+		playsound(src, 'sound/machines/click.ogg', 25, 1)
+		return
+
+	return ..()
+
+/obj/item/weapon/gun/rifle/xm99a/unique_action(mob/user)
+	get_ammo_type_chambered(user)
+
+/obj/item/weapon/gun/rifle/xm99a/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_1)
+	set_burst_amount(FIRE_DELAY_TIER_10)
+	set_burst_delay(FIRE_DELAY_TIER_4)
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2

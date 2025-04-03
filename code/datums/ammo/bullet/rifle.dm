@@ -705,3 +705,27 @@
 	damage = 0
 	stamina_damage = 22
 	shrapnel_chance = 0
+
+/datum/ammo/bullet/rifle/explosive/xm99a
+	name = "plasma bolt"
+	icon_state = "bluespace"
+	damage_type = BURN
+
+	damage = 50
+	accurate_range = 22
+	accuracy = 0
+	shell_speed = AMMO_SPEED_TIER_2
+	damage_falloff = DAMAGE_FALLOFF_TIER_9
+	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/rifle/explosive/xm99a/on_hit_mob(mob/M, obj/projectile/P)
+	cell_explosion(get_turf(M), 15, 5, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+	if(prob(50)) //small chance for one to ignite on hit
+		M.fire_act()
+
+/datum/ammo/bullet/rifle/explosive/xm99a/on_hit_obj(obj/O, obj/projectile/P)
+	cell_explosion(get_turf(O), 15, 5, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+
+/datum/ammo/bullet/rifle/explosive/xm99a/on_hit_turf(turf/T, obj/projectile/P)
+	if(T.density)
+		cell_explosion(T, 15, 5, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)

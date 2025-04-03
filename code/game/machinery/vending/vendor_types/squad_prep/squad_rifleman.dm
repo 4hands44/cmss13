@@ -92,6 +92,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("Laser Designator", 15, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
 		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 15, /obj/item/device/motiontracker/adv, null, VENDOR_ITEM_REGULAR),
+		list("Whistle", 5, 	/obj/item/device/whiskey_supply_beacon, null, VENDOR_ITEM_REGULAR),
 		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
 
 		list("HELMET OPTICS", 0, null, null, null),

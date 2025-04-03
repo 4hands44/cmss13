@@ -198,4 +198,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/storage/box/zipcuffs,
 		/obj/item/storage/box/kit/engineering_supply_kit,
+		/obj/item/device/whiskey_supply_beacon,
+		/obj/item/device/whiskey_supply_beacon,
+		/obj/item/device/whiskey_supply_beacon,
+		/obj/item/device/whiskey_supply_beacon,
 	)

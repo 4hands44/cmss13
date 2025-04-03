@@ -2,7 +2,8 @@
 
 GLOBAL_LIST_INIT(cm_vending_gear_smartgun, list(
 		list("SMARTGUN SET (MANDATORY)", 0, null, null, null),
-		list("Essential Smartgunner Set", 0, /obj/item/storage/box/m56_system, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Essential Smartgunner Set", 0, /obj/effect/essentials_set/smartgunner/m56, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Essential xm99a gunner Set", 0, /obj/effect/essentials_set/smartgunner/xm99a, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("SMARTGUN AMMUNITION", 0, null, null, null),
 		list("M56 Smartgun Drum", 15, /obj/item/ammo_magazine/smartgun, null, VENDOR_ITEM_RECOMMENDED),
@@ -136,3 +137,16 @@ GLOBAL_LIST_INIT(cm_vending_clothing_smartgun, list(
 	headset_type = /obj/item/device/radio/headset/almayer/marine/delta
 
 //------------ESSENTIAL SETS---------------
+/obj/effect/essentials_set/smartgunner/m56
+	spawned_gear_list = list(
+		/obj/item/storage/box/m56_system,
+		/obj/item/device/whiskey_supply_beacon,
+		/obj/item/device/whiskey_supply_beacon,
+	)
+
+/obj/effect/essentials_set/smartgunner/xm99a
+	spawned_gear_list = list(
+		/obj/item/storage/box/xm99a_system,
+		/obj/item/device/whiskey_supply_beacon,
+		/obj/item/device/whiskey_supply_beacon,
+	)

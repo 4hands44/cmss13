@@ -782,3 +782,14 @@
 	icon_state = "m51b_rubber"
 	gun_type = /obj/item/weapon/gun/rifle/xm51/cmb
 	default_ammo = /datum/ammo/bullet/shotgun/light/rubber
+
+/obj/item/ammo_magazine/rifle/xm99a
+	name = "\improper XM99A1 Magazine (pellets)"
+	desc = "A cannister of cadmium pellets."
+	w_class = SIZE_LARGE
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm/flamers.dmi'
+	icon_state = "flametank"
+	flags_magazine = AMMUNITION_CANNOT_REMOVE_BULLETS
+	max_rounds = 50
+	gun_type = /obj/item/weapon/gun/rifle/xm99a
+	default_ammo = /datum/ammo/bullet/rifle/explosive/xm99a
