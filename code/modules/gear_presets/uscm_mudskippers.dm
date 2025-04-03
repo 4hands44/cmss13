@@ -28,6 +28,35 @@
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
 
+/datum/equipment_preset/uscm_mudskippers/load_preset(mob/living/carbon/human/new_human, randomise, count_participant)
+	. = ..()
+	if(!auto_squad_name || (should_block_game_interaction(new_human) && !ert_squad))
+		return
+	if(!GLOB.data_core.manifest_modify(new_human.real_name, WEAKREF(new_human), assignment, rank))
+		GLOB.data_core.manifest_inject(new_human)
+
+	var/obj/item/card/id/ID = new_human.get_idcard()
+	var/datum/money_account/acct = create_account(new_human, rand(30, 50), GLOB.paygrades[ID.paygrade])
+	ID.associated_account_number = acct.account_number
+
+	var/datum/squad/auto_squad = get_squad_by_name(auto_squad_name)
+	if(auto_squad)
+		transfer_marine_to_squad(new_human, auto_squad, new_human.assigned_squad, ID)
+	if(!ert_squad && !auto_squad.active)
+		auto_squad.engage_squad(FALSE)
+
+	new_human.marine_buyable_categories[MARINE_CAN_BUY_EAR] = 0
+	new_human.sec_hud_set_ID()
+	new_human.hud_set_squad()
+
+	if(new_human.wear_l_ear)
+		if(istype(new_human.wear_l_ear, /obj/item/device/radio/headset/almayer/marine))
+			var/obj/item/device/radio/headset/almayer/marine/equipped_headset = new_human.wear_l_ear
+			equipped_headset.add_hud_tracker(new_human)
+	else if(new_human.wear_r_ear)
+		if(istype(new_human.wear_r_ear, /obj/item/device/radio/headset/almayer/marine))
+			var/obj/item/device/radio/headset/almayer/marine/equipped_headset = new_human.wear_r_ear
+			equipped_headset.add_hud_tracker(new_human)
 
 //*****************************************************************************************************/
 
@@ -325,6 +354,7 @@
 /datum/equipment_preset/uscm_mudskippers/leader
 	name = "Mudskippers-Squad Leader"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	auto_squad_name = SQUAD_MARINE_CRYO
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP)
 	assignment = JOB_MS_SL
@@ -404,6 +434,8 @@
 /datum/equipment_preset/uscm_mudskippers/sg
 	name = "Mudskippers-Squad Smartgunner"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	auto_squad_name = SQUAD_MARINE_CRYO
+
 	access = list(
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_CHEMISTRY,
@@ -489,6 +521,8 @@
 /datum/equipment_preset/uscm_mudskippers/medic
 	name = "Mudskippers-Squad Hospital Corpsman"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	auto_squad_name = SQUAD_MARINE_CRYO
+
 	access = list(
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_CHEMISTRY,
@@ -568,6 +602,7 @@
 /datum/equipment_preset/uscm_mudskippers/engineer
 	name = "Mudskippers-Squad Combat Technician"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	auto_squad_name = SQUAD_MARINE_CRYO
 
 	access = list(
 		ACCESS_MARINE_COMMAND,
@@ -661,6 +696,8 @@
 /datum/equipment_preset/uscm_mudskippers/rfm
 	name = "Mudskippers-Squad Rifleman"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	auto_squad_name = SQUAD_MARINE_CRYO
+
 	access = list(
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_CHEMISTRY,
@@ -756,6 +793,8 @@
 /datum/equipment_preset/uscm_mudskippers/k9
 	name = "Mudskippers-Squad K9 Handler"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	auto_squad_name = SQUAD_MARINE_CRYO
+
 	access = list(
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_CHEMISTRY,

@@ -340,10 +340,10 @@
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /datum/ammo/bullet/sniper/anti_materiel/on_hit_obj(obj/O, obj/projectile/P)
-	if(istype(O, /obj/vehicle/multitile/apc))
+	if(istype(O, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/M = O
 		playsound(M, 'sound/effects/bang.ogg', 100)
-		M.at_munition_interior_explosion_effect_bullet(cause_data = create_cause_data("Ant-Tank Rifle"))
+		M.at_munition_interior_explosion_effect_bullet(cause_data = create_cause_data("Anti-Tank Rifle"))
 		M.ex_act(25, P.dir, P.weapon_cause_data, 10)
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 		return
