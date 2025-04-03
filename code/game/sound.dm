@@ -311,6 +311,8 @@
 				sound = pick('sound/weapons/gun_m39_1.mp3','sound/weapons/gun_m39_2.mp3','sound/weapons/gun_m39_3.mp3')
 			if("gun_pulse")
 				sound = pick('sound/weapons/gun_m41a_1.mp3','sound/weapons/gun_m41a_2.mp3','sound/weapons/gun_m41a_3.mp3','sound/weapons/gun_m41a_4.mp3','sound/weapons/gun_m41a_5.mp3')
+			if("gun_pulse_alt")
+				sound = pick('sound/weapons/gun_m41a_1.ogg','sound/weapons/gun_m41a_2.ogg','sound/weapons/gun_m41a_3.ogg','sound/weapons/gun_m41a_4.ogg','sound/weapons/gun_m41a_5.ogg','sound/weapons/gun_m41a_6.ogg')
 			if("gun_smartgun")
 				sound = pick('sound/weapons/gun_smartgun1.mp3', 'sound/weapons/gun_smartgun2.mp3', 'sound/weapons/gun_smartgun3.mp3', 'sound/weapons/gun_smartgun4.mp3')
 			if("gun_smartgun_rattle")

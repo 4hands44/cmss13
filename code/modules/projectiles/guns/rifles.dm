@@ -52,7 +52,7 @@
 
 /obj/item/weapon/gun/rifle/m41a
 	name = "\improper M41A pulse rifle MK2"
-	desc = "The standard issue rifle of the Colonial Marines. Commonly carried by most combat personnel. Uses 10x24mm caseless ammunition."
+	desc = "A newer, cheaper and more versatile take on the M41Amk1, slowly issued to USCM. It is most commonly carried by combat personnel of the Canadian Colonial Army, and Private UA Contractors, however some USCM units stationed closer to and in SOl are seeing some shipments. Uses 10x24mm caseless ammunition."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	icon_state = "m41a"
 	item_state = "m41a"
@@ -403,7 +403,7 @@
 
 /obj/item/weapon/gun/rifle/m41aMK1
 	name = "\improper M41A pulse rifle"
-	desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. Uses 10x24mm caseless ammunition."
+	desc = "The standard issue rifle of the Colonial Marines. Commonly carried by most combat personnel. Uses 10x24mm caseless ammunition."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	icon_state = "m41amk1" //Placeholder.
 	item_state = "m41amk1" //Placeholder.
@@ -2200,7 +2200,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "aug"
 	item_state = "aug"
-	fire_sound = "gun_pulse"
+	fire_sound = "gun_pulse_alt"
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/rmc_f90
@@ -2350,7 +2350,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "sa80"
 	item_state = "sa80"
-	fire_sound = "gun_pulse"
+	fire_sound = "gun_pulse_alt"
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/sa80/heap
