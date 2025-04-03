@@ -79,7 +79,7 @@
 	if(flags_ammo_behavior & AMMO_EXPLOSIVE)
 		execution_target.gib()
 
-/datum/ammo/bullet/on_hit_obj(obj/O, obj/projectile/P)
+/datum/ammo/bullet/on_hit_obj(obj/O, obj/projectile/P, mob/user)
 	if(istype(O, /obj/vehicle/multitile/civvan))
 		var/obj/vehicle/multitile/M = O
 		playsound(M, 'sound/effects/Glassbr3.ogg', 50)
@@ -128,6 +128,13 @@
 		M.munition_interior_bullet_effect(cause_data = create_cause_data("Vehicle Spalling"))
 		M.ex_act(25, P.dir, P.weapon_cause_data, 10)
 		return
+	if(prob(5))
+		user.visible_message(SPAN_BOLDWARNING("[src] bounces off of the [O]!"))
+		create_shrapnel(get_turf(O), 1, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(3, 1, src)
+		s.start()
+		return
 	return ..()
 
 /datum/ammo/bullet/on_hit_mob(mob/M, obj/projectile/P, mob/user)
@@ -140,19 +147,9 @@
 					user.visible_message(SPAN_BOLDWARNING("Fragments of shrapnel from [src] spray off of [M]'s armor!"))
 					create_shrapnel(get_turf(M), 3, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
 
-/datum/ammo/bullet/on_hit_obj(obj/O, obj/projectile/P, mob/user)
-	if(prob(5))
-		user.visible_message(SPAN_BOLDWARNING("[src] bounces off of the [O]!"))
-		create_shrapnel(get_turf(O), 1, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, src)
-		s.start()
-
 /datum/ammo/bullet/on_hit_turf(turf/T, obj/projectile/P, mob/user)
 	if(prob(5))
 		if(T.density)
 			user.visible_message(SPAN_BOLDWARNING("[src] bounces off of the [T]!"))
 			create_shrapnel(get_turf(T), 1, , ,/datum/ammo/bullet/shrapnel, P.weapon_cause_data)
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(3, 1, src)
-			s.start()
+
