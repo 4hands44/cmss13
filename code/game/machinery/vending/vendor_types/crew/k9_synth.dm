@@ -26,7 +26,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_k9_synth, list(
 
 /obj/structure/machinery/cm_vending/clothing/k9_handler
 	name = "\improper Wey-Yu Synthetic K9 Handler Equipment"
-	desc = "An automated equipment vendor for Synthetic K9s."
+	desc = "An automated equipment vendor for Synthetic K9 handlers."
 	show_points = FALSE
 	req_access = list(ACCESS_MARINE_PREP)
 	vendor_role = list(JOB_MS_K9)
