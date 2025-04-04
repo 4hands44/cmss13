@@ -711,21 +711,31 @@
 	icon_state = "bluespace"
 	damage_type = BURN
 
-	damage = 50
+	damage = 40
 	accurate_range = 22
 	accuracy = 0
 	shell_speed = AMMO_SPEED_TIER_2
 	damage_falloff = DAMAGE_FALLOFF_TIER_9
 	penetration = ARMOR_PENETRATION_TIER_10
+	shrapnel_chance = 0
+
 
 /datum/ammo/bullet/rifle/explosive/xm99a/on_hit_mob(mob/M, obj/projectile/P)
-	cell_explosion(get_turf(M), 15, 5, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+	cell_explosion(get_turf(M), 25, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 	if(prob(50)) //small chance for one to ignite on hit
 		M.fire_act()
 
 /datum/ammo/bullet/rifle/explosive/xm99a/on_hit_obj(obj/O, obj/projectile/P)
-	cell_explosion(get_turf(O), 15, 5, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+	cell_explosion(get_turf(O), 25, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+	if(istype(O, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/M = O
+		playsound(M, 'sound/effects/bang.ogg', 100)
+		M.plasma_munition_interior_bullet_effect(cause_data = create_cause_data("Plasma Rifle"))
+		M.ex_act(25, P.dir, P.weapon_cause_data, 10)
+		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
+		return
+	return ..()
 
 /datum/ammo/bullet/rifle/explosive/xm99a/on_hit_turf(turf/T, obj/projectile/P)
 	if(T.density)
-		cell_explosion(T, 15, 5, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+		cell_explosion(T, 25, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)

@@ -2982,7 +2982,7 @@
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	unacidable = TRUE
 	explo_proof = TRUE
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK
 	muzzle_flash = "muzzle_flash_blue"
 	muzzle_flash_color = COLOR_MUZZLE_BLUE
 	auto_retrieval_slot = WEAR_J_STORE
@@ -3001,7 +3001,7 @@
 	var/requires_battery = TRUE
 	/// Whether the smartgun requires a harness to use
 	var/requires_harness = TRUE
-	var/drain = 5000
+	var/drain = 3000
 
 /obj/item/weapon/gun/rifle/xm99a/Initialize(mapload, ...)
 

@@ -696,6 +696,9 @@
 		/obj/item/explosive/mine,
 		/obj/item/reagent_container/food/snacks,
 	)
+	bypass_w_limit = list(
+		/obj/item/ammo_magazine/rifle,
+	)
 
 /obj/item/storage/belt/marine/smartgunner/fill_preset_inventory()
 	new /obj/item/ammo_magazine/smartgun(src)
@@ -2139,6 +2142,9 @@
 		/obj/item/ammo_magazine/rifle/xm99a,
 	)
 	flags_atom = FPRINT // has gamemode skin
+	bypass_w_limit = list(
+		/obj/item/ammo_magazine/rifle,
+	)
 
 /obj/item/storage/belt/gun/smartgunner/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3())

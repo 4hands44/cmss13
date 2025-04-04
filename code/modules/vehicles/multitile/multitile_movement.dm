@@ -290,6 +290,11 @@
 			// IT'S LIKE I'M WATCHIN' YA FLY THROUGH A WINDSHIELD!
 			INVOKE_ASYNC(A, TYPE_PROC_REF(/atom/movable, throw_atom), target, fling_distance, SPEED_VERY_FAST, src, TRUE)
 
+//----------Attacking into cars from outside------------\\
+
+
+//---RPG
+
 /obj/vehicle/multitile/proc/at_munition_interior_explosion_effect(explosion_strength = 250, explosion_falloff = 50, shrapnel = TRUE, shrapnel_count = 48, datum/cause_data/cause_data)
 	if(!interior)
 		return
@@ -298,12 +303,24 @@
 
 	var/turf/target = get_random_turf_in_range(centre, 2, 0)
 
+	var/radius = 2
+	var/flame_level = BURN_TIME_TIER_5 + 5
+	var/burn_level = BURN_LEVEL_TIER_3
+	var/flameshape = FLAMESHAPE_STAR
+	var/fire_type = FIRE_VARIANT_DEFAULT
+
 	if(shrapnel)
 		create_shrapnel(target, shrapnel_count, , ,/datum/ammo/bullet/shrapnel, cause_data)
 		cell_explosion(target, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+		if(prob(50))
+			flame_radius(cause_data, radius, target, flame_level, burn_level, flameshape, null, fire_type)
+			return
 		return
 	else
 		cell_explosion(target, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+
+
+//--tank shells
 
 /obj/vehicle/multitile/proc/at_munition_interior_explosion_effect_tank(explosion_strength = 50, explosion_falloff = 25, shrapnel = TRUE, shrapnel_count = 48, datum/cause_data/cause_data)
 	if(!interior)
@@ -320,6 +337,8 @@
 	else
 		cell_explosion(target, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
+//-----exploding bullets & at rifles
+
 /obj/vehicle/multitile/proc/at_munition_interior_explosion_effect_bullet(explosion_strength = 10, explosion_falloff = 5, shrapnel = TRUE, shrapnel_count = 48, datum/cause_data/cause_data)
 	if(!interior)
 		return
@@ -335,6 +354,8 @@
 	else
 		cell_explosion(target, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
+//---Proc for bullets
+
 /obj/vehicle/multitile/proc/munition_interior_bullet_effect(shrapnel = TRUE, shrapnel_count = 20, datum/cause_data/cause_data)
 	if(!interior)
 		return
@@ -342,3 +363,26 @@
 	var/turf/centre = interior.get_middle_turf()
 
 	create_shrapnel(centre, shrapnel_count, , ,/datum/ammo/bullet/shrapnel/spall, cause_data)
+
+//---Plasma
+
+/obj/vehicle/multitile/proc/plasma_munition_interior_bullet_effect(shrapnel = TRUE, shrapnel_count = 20, datum/cause_data/cause_data)
+	if(!interior)
+		return
+
+	var/turf/centre = interior.get_middle_turf()
+
+	var/turf/target = get_random_turf_in_range(centre, 2, 0)
+
+	var/radius = 0
+	var/flame_level = BURN_TIME_TIER_1
+	var/burn_level = BURN_LEVEL_TIER_9
+	var/flameshape = FLAMESHAPE_DEFAULT
+	var/fire_type = FIRE_VARIANT_DEFAULT
+
+
+	create_shrapnel(centre, shrapnel_count, , ,/datum/ammo/bullet/shrapnel/incendiary, cause_data)
+	if(prob(50))
+		flame_radius(cause_data, radius, target, flame_level, burn_level, flameshape, null, fire_type)
+		return
+	return
