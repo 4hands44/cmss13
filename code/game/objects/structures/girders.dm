@@ -63,7 +63,7 @@
 				. += SPAN_NOTICE("Plasteel attached. [SPAN_HELPFUL("Weld")] to finish.")
 			return
 		if(STATE_DISPLACED)
-			. += SPAN_NOTICE("It looks dislodged. [SPAN_HELPFUL("Crowbar")] to secure it. Or [SPAN_HELPFUL("Weld")] with a 2x2 of dislodged girders to start constructing a watchtower.")
+			. += SPAN_NOTICE("It looks dislodged. [SPAN_HELPFUL("Crowbar")] to secure it. Or create a 2x2 of dislodged girders & [SPAN_HELPFUL("Weld")] the bottom left one to start constructing a watchtower.")
 
 /obj/structure/girder/update_icon()
 	. = ..()
@@ -182,7 +182,7 @@
 				if(CEILING_IS_PROTECTED(area.ceiling, CEILING_GLASS))
 					to_chat(user, SPAN_WARNING("Watchtowers can only be built in the open."))
 					return
-					
+
 				var/list/turf/turfs = CORNER_BLOCK(get_turf(src), 2, 2)
 				var/list/obj/structure/girder/girders = list()
 
@@ -204,10 +204,10 @@
 				to_chat(user, SPAN_NOTICE("You weld the displaced girders together, creating a watchtower frame."))
 
 				new /obj/structure/watchtower(loc)
-				
+
 				for(var/list/obj/structure/girder as anything in girders)
 					qdel(girder)
-			
+
 			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 				var/area/area = get_area(W)
 				if(!area.allow_construction)

@@ -72,6 +72,7 @@
 
 /obj/structure/watchtower/get_examine_text(mob/user)
 	. = ..()
+	var/dam = health / max_health
 	switch(stage)
 		if(WATCHTOWER_STAGE_WELDED)
 			. += SPAN_NOTICE("Add 60 metal [SPAN_HELPFUL("rods")] to construct the connection rods.")
@@ -95,13 +96,21 @@
 			. += SPAN_NOTICE("Use a [SPAN_HELPFUL("blowtorch")] and 25 [SPAN_HELPFUL("plasteel")] sheets to construct the roof.")
 			return
 		if(WATCHTOWER_STAGE_COMPLETE)
-			. += SPAN_NOTICE("Use a [SPAN_HELPFUL("blowtorch")] and [SPAN_HELPFUL("metal")] sheets to repair.")
+			if(dam <= 0.3)
+				. += SPAN_WARNING("It looks heavily damaged.")
+				. += SPAN_NOTICE("Use a [SPAN_HELPFUL("blowtorch")] and [SPAN_HELPFUL("metal")] sheets to repair.")
+			else if(dam <= 0.6)
+				. += SPAN_WARNING("It looks moderately damaged.")
+				. += SPAN_NOTICE("Use a [SPAN_HELPFUL("blowtorch")] and [SPAN_HELPFUL("metal")] sheets to repair.")
+			else if (dam < 1)
+				. += SPAN_DANGER("It looks slightly damaged.")
+				. += SPAN_NOTICE("Use a [SPAN_HELPFUL("blowtorch")] and [SPAN_HELPFUL("metal")] sheets to repair.")
 			return
 
 /obj/structure/watchtower/attackby(obj/item/item, mob/user)
 	if(user.action_busy)
 		return
-	
+
 	if(istool(item) && !skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI))
 		to_chat(user, SPAN_WARNING("You are not trained to configure [src]..."))
 		return TRUE
@@ -267,7 +276,7 @@
 			var/obj/item/stack/sheet/metal/metal = user.get_inactive_hand()
 			if(!istype(metal))
 				to_chat(user, SPAN_BOLDWARNING("You need metal sheets in your offhand to patch [src]."))
-				return 
+				return
 
 			if(health >= max_health)
 				to_chat(user, SPAN_NOTICE("[src] is in good condition."))
@@ -275,7 +284,7 @@
 
 			to_chat(user, SPAN_NOTICE("You start patching [src] with the metal sheets."))
 			playsound(loc, 'sound/items/Welder.ogg', 25, 1)
-			
+
 			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
@@ -285,31 +294,18 @@
 			else
 				to_chat(user, SPAN_NOTICE("You failed to patch [src], you need more metal sheets in your offhand."))
 
-/obj/structure/watchtower/get_examine_text(mob/user)
-	. = ..()
-
-	var/dam = health / max_health
-	
-	if(dam <= 0.3)
-		. += SPAN_WARNING("It looks heavily damaged.")
-	else if(dam <= 0.6)
-		. += SPAN_WARNING("It looks moderately damaged.")
-	else if (dam < 1)
-		. += SPAN_DANGER("It looks slightly damaged.")
-			
-
 /obj/structure/watchtower/attack_hand(mob/user)
 	if (stage < WATCHTOWER_STAGE_COMPLETE)
 		return
 
 	if(get_turf(user) == locate(x, y-1, z))
 		var/people_on_watchtower = 0
-		
+
 		for(var/turf/current_turf in CORNER_BLOCK_OFFSET(src, 2, 1, 0, 1))
 			for(var/mob/mob in current_turf.contents)
 				if(mob.stat != DEAD)
 					people_on_watchtower++
-		
+
 		if(people_on_watchtower >= 2)
 			to_chat(user, SPAN_NOTICE("[src] is too crowded!"))
 			return
@@ -326,7 +322,7 @@
 		user.forceMove(actual_turf)
 		on_enter(user)
 
-		
+
 	else if(get_turf(user) == locate(x, y+1, z))
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
@@ -335,7 +331,7 @@
 		if(user.pulling)
 			on_leave(user.pulling)
 			user.pulling.forceMove(actual_turf)
-			
+
 		user.forceMove(actual_turf)
 		on_leave(user)
 
@@ -348,7 +344,7 @@
 	add_trait_to_all_guns(user)
 	RegisterSignal(user, COMSIG_ITEM_PICKUP, PROC_REF(item_picked_up))
 	RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, PROC_REF(on_unzoom))
-	
+
 	if(isxeno(user))
 		RegisterSignal(user, COMSIG_XENO_ENTER_TUNNEL, PROC_REF(on_tunnel))
 
@@ -385,7 +381,7 @@
 	SIGNAL_HANDLER
 	if(!istype(picked_up_item, /obj/item/weapon/gun))
 		return
-	
+
 	var/obj/item/weapon/gun/gun = picked_up_item
 	gun.add_bullet_traits(list(BULLET_TRAIT_ENTRY_ID("watchtower_arc", /datum/element/bullet_trait_direct_only/watchtower)))
 
@@ -393,7 +389,7 @@
 	if(get_turf(xeno) == locate(x, y-1, z) && xeno.a_intent != INTENT_HARM && xeno.mob_size < MOB_SIZE_BIG && stage >= WATCHTOWER_STAGE_COMPLETE)
 		if(!do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			return
-		
+
 		var/turf/actual_turf = locate(x, y+1, z)
 		xeno.forceMove(actual_turf)
 		on_enter(xeno)
