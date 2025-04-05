@@ -14,9 +14,11 @@
 		else if(I)
 			_role = I.rank
 		switch(GET_DEFAULT_ROLE(_role))
+			if(JOB_SQUAD_MARINE, JOB_MS_RFM)
+				marine_rk = "rfm"
 			if(JOB_SQUAD_ENGI, JOB_MS_ENGINEER)
 				marine_rk = "engi"
-			if(JOB_SQUAD_SPECIALIST, JOB_MS_RFM)
+			if(JOB_SQUAD_SPECIALIST)
 				marine_rk = "spec"
 			if(JOB_SQUAD_TEAM_LEADER)
 				marine_rk = "tl"
@@ -228,13 +230,15 @@
 			if(JOB_WO_PILOT)
 				marine_rk = "wo_mcrew"
 			// Check squad marines here too, for the unique ones
+			if(JOB_SQUAD_MARINE, JOB_MS_RFM)
+				marine_rk = "rfm"
 			if(JOB_MS_K9)
 				marine_rk = "medk9"
 			if(JOB_SQUAD_ENGI, JOB_MS_ENGINEER)
 				marine_rk = "engi"
 			if(JOB_SQUAD_MEDIC, JOB_MS_MEDIC)
 				marine_rk = "med"
-			if(JOB_SQUAD_SPECIALIST, JOB_MS_RFM)
+			if(JOB_SQUAD_SPECIALIST)
 				marine_rk = "spec"
 			if(JOB_SQUAD_SMARTGUN, JOB_MS_SMARTGUNNER)
 				marine_rk = "gun"
